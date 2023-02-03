@@ -19,14 +19,27 @@ class Client extends Model
     protected $fillable = [
         'uuid',
         'fullname',
-        'email',
+        'email_address',
         'phone_number',
-        'address',
-        'school_name'
+        'client_type',
+        'grade',
+        'graduate_from',
+        'country_destination',
+        'first_time',
     ];
 
     public function booking()
     {
         return $this->hasMany(Booking::class, 'client_id', 'id');
+    }
+
+    public function lead_source()
+    {
+        return $this->belongsTo(LeadSource::class, 'lead_source_id', 'id');
+    }
+
+    public function biggest_challenge()
+    {
+        return $this->belongsTo(BiggestChallenge::class, 'challenge_id', 'id');
     }
 }

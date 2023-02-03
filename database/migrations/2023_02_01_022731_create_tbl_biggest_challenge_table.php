@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_university', function (Blueprint $table) {
+        Schema::create('tbl_biggest_challenge', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid', 40)->unique();
             $table->string('name');
-            $table->date('session_start');
-            $table->time('time_start');
-            $table->text('thumbnail');
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_university');
+        Schema::dropIfExists('tbl_biggest_challenge');
     }
 };
