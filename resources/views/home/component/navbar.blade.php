@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg bg-transparent fixed-top" id="navbar_allin">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('img/logo-allin.png') }}" alt="ALL-in Eduspace" class="w-75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5 ms-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{url('/#home')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/#ibdp')}}">IBDP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/scholarship')}}">Scholarship</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/#profile-essay')}}">Profile & Essay Submission</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/#university')}}">University Talk & Session</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a href="" class="btn btn-danger">
+                    <i class=""></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    $(document).ready(function() {
+        $('.nav-item a').click(function() {
+            $('.nav-link').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+
+    $(window).scroll(function(event) {
+        let scroll = $(window).scrollTop();
+        if (scroll > 50) {
+            $('#navbar_allin').removeClass('bg-transparent').addClass('bg-light shadow active')
+        } else {
+            $('#navbar_allin').removeClass('bg-light shadow active').addClass('bg-transparent')
+        }
+        // Do something
+    });
+</script>
+
+<style>
+    #navbar_allin {
+        transition: all 0.3s ease-in-out;
+    }
+
+    #navbar_allin.active .navbar-nav .nav-link {
+        color: #FAAF40;
+    }
+
+    .navbar-nav {
+        gap: 20px;
+    }
+
+    .nav-link {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .nav-link.active {
+        background: var(--bs-blue);
+        color: white !important;
+    }
+</style>
