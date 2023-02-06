@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-transparent fixed-top" id="navbar_allin">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('img/logo-allin.png') }}" alt="ALL-in Eduspace" class="w-75">
+            <img src="{{ asset('img/logo-allin.svg') }}" alt="ALL-in Eduspace" class="w-75">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,19 +10,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5 ms-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{url('/#home')}}">Home</a>
+                    <a class="nav-link" href="{{ url('/#home') }}" id="home-menu">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/#ibdp')}}">IBDP</a>
+                    <a class="nav-link" href="{{ url('/#ibdp') }}" id="ibdp-menu">IBDP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/scholarship')}}">Scholarship</a>
+                    <a class="nav-link {{Request::is('scholarship') ? 'active' : '' }}"
+                        href="{{ url('/scholarship') }}">Scholarship                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/#profile-essay')}}">Profile & Essay Submission</a>
+                    <a class="nav-link" href="{{ url('/#profile-essay') }}" id="profile-essay-menu">Profile & Essay
+                        Submission</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/#university')}}">University Talk & Session</a>
+                    <a class="nav-link" href="{{ url('/#university') }}" id="university-menu">University Talk &
+                        Session</a>
                 </li>
             </ul>
             <div class="d-flex">
@@ -38,10 +41,19 @@
 <script>
     $(document).ready(function() {
         $('.nav-item a').click(function() {
-            $('.nav-link').removeClass("active");
-            $(this).addClass("active");
+            $('.nav-item a').removeClass('active')
+            setTimeout(() => {
+                check_menu()
+            }, 50);
         });
     });
+
+    function check_menu() {
+        let hash = window.location.hash;
+        $(hash + '-menu').addClass('active')
+    }
+
+    check_menu()
 
     $(window).scroll(function(event) {
         let scroll = $(window).scrollTop();

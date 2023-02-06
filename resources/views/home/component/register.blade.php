@@ -351,7 +351,7 @@
                 '<li class="list-group-item d-flex justify-content-between align-items-center">' +
                 uni.name +
                 '<div class="">' +
-                '<i class="bi bi-trash2 text-danger" onclick="delete_uni(\'' + uni.id + '\')"></i>' +
+                '<i class="bi bi-trash2 text-danger" style="cursor:pointer" onclick="delete_uni(\'' + uni.id + '\')"></i>' +
                 ' </div>' +
                 '</li>'
             )
@@ -373,8 +373,10 @@
     }
 
     function joinUniModal() {
-        $('#univ_modal').modal('show')
         check_uni()
+        setTimeout(() => {
+            $('#univ_modal').modal('show')
+        }, 500);
     }
 
     selected_uni()
