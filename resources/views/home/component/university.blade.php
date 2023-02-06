@@ -1,8 +1,10 @@
-<div class="container-fluid" id="university">
+<div class="container-fluid position-relative overflow-hidden" id="university">
+    <img loading="lazy" src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:20%;" >
+    <img loading="lazy" src="{{asset('img/asset 3.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;" >
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-7 col-12">
-                <img src="{{ asset('img/uni-info.svg') }}" alt="" class="w-100">
+                <img loading="lazy" src="{{ asset('img/uni-info.svg') }}" alt="" class="w-100">
             </div>
             <div class="col-md-9 col-12">
                 <div class="subtitle-uni text-center">
@@ -19,7 +21,7 @@
                                     data-uni="University {{ $i }}" onchange="select_uni()">
                                 <span class="checkmark"></span>
                                 <label for="uni_{{ $i }}" class="d-block" style="cursor: pointer">
-                                    <img src="{{ asset('img/uni.svg') }}" alt="" class="w-100">
+                                    <img loading="lazy" src="{{ asset('img/uni.svg') }}" alt="" class="w-100">
                                     <div class="uni-box d-flex justify-content-between">
                                         <div class="">6 March</div>
                                         <div class="">06.00 AM</div>
@@ -54,7 +56,7 @@
         </div>
     </div>
     <div class="">
-        <a href="{{url('/register')}}" class="btn btn-warning">
+        <a href="{{url('/register')}}" class="btn btn-warning text-uppercase text-dark">
             Register Now
         </a>
     </div>

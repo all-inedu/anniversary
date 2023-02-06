@@ -5,20 +5,20 @@
             <div class="col-md-9 col-12">
                 <div class="row align-items-center">
                     <div class="col-md-7">
-                        <img src="{{ asset('img/logo-allin.png') }}" alt="" class="w-25">
+                        <img src="{{ asset('img/logo-allin.svg') }}" alt="" class="w-25">
                         <img src="{{ asset('img/scholarship.svg') }}" alt="" class="w-100">
                     </div>
                     <div class="col-md-5">
                         <div class="card bg-primary mb-2">
-                            <div class="card-body subtitle-scholarship py-0 text-center text-white py-2">
+                            <div class="card-body subtitle-scholarship py-0 text-center text-white py-2 text-uppercase">
                                 Submission Deadline 25 March
                             </div>
                         </div>
-                        <button class="btn btn-lg btn-warning btn-block w-100 py-1 text-dark">
+                        <a href="{{url('/scholarship')}}" class="btn btn-lg btn-warning btn-block w-100 py-1 text-dark text-uppercase">
                             <strong>
                                 Click for more info
                             </strong>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="row align-items-center g-1 justify-content-between">
@@ -41,7 +41,6 @@
     }
 
     .subtitle-scholarship {
-        /* font-family: 'stereofidelic'; */
         font-size: 18px;
     }
 

@@ -1,25 +1,29 @@
 <div class="container-fluid position-relative overflow-hidden" id="profile-essay">
-    <img src="{{asset('img/asset 1.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;" >
-    <img src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;" >
+    <img loading="lazy" src="{{asset('img/asset 1.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;" >
+    <img loading="lazy" src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;" >
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-9 col-12">
                 <div class="row align-items-end">
                     <div class="col-md-5">
-                        <img src="{{ asset('img/essay-speaker.svg') }}" alt="" class="w-100">
+                        <img loading="lazy" src="{{ asset('img/essay-speaker.svg') }}" alt="" class="w-100">
                     </div>
                     <div class="col-md-7">
-                        <img src="{{ asset('img/essay.svg') }}" alt="" class="w-100">
+                        <img loading="lazy" src="{{ asset('img/essay.svg') }}" alt="" class="w-100">
                     </div>
                     <div class="col-md-12 text-center text-essay">
-                        Submit your profile and write an essay on a given prompt and earn the chance to be reviewed
-                        by our mentors directly! Selected profiles will get the chance to receive a free mentoring
-                        session.
-
-                        In addition, we will also share how we guide our mentees to boost their CVs through personal
-                        projects, competitions, club activities, and many more!
-
-                        *Submitted profiles will be reviewed anonymously
+                        <p>
+                            Submit your profile and write an essay on a given prompt and earn the chance to be reviewed
+                            by our mentors directly! Selected profiles will get the chance to receive a free mentoring
+                            session.
+                        </p>
+                        <p>
+                            In addition, we will also share how we guide our mentees to boost their CVs through personal
+                            projects, competitions, club activities, and many more!
+                        </p>
+                        <p>
+                            *Submitted profiles will be reviewed anonymously
+                        </p>
                     </div>
                     <div class="col-md-12 text-center title-profile my-5">
                         GET A CHANCE TO WIN
@@ -29,17 +33,17 @@
             </div>
             <div class="col-md-12 mb-5">
                 <div class="row align-items-center g-1">
+                    <div class="col text-center" id="prize3">
+                        <img loading="lazy" src="{{ asset('img/prize-3.svg') }}" alt="" class="img-prize"
+                            onmouseover="prizeActive(3)">
+                    </div>
                     <div class="col text-center" id="prize1">
-                        <img src="{{ asset('img/prize-1.svg') }}" alt="" class="img-prize"
+                        <img loading="lazy" src="{{ asset('img/prize-1.svg') }}" alt="" class="img-prize active"
                             onmouseover="prizeActive(1)">
                     </div>
                     <div class="col text-center" id="prize2">
-                        <img src="{{ asset('img/prize-2.svg') }}" alt="" class="img-prize active"
+                        <img loading="lazy" src="{{ asset('img/prize-2.svg') }}" alt="" class="img-prize"
                             onmouseover="prizeActive(2)">
-                    </div>
-                    <div class="col text-center" id="prize3">
-                        <img src="{{ asset('img/prize-3.svg') }}" alt="" class="img-prize"
-                            onmouseover="prizeActive(3)">
                     </div>
                 </div>
             </div>
@@ -143,11 +147,11 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-lg btn-warning px-4 text-dark">
+                        <a href="https://forms.gle/Aq1zqjCC5yRfRD1S6" target="_blank" class="btn btn-lg btn-warning px-4 text-dark text-uppercase">
                             <strong>
                                 Submit Your Profile & Essay Here
                             </strong>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -171,7 +175,7 @@
     }
 
     .title-profile {
-        font-family: 'SF Pro Display Bold';
+        font-family: 'SFP_Bold';
         font-weight: bold;
         font-size: 2em;
         line-height: 1.1;
@@ -190,7 +194,6 @@
 
     .profile-timeline .card-body {
         font-size: 1.2em;
-        font-weight: bold;
         color: white;
     }
 

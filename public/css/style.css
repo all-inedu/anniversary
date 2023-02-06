@@ -10,17 +10,22 @@
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
+    font-family: 'SFP_Normal';
     src: url('../font/SFPRODISPLAYREGULAR.OTF');
 }
 
 @font-face {
-    font-family: 'SF Pro Display Bold';
+    font-family: 'SFP_Bold';
     src: url('../font/SFPRODISPLAYBOLD.OTF');
 }
 
+@font-face {
+    font-family: 'SFP_Medium';
+    src: url('../font/SFPRODISPLAYMEDIUM.OTF');
+}
+
 body {
-    font-family: 'SF Pro Display' !important;
+    font-family: 'SFP_Medium' !important;
     letter-spacing: 1px;
 }
 

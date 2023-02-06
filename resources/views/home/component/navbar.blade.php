@@ -24,12 +24,12 @@
                         Submission</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/#university') }}" id="university-menu">University Talk &
-                        Session</a>
+                    <a class="nav-link" href="{{ url('/#university') }}" id="university-menu">University Session &
+                        Talk</a>
                 </li>
             </ul>
             <div class="d-flex">
-                <a href="" class="btn btn-danger">
+                <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger">
                     <i class=""></i>
                     Contact Us
                 </a>

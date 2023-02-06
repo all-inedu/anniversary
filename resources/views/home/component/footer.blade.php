@@ -1,15 +1,17 @@
-<div class="container-fluid bg-primary">
+<div class="container-fluid bg-primary" id="footer">
     <div class="container py-5 text-white">
         <div class="row row-cols-md-3 row-cols-1">
             <div class="col">
-                <h5 class="m-0 p-0 mb-3">Address</h5>
+                <h5 class="m-0 p-0">Address</h5>
+                <hr class="mt-1 mb-3">
                 <p>
                     Jl Jeruk Kembar Blok Q9 No. 15 <br>
                     Srengseng, Kembangan DKI Jakarta
                 </p>
             </div>
             <div class="col">
-                <h5 class="m-0 p-0 mb-3">Consultation</h5>
+                <h5 class="m-0 p-0">Consultation</h5>
+                <hr class="mt-1 mb-3">
                 <p>
                     Walk-in Consultation available <br> on Mon-Fri, 09.00 - 17.00 WIB with appointment only.
                 </p>
@@ -24,7 +26,8 @@
                 </p>
             </div>
             <div class="col">
-                <h5 class="m-0 p-0 mb-3">Menus</h5>
+                <h5 class="m-0 p-0">Navigation</h5>
+                <hr class="mt-1 mb-3">
                 <ul class="footer-list">
                     <li>
                         <a href="#home"
@@ -67,7 +70,7 @@
         <hr>
         <div class="row row-cols-md-3 row-cols-1 align-items-center">
             <div class="col">
-                <img src="{{ asset('img/logo-allin.png') }}" alt="" class="w-25">
+                <img src="{{ asset('img/logo-allin-white.webp') }}" alt="" class="w-25">
             </div>
             <div class="col">
                 <i class="bi bi-envelope"></i>
@@ -85,6 +88,9 @@
     </div>
 </div>
 <style>
+    #footer {
+        font-family: 'SFP_Normal'
+    }
     .footer-list {
         list-style: none;
         margin: 0;

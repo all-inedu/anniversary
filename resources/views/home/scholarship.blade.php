@@ -20,11 +20,11 @@
                     <div class="row">
                         <div class="col">
                             <img src="{{ asset('img/Scholarship am.svg') }}" alt="" class="w-100">
-                            <button class="btn btn-lg btn-block w-100 btn-warning fw-bold mt-3">APPLY NOW</button>
+                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank" class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
                         </div>
                         <div class="col">
                             <img src="{{ asset('img/Scholarship pp.svg') }}" alt="" class="w-100">
-                            <button class="btn btn-lg btn-block w-100 btn-warning fw-bold mt-3">APPLY NOW</button>
+                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank" class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-lg btn-block w-100 btn-warning fw-bold mt-3">APPLY FOR SCHOLARSHIP HERE</button>
+                    <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank" class="btn btn-lg btn-block w-100 btn-warning text-dark mt-3">APPLY FOR SCHOLARSHIP HERE</a>
                 </div>
             </div>
         </div>
@@ -201,8 +201,7 @@
         }
 
         .scholarship-title {
-            font-family: 'SF Pro Display Bold';
-            font-weight: bold;
+            font-family: 'SFP_Bold';
             font-size: 2em;
             line-height: 1.1;
             text-align: center;
@@ -211,7 +210,6 @@
 
         .scholarship-timeline {
             font-size: 1.2em;
-            font-weight: 500;
             color: white;
         }
 
