@@ -5,7 +5,7 @@
                 <div class="row align-items-stretch">
                     <div class="col-md-7">
                         <div class="bg-primary p-4 h-100 shadow">
-                            <h4 class="text-warning">Fill The Information</h4>
+                            <h4 class="text-warning fw-bold">Fill The Information</h4>
                             <form action="" id="register_form" method="POST" class="mb-3">
                                 @csrf
                                 <textarea name="uni_select" id="uni_textarea" hidden></textarea>
@@ -214,17 +214,17 @@
                     </div>
                     <div class="col-md-5">
                         <div class="bg-warning p-4 shadow ">
-                            <h4 class="text-white mb-0">University Booked</h4>
+                            <h4 class="text-white mb-0 fw-bold">University Booked</h4>
                             <div class="mb-3" id="join_uni">
                                 <p>Click <a href="#" class="text-danger" onclick="joinUniModal()">here</a> to
                                     join the University Info Session.</p>
                             </div>
-                            <ul class="list-group list-group-flush mb-3 overflow-auto" id="uni_box"
+                            <ul class="list-group list-group-flush overflow-auto" id="uni_box"
                                 style="max-height: 300px">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     University Name
                                     <div class="">
-                                        <i class="bi bi-trash2 text-danger"></i>
+                                        <i class="bi bi-trash2 text-danger" style="cursor: pointer;"></i>
                                     </div>
                                 </li>
                             </ul>

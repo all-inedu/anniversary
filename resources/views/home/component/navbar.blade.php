@@ -10,19 +10,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5 ms-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#home">Home</a>
+                    <a class="nav-link active" href="{{url('/#home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#ibdp">IBDP</a>
+                    <a class="nav-link" href="{{url('/#ibdp')}}">IBDP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#scholarship">Scholarship</a>
+                    <a class="nav-link" href="{{url('/scholarship')}}">Scholarship</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#profile-essay">Profile & Essay Submission</a>
+                    <a class="nav-link" href="{{url('/#profile-essay')}}">Profile & Essay Submission</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#university">University Talk & Session</a>
+                    <a class="nav-link" href="{{url('/#university')}}">University Talk & Session</a>
                 </li>
             </ul>
             <div class="d-flex">

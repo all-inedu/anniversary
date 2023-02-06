@@ -54,9 +54,9 @@
         </div>
     </div>
     <div class="">
-        <button class="btn btn-warning">
+        <a href="{{url('/register')}}" class="btn btn-warning">
             Register Now
-        </button>
+        </a>
     </div>
 </div>
 

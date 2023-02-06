@@ -27,11 +27,11 @@
             <img src="{{ asset('img/uni talk3.svg') }}" alt="" class="w-100 my-2">
             <img src="{{ asset('img/uni talk4.svg') }}" alt="" class="w-100 my-2">
 
-            <button class="btn btn-lg btn-warning py-1 text-dark px-4 mt-3">
+            <a href="{{ url('/register') }}" class="btn btn-lg btn-warning py-1 text-dark px-4 mt-3">
                 <strong>
                     Register Now
                 </strong>
-            </button>
+            </a>
         </div>
     </div>
 </div>
