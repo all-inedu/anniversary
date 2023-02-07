@@ -2,7 +2,7 @@
     <div class="container min-vh-100">
         <div class="row">
             <div class="col-md-7">
-                <div class="bg-primary p-4 shadow text-white">
+                <div class="bg-primary p-4 shadow text-white rounded">
                     <h4 class="text-warning fw-bold">Fill The Information</h4>
                     <form action="" id="register_form" method="POST" class="mb-3">
                         @csrf
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Do you want to join University Preparation
-                                        Talk</label>
+                                        Talk?</label>
                                     <div class="d-flex">
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="uni_prep" id="yes" value="yes"
@@ -243,7 +243,7 @@
             </div>
             <div class="col-md-5">
                 <div class="sticky-top" style="top:13%">
-                    <div class="bg-warning p-4 shadow">
+                    <div class="bg-warning p-4 shadow rounded">
                         <h4 class="text-white mb-0 fw-bold">University Booked</h4>
                         <div class="mb-3" id="join_uni">
                             <p>Click <a href="#" class="text-danger" onclick="joinUniModal()">here</a> to
@@ -494,7 +494,9 @@
         border: 3px solid var(--bs-orange);
         color: white;
         padding: 0 25px;
-        height: 30px;
+        border-radius: 6px;
+        height: 40px;
+        font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -523,13 +525,13 @@
     }
 
     label {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     small.text-danger,
     label.text-info {
         margin-top: 5px;
         display: block;
-        font-size: 11px !important;
+        font-size: 12px !important;
     }
 </style>

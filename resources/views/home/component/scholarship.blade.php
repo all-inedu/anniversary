@@ -1,5 +1,6 @@
 <div class="container-fluid position-relative" id="scholarship">
-    <img src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-8%; bottom:-15%; width:25%;" >
+    <img src="{{ asset('img/asset 4.svg') }}" alt=""
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-8%; bottom:-15%; width:25%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-9 col-11">
@@ -14,7 +15,8 @@
                                 Submission Deadline 25 March
                             </div>
                         </div>
-                        <a href="{{url('/scholarship')}}" class="btn btn-lg btn-warning btn-block w-100 py-1 text-dark text-uppercase">
+                        <a href="{{ url('/scholarship') }}"
+                            class="btn btn-lg btn-warning btn-block w-100 py-1 text-dark text-uppercase">
                             <strong>
                                 Click for more info
                             </strong>
@@ -23,10 +25,12 @@
                 </div>
                 <div class="row align-items-center g-1 justify-content-between" data-aos="fade-up">
                     <div class="col-md-6">
-                        <img src="{{asset('img/scholarship/Scholarship passion project.webp')}}" alt="" class="img-scholarship">
+                        <img src="{{ asset('img/scholarship/Scholarship passion project.webp') }}" alt=""
+                            class="img-scholarship">
                     </div>
                     <div class="col-md-6 text-end">
-                        <img src="{{asset('img/scholarship/Scholarship admission mentoring.webp')}}" alt="" class="img-scholarship">
+                        <img src="{{ asset('img/scholarship/Scholarship admission mentoring.webp') }}" alt=""
+                            class="img-scholarship">
                     </div>
                 </div>
             </div>
@@ -50,25 +54,25 @@
     }
 
     .img-scholarship:hover {
-            transform: scale(1.05)
+        transform: scale(1.05)
+    }
+
+    @media only screen and (max-width: 600px) {
+        #scholarship {
+            height: auto;
+            padding: 2% 0;
         }
 
-        @media only screen and (max-width: 600px) {
-            #scholarship {
-        height: auto;
-        padding: 2% 0;
-    }
-
         .subtitle-scholarship {
-        font-size: 14px;
-    }
+            font-size: 14px;
+        }
 
-    .img-scholarship {
-        transition: all 0.3s ease-in-out;
-        width: 100%;
-    }
+        .img-scholarship {
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
 
-    .img-scholarship:hover {
+        .img-scholarship:hover {
             transform: none
         }
     }

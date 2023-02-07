@@ -4,34 +4,17 @@
     --bs-orange: #FAAF40;
 }
 
-@font-face {
-    font-family: 'stereofidelic';
-    src: url('../font/stereofidelic.ttf');
-}
-
-@font-face {
-    font-family: 'SFP_Normal';
-    src: url('../font/SFPRODISPLAYREGULAR.OTF');
-}
-
-@font-face {
-    font-family: 'SFP_Bold';
-    src: url('../font/SFPRODISPLAYBOLD.OTF');
-}
-
-@font-face {
-    font-family: 'SFP_Medium';
-    src: url('../font/SFPRODISPLAYMEDIUM.OTF');
-}
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
 body {
-    font-family: 'SFP_Medium' !important;
-    letter-spacing: 1px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
 }
 
 .card, .card-header,
 .btn {
-    border-radius: 0 !important;
+    border-radius: 7px !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 .btn-primary,

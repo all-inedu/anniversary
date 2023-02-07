@@ -9,11 +9,4 @@
     @include('home.component.university-prep')
     @include('home.component.about')
     @include('home.component.footer')
-    <style>
-        @media only screen and (max-width: 600px) {
-            .btn-lg {
-                font-size: 14px !important;
-            }
-        }
-    </style>
 @endsection

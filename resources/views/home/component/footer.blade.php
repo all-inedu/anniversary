@@ -72,7 +72,7 @@
             <div class="col">
                 <img src="{{ asset('img/logo-allin-white.webp') }}" alt="" class="w-25">
             </div>
-            <div class="col">
+            <div class="col d-flex gap-3 footer">
                 <i class="bi bi-envelope"></i>
                 <i class="bi bi-facebook"></i>
                 <i class="bi bi-instagram"></i>
@@ -87,10 +87,7 @@
         </div>
     </div>
 </div>
-<style>
-    #footer {
-        font-family: 'SFP_Normal'
-    }
+<style scoped>
     .footer-list {
         list-style: none;
         margin: 0;
@@ -104,5 +101,10 @@
 
     .footer-list li:first-child {
         border-top: none;
+    }
+
+    .footer .bi {
+        font-size: 1.5em;
+        cursor: pointer;
     }
 </style>

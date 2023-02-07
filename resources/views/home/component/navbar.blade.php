@@ -8,7 +8,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5 ms-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5 ms-0 fw-bolder">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#home') }}" id="home-menu">Home</a>
                 </li>
@@ -29,7 +29,7 @@
                 </li>
             </ul>
             <div class="d-md-flex d-block text-center">
-                <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger">
+                <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger fw-bold">
                     <i class="bi bi-telephone me-2"></i>
                     Contact Us
                 </a>

@@ -32,10 +32,8 @@
                             </div>
                             <div class="col-12 mt-2">
                                 <a href="https://bit.ly/mastering-IBDP-rsvp" target="_blank"
-                                    class="btn btn-lg btn-block btn-warning w-100 py-1 text-dark">
-                                    <strong>
+                                    class="btn btn-lg btn-block btn-warning w-100 py-1 text-dark fw-bold">
                                         REGISTER NOW
-                                    </strong>
                                 </a>
                             </div>
                         </div>
@@ -73,10 +71,10 @@
     }
 
     .ibdp-subtitle {
-        letter-spacing: 0;
-        font-weight: bold;
+        letter-spacing: -1px;
+        font-weight: 900;
         text-transform: uppercase;
-        font-size: 1.2em;
+        font-size: 1.05em;
     }
 
     .ibdp-content {
@@ -85,6 +83,7 @@
 
     .ibdp-date {
         font-size: 18px;
+        font-weight: 500;
     }
 
     .hand-1 {

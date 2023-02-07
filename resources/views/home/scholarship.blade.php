@@ -201,11 +201,11 @@
         }
 
         .scholarship-title {
-            font-family: 'SFP_Bold';
             font-size: 2em;
             line-height: 1.1;
             text-align: center;
             margin: 5% 0 2% 0;
+            font-weight: 900;
         }
 
         .scholarship-timeline {

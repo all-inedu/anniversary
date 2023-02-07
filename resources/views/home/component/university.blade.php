@@ -53,7 +53,7 @@
                 </span>
             </div>
             <div class="text-white ms-2 dropup" style="cursor: pointer">
-                <div class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <div class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="text_selected">
                     Selected University
                 </div>
                 <ul id="uni_list" class="dropdown-menu dropdown-menu-end px-2 shadow"
@@ -64,7 +64,7 @@
     </div>
     <div class="">
         <a href="{{ url('/register') }}" class="btn btn-warning text-uppercase text-dark">
-            <div class="d-md-block d-none">
+            <div class="d-md-block d-none fw-bold">
                 Register Now
                 <i class="bi bi-arrow-right-circle"></i>
             </div>
@@ -120,6 +120,11 @@
         if (uni_select.length > 0) {
             $('#indicator_checked').addClass('active')
             $('#uni_count').html(uni_select.length)
+            if (uni_select.length > 1) {
+                $('#text_selected').html('Universities Selected')
+            } else {
+                $('#text_selected').html('University Selected')
+            }
         } else {
             $('#indicator_checked').removeClass('active')
         }
@@ -153,7 +158,7 @@
 
     .subtitle-uni {
         font-size: 1.3em;
-        font-weight: bold;
+        font-weight: 400;
     }
 
     .book-overflow {

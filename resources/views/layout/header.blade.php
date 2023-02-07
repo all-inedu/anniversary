@@ -46,5 +46,30 @@
         .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 30px !important;
         }
+
+        .select2-container--default .select2-selection--single .select2-selection__placeholder,
+        .form-control::placeholder {
+            color: #757575 !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bs-blue);
+            border-radius: 10px;
+        }
+
+        body.swal2-shown>[aria-hidden="true"] {
+            transition: 0.1s filter;
+            filter: blur(4px);
+        }
+
+        @media only screen and (max-width: 600px) {
+            .btn-lg {
+                font-size: 14px !important;
+            }
+        }
     </style>
 </head>

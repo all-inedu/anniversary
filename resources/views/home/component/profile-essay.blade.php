@@ -15,7 +15,7 @@
                         <img src="{{ asset('img/live-profile/Live profile essay review.webp') }}" alt=""
                             class="w-100">
                     </div>
-                    <div class="col-md-12 text-center text-essay" data-aos="fade-up">
+                    <div class="col-md-12 mt-md-3 text-center text-essay" data-aos="fade-up">
                         <p>
                             Submit your profile and write an essay on a given prompt and earn the chance to be reviewed
                             by our mentors directly! Selected profiles will get the chance to receive a free mentoring
@@ -185,8 +185,7 @@
     }
 
     .title-profile {
-        font-family: 'SFP_Bold';
-        font-weight: bold;
+        font-weight: 800;
         font-size: 2em;
         line-height: 1.1;
     }
