@@ -1,15 +1,15 @@
 <div class="container-fluid position-relative overflow-hidden" id="profile-essay">
-    <img loading="lazy" src="{{asset('img/asset 1.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;" >
-    <img loading="lazy" src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;" >
+    <img src="{{asset('img/asset 1.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;" >
+    <img src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;" >
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-9 col-12">
                 <div class="row align-items-end">
                     <div class="col-md-5">
-                        <img loading="lazy" src="{{ asset('img/essay-speaker.svg') }}" alt="" class="w-100">
+                        <img src="{{ asset('img/essay-speaker.svg') }}" alt="" class="w-100">
                     </div>
                     <div class="col-md-7">
-                        <img loading="lazy" src="{{ asset('img/essay.svg') }}" alt="" class="w-100">
+                        <img src="{{ asset('img/essay.svg') }}" alt="" class="w-100">
                     </div>
                     <div class="col-md-12 text-center text-essay">
                         <p>
@@ -34,15 +34,15 @@
             <div class="col-md-12 mb-5">
                 <div class="row align-items-center g-1">
                     <div class="col text-center" id="prize3">
-                        <img loading="lazy" src="{{ asset('img/prize-3.svg') }}" alt="" class="img-prize"
+                        <img src="{{ asset('img/prize-3.svg') }}" alt="" class="img-prize"
                             onmouseover="prizeActive(3)">
                     </div>
                     <div class="col text-center" id="prize1">
-                        <img loading="lazy" src="{{ asset('img/prize-1.svg') }}" alt="" class="img-prize active"
+                        <img src="{{ asset('img/prize-1.svg') }}" alt="" class="img-prize active"
                             onmouseover="prizeActive(1)">
                     </div>
                     <div class="col text-center" id="prize2">
-                        <img loading="lazy" src="{{ asset('img/prize-2.svg') }}" alt="" class="img-prize"
+                        <img src="{{ asset('img/prize-2.svg') }}" alt="" class="img-prize"
                             onmouseover="prizeActive(2)">
                     </div>
                 </div>

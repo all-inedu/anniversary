@@ -1,16 +1,16 @@
 <div class="container-fluid" id="ibdp">
-    <img loading="lazy" src="{{ asset('img/hand-1.svg') }}" alt="" class="rotate position-absolute d-md-block d-none hand-1" data-aos="fade-right">
-    <img loading="lazy" src="{{ asset('img/hand-2.svg') }}" alt=""
+    <img src="{{ asset('img/hand-1.svg') }}" alt="" class="rotate position-absolute d-md-block d-none hand-1" data-aos="fade-right">
+    <img src="{{ asset('img/hand-2.svg') }}" alt=""
         class="rotate-reverse position-absolute d-md-block d-none hand-2" data-aos="fade-right">
-    <img loading="lazy" src="{{ asset('img/hand-3.svg') }}" alt="" class="rotate position-absolute d-md-block d-none hand-3" data-aos="fade-left">
-    <img loading="lazy" src="{{ asset('img/hand-4.svg') }}" alt=""
+    <img src="{{ asset('img/hand-3.svg') }}" alt="" class="rotate position-absolute d-md-block d-none hand-3" data-aos="fade-left">
+    <img src="{{ asset('img/hand-4.svg') }}" alt=""
         class="rotate-reverse position-absolute d-md-block d-none hand-4" data-aos="fade-left">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100 ibdp-content">
             <div class="col-md-9 col-12">
                 <div class="row g-md-5 align-items-center justify-content-center">
                     <div class="col-md-8 order-md-0 order-1">
-                        <img loading="lazy" src="{{ asset('img/Mastering ibdp.svg') }}" alt="" width="100%">
+                        <img src="{{ asset('img/Mastering ibdp.svg') }}" alt="" width="100%">
                         <h4 class="ibdp-subtitle" style="">Technical Preparation and Strategies for Final Exam
                             Success</h4>
                         <div class="row mt-3 g-2">
@@ -40,18 +40,18 @@
                     <div class="col-md-4 col-11 order-md-1 order-0 mb-4">
                         <div class="row row-cols-2 g-2 align-items-center justify-content-center">
                             <div class="col-6 text-center">
-                                <img loading="lazy" src="{{ asset('img/Chemistry.svg') }}" alt="" width="80%"
+                                <img src="{{ asset('img/Chemistry.svg') }}" alt="" width="80%"
                                     class="rotate">
                             </div>
                             <div class="col-6 text-center">
-                                <img loading="lazy" src="{{ asset('img/Math.svg') }}" alt="" width="70%"
+                                <img src="{{ asset('img/Math.svg') }}" alt="" width="70%"
                                     class="rotate-reverse">
                             </div>
                             <div class="col-6 text-center">
-                                <img loading="lazy" src="{{ asset('img/English.svg') }}" alt="" width="90%" class="rotate">
+                                <img src="{{ asset('img/English.svg') }}" alt="" width="90%" class="rotate">
                             </div>
                             <div class="col-6 text-center">
-                                <img loading="lazy" src="{{ asset('img/Physics.svg') }}" alt="" width="65%"
+                                <img src="{{ asset('img/Physics.svg') }}" alt="" width="65%"
                                     class="rotate-reverse">
                             </div>
                         </div>

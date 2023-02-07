@@ -1,10 +1,10 @@
 <div class="container-fluid position-relative overflow-hidden" id="university">
-    <img loading="lazy" src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:20%;" >
-    <img loading="lazy" src="{{asset('img/asset 3.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;" >
+    <img src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:20%;" >
+    <img src="{{asset('img/asset 3.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;" >
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-7 col-12">
-                <img loading="lazy" src="{{ asset('img/uni-info.svg') }}" alt="" class="w-100">
+                <img src="{{ asset('img/uni-info.svg') }}" alt="" class="w-100">
             </div>
             <div class="col-md-9 col-12">
                 <div class="subtitle-uni text-center">
@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="col-md-11 mt-5">
-                <div class="row row-cols-md-4 row-cols-2 g-3">
-                    @for ($i = 0; $i < 20; $i++)
+                <div class="row row-cols-md-4 row-cols-2 g-3 justify-content-center">
+                    @for ($i = 0; $i < 11; $i++)
                         <div class="col">
                             <div class="shadow position-relative uni-box-select w-100">
                                 <input type="checkbox" class="position-absolute top-0 left-0 uni-select"
@@ -21,7 +21,7 @@
                                     data-uni="University {{ $i }}" onchange="select_uni()">
                                 <span class="checkmark"></span>
                                 <label for="uni_{{ $i }}" class="d-block" style="cursor: pointer">
-                                    <img loading="lazy" src="{{ asset('img/uni.svg') }}" alt="" class="w-100">
+                                    <img src="{{ asset('img/uni.svg') }}" alt="" class="w-100">
                                     <div class="uni-box d-flex justify-content-between">
                                         <div class="">6 March</div>
                                         <div class="">06.00 AM</div>
