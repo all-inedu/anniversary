@@ -1,18 +1,20 @@
 <div class="container-fluid position-relative overflow-hidden" id="university">
-    <img src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:20%;" >
-    <img src="{{asset('img/asset 3.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;" >
+    <img src="{{ asset('img/asset 4.svg') }}" alt=""
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:20%;">
+    <img src="{{ asset('img/asset 3.svg') }}" alt=""
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
-            <div class="col-md-7 col-12">
+            <div class="col-md-7 col-11" data-aos="fade-up">
                 <img src="{{ asset('img/uni-info.svg') }}" alt="" class="w-100">
             </div>
-            <div class="col-md-9 col-12">
+            <div class="col-md-9 col-11" data-aos="fade-up">
                 <div class="subtitle-uni text-center">
                     Book your seat and meet the world’s top university representatives, curated by ALL-in
                 </div>
             </div>
-            <div class="col-md-11 mt-5">
-                <div class="row row-cols-md-4 row-cols-2 g-3 justify-content-center">
+            <div class="col-md-11 col-10 mt-5" data-aos="fade-up">
+                <div class="row row-cols-md-4 row-cols-1 g-3 justify-content-center univ-box">
                     @for ($i = 0; $i < 11; $i++)
                         <div class="col">
                             <div class="shadow position-relative uni-box-select w-100">
@@ -44,20 +46,31 @@
     id="indicator_checked">
     <div id="uni_selected">
         <div class="d-flex align-items-center" style="font-weight: 300;">
-            <div class="badge bg-white text-dark"></div>
+            <div class="position-relative">
+                <i class="bi bi-calendar-check text-white" style="font-size:1.7em"></i>
+                <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger" style="top:3px;" id="uni_count"> 
+                    0
+                </span>
+            </div>
             <div class="text-white ms-2 dropup" style="cursor: pointer">
                 <div class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                     Selected University
                 </div>
-                <ul id="uni_list" class="dropdown-menu dropdown-menu-end px-2 shadow" style="width: 250px; font-size:13px;">
-
+                <ul id="uni_list" class="dropdown-menu dropdown-menu-end px-2 shadow"
+                    style="min-width:250px; max-width: 500px; font-size:13px;">
                 </ul>
             </div>
         </div>
     </div>
     <div class="">
-        <a href="{{url('/register')}}" class="btn btn-warning text-uppercase text-dark">
-            Register Now
+        <a href="{{ url('/register') }}" class="btn btn-warning text-uppercase text-dark">
+            <div class="d-md-block d-none">
+                Register Now
+                <i class="bi bi-arrow-right-circle"></i>
+            </div>
+            <div class="d-md-none d-block">
+                <i class="bi bi-arrow-right-circle"></i>
+            </div>
         </a>
     </div>
 </div>
@@ -106,7 +119,7 @@
         // check uni length 
         if (uni_select.length > 0) {
             $('#indicator_checked').addClass('active')
-            $('#uni_selected .badge').html(uni_select.length)
+            $('#uni_count').html(uni_select.length)
         } else {
             $('#indicator_checked').removeClass('active')
         }
@@ -119,7 +132,7 @@
                     $('.overflow-' + i).removeClass('d-none')
                     $('#uni_list').append(
                         '<li class="d-flex justify-content-between align-items-center" >' +
-                        '<div class="">' + uni_select[x].name + '</div>' +
+                        '<div class=""><i class="bi bi-check-circle-fill text-success me-2"></i>' + uni_select[x].name + '</div>' +
                         '<i class="bi bi-trash2 text-danger" style="cursor: pointer" onclick="delete_uni(\'' +
                         uni_select[x].id + '\')"></i>' +
                         '</li>'
@@ -238,8 +251,10 @@
     .uni-check.active div {
         display: block
     }
+
     #uni_list {
-        border-radius: 0 !important;
+        border-radius: 5px !important;
+        padding: 10px;
     }
 
     #uni_list li {
@@ -249,5 +264,25 @@
 
     #uni_list li:first-child {
         border-top: none !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #university {
+            height: auto;
+            padding: 8% 0;
+        }
+
+        .subtitle-uni {
+            font-size: 16px;
+        }
+
+        .univ-box {
+            height: 500px;
+            overflow: auto;
+        }
+
+        #indicator_checked {
+            padding: 0 5%;
+        }
     }
 </style>

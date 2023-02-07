@@ -1,17 +1,21 @@
 <div class="container-fluid position-relative overflow-hidden" id="profile-essay">
-    <img src="{{asset('img/asset 1.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;" >
-    <img src="{{asset('img/asset 4.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;" >
+    <img src="{{ asset('img/asset 1.svg') }}" alt=""
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;">
+    <img src="{{ asset('img/asset 4.svg') }}" alt=""
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-12">
+            <div class="col-md-9 col-11">
                 <div class="row align-items-end">
-                    <div class="col-md-5">
-                        <img src="{{ asset('img/essay-speaker.svg') }}" alt="" class="w-100">
+                    <div class="col-md-5" data-aos="fade-up">
+                        <img src="{{ asset('img/live-profile/Live profile review speakers.webp') }}" alt=""
+                            class="w-100">
                     </div>
-                    <div class="col-md-7">
-                        <img src="{{ asset('img/essay.svg') }}" alt="" class="w-100">
+                    <div class="col-md-7" data-aos="fade-up">
+                        <img src="{{ asset('img/live-profile/Live profile essay review.webp') }}" alt=""
+                            class="w-100">
                     </div>
-                    <div class="col-md-12 text-center text-essay">
+                    <div class="col-md-12 text-center text-essay" data-aos="fade-up">
                         <p>
                             Submit your profile and write an essay on a given prompt and earn the chance to be reviewed
                             by our mentors directly! Selected profiles will get the chance to receive a free mentoring
@@ -25,30 +29,30 @@
                             *Submitted profiles will be reviewed anonymously
                         </p>
                     </div>
-                    <div class="col-md-12 text-center title-profile my-5">
+                    <div class="col-md-12 text-center title-profile my-md-5 mb-2">
                         GET A CHANCE TO WIN
                     </div>
 
                 </div>
             </div>
-            <div class="col-md-12 mb-5">
-                <div class="row align-items-center g-1">
+            <div class="col-md-12 col-11 mb-5" data-aos="fade-up">
+                <div class="row align-items-center row-cols-md-3 row-cols-1 g-1">
                     <div class="col text-center" id="prize3">
-                        <img src="{{ asset('img/prize-3.svg') }}" alt="" class="img-prize"
-                            onmouseover="prizeActive(3)">
+                        <img src="{{ asset('img/live-profile/LPER_Master applicant guidance.webp') }}" alt=""
+                            class="img-prize" onmouseover="prizeActive(3)">
                     </div>
                     <div class="col text-center" id="prize1">
-                        <img src="{{ asset('img/prize-1.svg') }}" alt="" class="img-prize active"
-                            onmouseover="prizeActive(1)">
+                        <img src="{{ asset('img/live-profile/LPER_scholarship passion mentoring.webp') }}"
+                            alt="" class="img-prize active" onmouseover="prizeActive(1)">
                     </div>
                     <div class="col text-center" id="prize2">
-                        <img src="{{ asset('img/prize-2.svg') }}" alt="" class="img-prize"
-                            onmouseover="prizeActive(2)">
+                        <img src="{{ asset('img/live-profile/LPER_Career _ personality test by jurusanku.webp') }}"
+                            alt="" class="img-prize" onmouseover="prizeActive(2)">
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center mt-5">
-                <div class="title-profile">
+            <div class="col-md-12 col-11 text-center mt-md-5" data-aos="fade-up">
+                <div class="title-profile mb-3">
                     TIMELINE
                 </div>
                 <div class="row justify-content-center">
@@ -94,12 +98,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center mt-5">
+            <div class="col-md-12 col-11 text-center mt-5" data-aos="fade-up">
                 <div class="title-profile">
                     WRITE AND SUBMIT YOUR ESSAY<br> FROM THESE PROMPTS!
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <div class="col-md-8 col-11">
+                    <div class="col-md-8 col-12">
                         <div class="card profile-card mb-3">
                             <div class="card-header bg-primary text-white">
                                 <strong>
@@ -109,11 +113,13 @@
                             <div class="card-body text-start px-md-5">
                                 <ul>
                                     <li>
-                                        Think about an activity or experience that has helped you grow. What lessons did you
+                                        Think about an activity or experience that has helped you grow. What lessons did
+                                        you
                                         learn from it, and how will these lessons help you pursue your future goals?
                                     </li>
                                     <li>
-                                        Subject and major that you are interested in and why? How you’ve demonstrated this and
+                                        Subject and major that you are interested in and why? How you’ve demonstrated
+                                        this and
                                         what are your plans to do next?
                                     </li>
                                 </ul>
@@ -128,16 +134,19 @@
                             </div>
                             <div class="card-body text-start px-md-5">
                                 <p>
-                                    Describe your reasons for applying for graduate studies programs succinctly. You should
+                                    Describe your reasons for applying for graduate studies programs succinctly. You
+                                    should
                                     touch on the following three topics:
                                 </p>
                                 <ul>
                                     <li>
-                                        Why you? What are your goals, research interests, future career plans, backgrounds,
+                                        Why you? What are your goals, research interests, future career plans,
+                                        backgrounds,
                                         and/or experiences that drove you to pursue graduate studies?
                                     </li>
                                     <li>
-                                        Why this program?  What universities are you thinking of applying to? What aspects of
+                                        Why this program?  What universities are you thinking of applying to? What
+                                        aspects of
                                         the program(s) have led you to apply?
                                     </li>
                                     <li>
@@ -147,7 +156,8 @@
                             </div>
                         </div>
 
-                        <a href="https://forms.gle/Aq1zqjCC5yRfRD1S6" target="_blank" class="btn btn-lg btn-warning px-4 text-dark text-uppercase">
+                        <a href="https://forms.gle/Aq1zqjCC5yRfRD1S6" target="_blank"
+                            class="btn btn-lg btn-warning px-4 text-dark text-uppercase">
                             <strong>
                                 Submit Your Profile & Essay Here
                             </strong>
@@ -184,7 +194,7 @@
     .img-prize {
         transition: all 0.5s ease-in-out;
         width: 82%;
-        border: 3px solid #fff;
+        /* border: 3px solid #fff; */
         border-radius: 5px;
     }
 
@@ -203,5 +213,39 @@
         font-size: 16px;
         border-radius: 0;
     }
-    
+
+    @media only screen and (max-width: 600px) {
+        #profile-essay {
+            height: auto;
+            padding: 4% 0;
+        }
+
+        .text-essay {
+            font-size: 15px;
+        }
+
+        .title-profile {
+            font-size: 1.1em;
+        }
+
+        .img-prize {
+            width: 100%;
+        }
+
+        .img-prize.active {
+            transform: none;
+        }
+
+        .profile-timeline .card-body {
+            font-size: 16px;
+        }
+
+        .profile-card,
+        .profile-card .card-header,
+        .profile-card .card-body {
+            font-size: 14px;
+            border-radius: 0;
+        }
+
+    }
 </style>

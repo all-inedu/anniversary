@@ -28,9 +28,9 @@
                         Talk</a>
                 </li>
             </ul>
-            <div class="d-flex">
+            <div class="d-md-flex d-block text-center">
                 <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger">
-                    <i class=""></i>
+                    <i class="bi bi-telephone me-2"></i>
                     Contact Us
                 </a>
             </div>
@@ -86,5 +86,21 @@
     .nav-link.active {
         background: var(--bs-blue);
         color: white !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .navbar {
+            background: white !important;
+        }
+        .navbar-nav {
+            margin-top: 20px;
+        gap: 5px;
+        height: 80vh;
+    }
+
+    .nav-link {
+        padding: 5px 10px;
+    }
+
     }
 </style>

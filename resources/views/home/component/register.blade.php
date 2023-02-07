@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="">Do you want to join University Preparation
                                         Talk</label>
                                     <div class="d-flex">
@@ -82,6 +82,29 @@
                                             <input type="radio" name="uni_prep" id="no" value="no"
                                                 class="radio-register">
                                             <label for="no" class="">
+                                                <div class="radio-box">
+                                                    No
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Is this your first time attending ALL-in event?</label>
+                                    <div class="d-flex">
+                                        <div class="position-relative mx-1">
+                                            <input type="radio" name="first_time" id="firsttime_yes" value="firsttime_"
+                                                class="radio-register">
+                                            <label for="firsttime_yes" class="">
+                                                <div class="radio-box">
+                                                    Yes
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="position-relative mx-1">
+                                            <input type="radio" name="first_time" id="firsttime_no" value="no"
+                                                class="radio-register" checked>
+                                            <label for="firsttime_no" class="">
                                                 <div class="radio-box">
                                                     No
                                                 </div>
@@ -177,7 +200,7 @@
                                         are not your intended major</label>
                                 </div>
                                 <div class="col-md-12 mb-2">
-                                    <label for="">I know this Edufair from</label>
+                                    <label for="">I know this event from</label>
                                     <select name="lead" class="select w-100 field field-5" id="lead"
                                         onchange="checkOther('lead')">
                                         <option></option>
