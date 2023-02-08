@@ -18,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+Route::get('/scholarship', function () {
+    return view('home.scholarship');
+});

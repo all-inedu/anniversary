@@ -49,8 +49,9 @@
     function check_uni() {
         let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : null
         let uni_length = $('.uni-select').length
+        
         for (let i = 0; i < uni_length; i++) {
-            $('#uni_' + i).attr('checked', false)
+            $('#uni_' + i).prop('checked', false)
             $('.overflow-' + i).addClass('d-none')
         }
 
@@ -59,7 +60,7 @@
             let value = $('#uni_' + i).val()
             for (let x = 0; x < uni_select.length; x++) {
                 if (value == uni_select[x].id) {
-                    $('#uni_' + i).attr('checked', true)
+                    $('#uni_' + i).prop('checked', true)
                     $('.overflow-' + i).removeClass('d-none')
                 }
             }

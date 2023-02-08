@@ -4,19 +4,19 @@
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-md-9 col-12">
-                <img src="{{ asset('img/banner.svg') }}" alt="" class="slide-fwd-center" style="width: 90%">
+                <img src="{{ asset('img/home/Logo-tagline.webp') }}" alt="" class="slide-fwd-center banner-image">
             </div>
             <div class="col-md-9 col-12 mt-md-5 mt-3">
                 <div class="row justify-content-center align-items-end g-md-5 g-1 row-cols-md-3 row-cols-2">
                     <div class="col">
-                        <img src="{{ asset('img/Stage 1.svg') }}" alt="" class="banner-stage slide-bottom-top">
+                        <img src="{{ asset('img/home/Stage 1.webp') }}" alt="" class="banner-stage slide-bottom-top">
                     </div>
                     <div class="col">
-                        <img src="{{ asset('img/Stage 2.svg') }}" alt="" class="banner-stage slide-bottom-top"
+                        <img src="{{ asset('img/home/Stage 2.webp') }}" alt="" class="banner-stage slide-bottom-top"
                             style="width: 100%">
                     </div>
                     <div class="col">
-                        <img src="{{ asset('img/Stage 3.svg') }}" alt="" class="banner-stage slide-bottom-top">
+                        <img src="{{ asset('img/home/Stage 3.webp') }}" alt="" class="banner-stage slide-bottom-top" style="width:82%">
                     </div>
                 </div>
             </div>
@@ -41,6 +41,10 @@
 
     }
 
+    .banner-image {
+        width: 90%;
+    }
+
     .banner-stage {
         cursor: pointer;
         width: 68%;
@@ -52,5 +56,8 @@
             padding-top: 30%;
             padding-bottom: 50px;
         }
+        .banner-image {
+        width: 100%;
+    }
     }
 </style>
