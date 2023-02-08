@@ -6,7 +6,7 @@
                     <div class="col-md-7">
                         <div class="bg-primary p-4 h-100 shadow">
                             <h4 class="text-warning fw-bold">Fill The Information</h4>
-                            <form action="" id="register_form" method="POST" class="mb-3">
+                            <form action="{{ route('register.store') }}" id="register_form" method="POST" class="mb-3">
                                 @csrf
                                 <textarea name="uni_select" id="uni_textarea" hidden></textarea>
                                 <section class="active" id="section_1">
@@ -19,13 +19,13 @@
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <label for="">Email Address</label>
-                                            <input type="email" name="email" class="form-control field field-2"
+                                            <input type="email" name="email_address" class="form-control field field-2"
                                                 placeholder="Email" id="email" onchange="validate_email()">
                                             <small class="text-danger"></small>
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <label for="">Phone Number</label>
-                                            <input type="tel" name="phone" class="form-control field field-3"
+                                            <input type="tel" name="phone_number" class="form-control field field-3"
                                                 placeholder="Phone Number" id="phone" onchange="is_filled('phone')">
                                             <small class="text-danger"></small>
                                         </div>
@@ -57,7 +57,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="position-relative mx-1">
-                                                    <input type="radio" name="role" id="teacher" value="teacher"
+                                                    <input type="radio" name="role" id="teacher" value="teacher/counsellor"
                                                         class="radio-register">
                                                     <label for="teacher" class="">
                                                         <div class="radio-box">
@@ -129,6 +129,9 @@
                                                 onchange="checkOther('school')">
                                                 <option></option>
                                                 <option value="Other">Other</option>
+                                                @foreach ($schools as $school)
+                                                    <option value="{{ $school->sch_name }}">{{ $school->sch_name }}</option>
+                                                @endforeach
                                             </select>
                                             <small class="text-danger"></small>
                                             <input type="text" name="school_other"
@@ -143,10 +146,12 @@
                                                 (can choose more than 1)</label>
                                             <label class="label-role teacher d-none">What country are your students generally
                                                 interested in studying abroad?</label>
-                                            <select name="country" class="select w-100 field field-3" multiple
+                                            <select name="country[]" class="select w-100 field field-3" multiple
                                                 id="country" onchange="is_filled('country')">
                                                 <option></option>
-                                                <option value="1">1</option>
+                                                @foreach ($destinations as $destination)
+                                                    <option value="{{ $destination->id }}">{{ $destination->name }}</option>
+                                                @endforeach
                                             </select>
                                             <small class="text-danger"></small>
                                             <label class="text-info">You can choose more than one</label>
@@ -160,10 +165,13 @@
                                             <label for="" class="label-role teacher d-none">What is your child's
                                                 intended major in university?
                                                 (can choose more than 1)</label>
-                                            <select name="major" class="select w-100 field field-4" multiple
+                                            <select name="major[]" class="select w-100 field field-4" multiple
                                                 id="major" onchange="checkOther('major')">
                                                 <option></option>
                                                 <option value="Other">Other</option>
+                                                @foreach ($majors as $major)
+                                                    <option value="{{ $major->id }}">{{ $major->name }}</option>
+                                                @endforeach
                                             </select>
                                             <small class="text-danger"></small>
                                             <input type="text" name="major_other" class="form-control mt-1 d-none"
@@ -178,6 +186,9 @@
                                                 onchange="checkOther('lead')">
                                                 <option></option>
                                                 <option value="Other">Other</option>
+                                                @foreach ($leads as $lead)
+                                                    <option value="{{ $lead->id }}">{{ $lead->name }}</option>
+                                                @endforeach
                                             </select>
                                             <small class="text-danger"></small>
                                             <input type="text" name="lead_other" class="form-control mt-1 d-none"
@@ -195,6 +206,9 @@
                                                 id="challenge" onchange="checkOther('challenge')">
                                                 <option></option>
                                                 <option value="Other">Other</option>
+                                                @foreach ($challenges as $challenge)
+                                                    <option value="{{ $challenge->id }}">{{ $challenge->name }}</option>
+                                                @endforeach
                                             </select>
                                             <small class="text-danger"></small>
                                             <input type="text" name="challenge_other"

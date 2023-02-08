@@ -9,6 +9,6 @@ class LeadSourceRepository implements LeadSourceRepositoryInterface
 {
     public function getLeadSources()
     {
-        return LeadSource::orderBy('name')->get();
+        return LeadSource::all();
     }
 }

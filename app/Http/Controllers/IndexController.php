@@ -19,6 +19,6 @@ class IndexController extends Controller
 
     public function index()
     {
-        $universities = $this->universityRepository->getUniversities();
+        return view('home/main');
     }
 }
