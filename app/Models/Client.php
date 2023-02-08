@@ -32,6 +32,8 @@ class Client extends Model
         'major_other',
         'lead_other',
         'challenge_other',
+        'lead_source_id',
+        'challenge_id',
     ];
 
     // public static function boot()

@@ -15,26 +15,26 @@
             </div>
             <div class="col-md-11 col-10 mt-5" data-aos="fade-up">
                 <div class="row row-cols-md-4 row-cols-1 g-3 justify-content-center univ-box">
-                    @for ($i = 0; $i < 11; $i++)
-                        <div class="col">
-                            <div class="shadow position-relative uni-box-select w-100">
-                                <input type="checkbox" class="position-absolute top-0 left-0 uni-select"
-                                    id="uni_{{ $i }}" value="uni-{{ $i }}"
-                                    data-uni="University {{ $i }}" onchange="select_uni()">
-                                <span class="checkmark"></span>
-                                <label for="uni_{{ $i }}" class="d-block" style="cursor: pointer">
-                                    <img src="{{ asset('img/uni.svg') }}" alt="" class="w-100">
-                                    <div class="uni-box d-flex justify-content-between">
-                                        <div class="">6 March</div>
-                                        <div class="">06.00 AM</div>
-                                    </div>
+                    @foreach ($universities as $university)
+                    <div class="col">
+                        <div class="shadow position-relative uni-box-select w-100">
+                            <input type="checkbox" class="position-absolute top-0 left-0 uni-select"
+                                id="uni_{{ $loop->iteration }}" value="{{ $university->uuid }}"
+                                data-uni="{{ $university->name }}" onchange="select_uni()">
+                            <span class="checkmark"></span>
+                            <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer">
+                                <img src="{{ $university->thumbnail }}" alt="" class="w-100">
+                                <div class="uni-box d-flex justify-content-between">
+                                    <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
+                                    <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>
+                                </div>
 
-                                    <div class="book-overflow overflow-{{ $i }} d-none"></div>
-                                    <h3 class="text-overflow overflow-{{ $i }} d-none">BOOKED</h3>
-                                </label>
-                            </div>
+                                <div class="book-overflow overflow-{{ $loop->iteration }} d-none"></div>
+                                <h3 class="text-overflow overflow-{{ $loop->iteration }} d-none">BOOKED</h3>
+                            </label>
                         </div>
-                    @endfor
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

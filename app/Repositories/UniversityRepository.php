@@ -12,6 +12,11 @@ class UniversityRepository implements UniversityRepositoryInterface
         return University::orderBy('name')->get();
     }
 
+    public function getUniversityById($uuid)
+    {
+        return University::where('uuid', $uuid)->first();
+    }
+
     public function createUniversity(array $universityDetails)
     {
         return University::create($universityDetails);

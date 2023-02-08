@@ -1,71 +1,49 @@
 <div class="container-fluid" id="register">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-white">
-                <div class="row align-items-stretch">
-                    <div class="col-md-7">
-                        <div class="bg-primary p-4 h-100 shadow">
-                            <h4 class="text-warning fw-bold">Fill The Information</h4>
-                            <form action="{{ route('register.store') }}" id="register_form" method="POST" class="mb-3">
-                                @csrf
-                                <textarea name="uni_select" id="uni_textarea" hidden></textarea>
-                                <section class="active" id="section_1">
-                                    <div class="row mt-4">
-                                        <div class="col-md-12 mb-2">
-                                            <label for="">Full Name</label>
-                                            <input type="text" name="fullname" class="form-control field field-1"
-                                                placeholder="Full Name" id="name" onchange="is_filled('name')">
-                                            <small class="text-danger"></small>
-                                        </div>
-                                        <div class="col-md-6 mb-2">
-                                            <label for="">Email Address</label>
-                                            <input type="email" name="email_address" class="form-control field field-2"
-                                                placeholder="Email" id="email" onchange="validate_email()">
-                                            <small class="text-danger"></small>
-                                        </div>
-                                        <div class="col-md-6 mb-2">
-                                            <label for="">Phone Number</label>
-                                            <input type="tel" name="phone_number" class="form-control field field-3"
-                                                placeholder="Phone Number" id="phone" onchange="is_filled('phone')">
-                                            <small class="text-danger"></small>
-                                        </div>
-                                        <div class="col-md-12 mb-2">
-                                            <label for="">Address</label>
-                                            <textarea name="address" cols="30" rows="5" class="form-control field field-4" id="address"
-                                                onchange="is_filled('address')"></textarea>
-                                            <small class="text-danger"></small>
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <label for="">You are a</label>
-                                            <div class="d-flex">
-                                                <div class="position-relative mx-1">
-                                                    <input type="radio" name="role" id="student" value="student"
-                                                        class="radio-register" checked>
-                                                    <label for="student" class="">
-                                                        <div class="radio-box">
-                                                            Student
-                                                        </div>
-                                                    </label>
+    <div class="container min-vh-100">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="bg-primary p-4 shadow text-white rounded">
+                    <h4 class="text-warning fw-bold">Fill The Information</h4>
+                    <form action="{{ route('register.store') }}" id="register_form" method="POST" class="mb-3">
+                        @csrf
+                        <textarea name="uni_select" id="uni_textarea" hidden></textarea>
+                        <section class="active" id="section_1">
+                            <div class="row mt-4">
+                                <div class="col-md-12 mb-2">
+                                    <label for="">Full Name</label>
+                                    <input type="text" name="fullname" class="form-control field field-1"
+                                        placeholder="Full Name" id="name" onchange="is_filled('name')">
+                                    <small class="text-danger"></small>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="">Email Address</label>
+                                    <input type="email" name="email_address" class="form-control field field-2"
+                                        placeholder="Email" id="email" onchange="validate_email()">
+                                    <small class="text-danger"></small>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="">Phone Number</label>
+                                    <input type="tel" name="phone_number" class="form-control field field-3"
+                                        placeholder="Phone Number" id="phone" onchange="is_filled('phone')">
+                                    <small class="text-danger"></small>
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="">Address</label>
+                                    <textarea name="address" cols="30" rows="5" class="form-control field field-4" id="address"
+                                        onchange="is_filled('address')"></textarea>
+                                    <small class="text-danger"></small>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="">You are a</label>
+                                    <div class="d-flex">
+                                        <div class="position-relative mx-1">
+                                            <input type="radio" name="role" id="student" value="student"
+                                                class="radio-register" checked>
+                                            <label for="student" class="">
+                                                <div class="radio-box">
+                                                    Student
                                                 </div>
-                                                <div class="position-relative mx-1">
-                                                    <input type="radio" name="role" id="parent" value="parent"
-                                                        class="radio-register">
-                                                    <label for="parent" class="">
-                                                        <div class="radio-box">
-                                                            Parent
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="position-relative mx-1">
-                                                    <input type="radio" name="role" id="teacher" value="teacher/counsellor"
-                                                        class="radio-register">
-                                                    <label for="teacher" class="">
-                                                        <div class="radio-box">
-                                                            Teacher/Consellor
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            </label>
                                         </div>
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="role" id="parent" value="parent"
@@ -174,6 +152,9 @@
                                         onchange="checkOther('school')">
                                         <option></option>
                                         <option value="Other">Other</option>
+                                        @foreach ($schools as $school)
+                                            <option value="{{ $school->sch_name }}">{{ $school->sch_name }}</option>
+                                        @endforeach
                                     </select>
                                     <small class="text-danger"></small>
                                     <input type="text" name="school_other" class="form-control mt-1 d-none"
@@ -190,10 +171,12 @@
                                     <label class="label-role teacher d-none">What country are your students
                                         generally
                                         interested in studying abroad?</label>
-                                    <select name="country" class="select w-100 field field-3" multiple id="country"
+                                    <select name="country[]" class="select w-100 field field-3" multiple id="country"
                                         onchange="is_filled('country')">
                                         <option></option>
-                                        <option value="1">1</option>
+                                        @foreach ($destinations as $destination)
+                                            <option value="{{ $destination->id }}">{{ $destination->name }}</option>
+                                        @endforeach
                                     </select>
                                     <small class="text-danger"></small>
                                     <label class="text-info">You can choose more than one</label>
@@ -213,6 +196,9 @@
                                         onchange="checkOther('major')">
                                         <option></option>
                                         <option value="Other">Other</option>
+                                        @foreach ($majors as $major)
+                                            <option value="{{ $major->id }}">{{ $major->name }}</option>
+                                        @endforeach
                                     </select>
                                     <small class="text-danger"></small>
                                     <input type="text" name="major_other" class="form-control mt-1 d-none"
@@ -227,6 +213,9 @@
                                         onchange="checkOther('lead')">
                                         <option></option>
                                         <option value="Other">Other</option>
+                                        @foreach ($leads as $lead)
+                                            <option value="{{ $lead->id }}">{{ $lead->name }}</option>
+                                        @endforeach
                                     </select>
                                     <small class="text-danger"></small>
                                     <input type="text" name="lead_other" class="form-control mt-1 d-none"
@@ -246,6 +235,9 @@
                                         onchange="checkOther('challenge')">
                                         <option></option>
                                         <option value="Other">Other</option>
+                                        @foreach ($challenges as $challenge)
+                                            <option value="{{ $challenge->id }}">{{ $challenge->name }}</option>
+                                        @endforeach
                                     </select>
                                     <small class="text-danger"></small>
                                     <input type="text" name="challenge_other" class="form-control mt-1 d-none"
