@@ -6,7 +6,7 @@
                     value="uni-{{ $i }}" data-uni="University {{ $i }}" onchange="select_uni()">
                 <span class="checkmark"></span>
                 <label for="uni_{{ $i }}" class="d-block" style="cursor: pointer">
-                    <img src="{{ asset('img/uni.svg') }}" alt="" class="w-100">
+                    <img src="{{ asset('img/default.png') }}" alt="" class="w-100">
                     <div class="uni-box d-flex justify-content-between">
                         <div class="">6 March</div>
                         <div class="">06.00 AM</div>
