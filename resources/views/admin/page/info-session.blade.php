@@ -38,15 +38,15 @@
                                 <td>{{ date('d F Y', strtotime($university->session_start)) }}</td>
                                 <td>{{ date('H.i A', strtotime($university->time_start)) }}</td>
                                 <td>
-                                    <img src="{{ $university->thumbnail }}" class="w-50" alt="">
+                                    <img src="{{ asset('storage/'.$university->thumbnail) }}" class="w-50" alt="">
                                 </td>
-                                <td class="fw-bold" style="font-size:22px;">
+                                <td class="fw-bold" style="font-size:22px;" data-key="{{ $university->uuid }}">
                                     @if ($university->status == 0)
-                                    <a href="" title="Activate">
+                                    <a href="javascript:void(0)" class="activate" title="Activate">
                                         <i class="bi bi-check text-success" ></i>
                                     </a>
                                     @else
-                                    <a href="" title="Deactivate">
+                                    <a href="javascript:void(0)" class="deactivate" title="Deactivate">
                                         <i class="bi bi-x text-danger"></i>
                                     </a>
                                     @endif

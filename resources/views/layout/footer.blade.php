@@ -24,6 +24,25 @@
     window.onload = (event) => {
         Swal.close()
     };
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    function notification(status, message) {
+        Toast.fire({
+            icon: status,
+            title: message
+        })
+    }
 </script>
 
 
@@ -46,5 +65,6 @@
         icon: '{{ session('success') ? 'success' : 'error' }}',
         title: '{{ session('success') ? session('success') : session('error') }}'
     })
+
 </script>
 @endif

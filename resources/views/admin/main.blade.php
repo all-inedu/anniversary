@@ -56,10 +56,36 @@
             });
         });
     </script>
+    
     <style>
         .form-control {
             outline: none !important;
             box-shadow: none !important;
         }
     </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        $(".activate, .deactivate").each(function () {
+            let _this = $(this);
+
+            _this.click(function () {
+                var status = $(this).attr('class')
+                var universityId = _this.parents().data('key')
+
+                axios.put('{{ url("admin/info-session/") }}/' + status, {
+                        "_method" : 'PUT',
+                        "_token" : '{{ csrf_token() }}',
+                        "uuid" : universityId,
+                    }).then(function (response) {
+                        notification('success', response.data.message)
+
+                        _this.parent().html('a')
+
+
+                    }).catch(function (error) {
+                        notification('error', error.message)
+                    })
+            })
+        })
+    </script>
 @endsection

@@ -30,6 +30,7 @@ Route::group(['middleware' => 'admin.auth'], function() {
     Route::post('/info-session', [AdminController::class, 'store'])->name('admin.store.info-session');
 
     Route::get('/info-session/view/{info_session}', [AdminController::class, 'show'])->name('admin.show.info-session');
+    Route::put('/info-session/{status}', [AdminController::class, 'updateStatus'])->name('admin.update-status.info-session');
 
     
     Route::get('/registrant', [AdminController::class, 'registrant'])->name('admin.registrant');

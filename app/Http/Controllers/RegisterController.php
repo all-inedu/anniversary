@@ -104,12 +104,14 @@ class RegisterController extends Controller
             # store major
             # if other is exist in array
             # change the value "Other" into major_id
-            if (in_array('Other', $majors)) {
-                
-                $idx_position = array_search('Other', $majors);
-                unset($majors[$idx_position]);
+            if ($majors) {
+                if (in_array('Other', $majors)) {
+                    
+                    $idx_position = array_search('Other', $majors);
+                    unset($majors[$idx_position]);
+                }
+                $this->clientRepository->storeMajor($clientId, $majors);
             }
-            $this->clientRepository->storeMajor($clientId, $majors);
 
             # store university booked
             $bookingDetails = [

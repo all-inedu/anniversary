@@ -31,8 +31,8 @@ class UniversityRepository implements UniversityRepositoryInterface
         return University::create($universityDetails);
     }
 
-    public function editUniversity($univId, array $newDetails)
+    public function editUniversity($univUUid, array $newDetails)
     {
-        return University::whereId($univId)->update($newDetails);
+        return University::where('uuid', $univUUid)->update($newDetails);
     }
 }

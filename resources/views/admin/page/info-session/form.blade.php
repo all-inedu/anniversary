@@ -62,7 +62,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 mb-2">
-                                <input type="checkbox" name="status"> show to public?
+                                <input type="checkbox" name="status" onclick="$(this).val(this.checked ? 1 : 0)"> show to public?
                             </div>
                         </div>
                     </div>

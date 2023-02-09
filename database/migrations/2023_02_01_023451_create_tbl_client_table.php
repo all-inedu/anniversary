@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('fullname');
             $table->string('email_address');
             $table->string('phone_number');
-            $table->enum('client_type', ['student', 'parent', 'teacher/counsellor']);
+            $table->enum('client_type', ['student', 'parent', 'teacher/consellor']);
             // $table->string('address');
-            $table->integer('grade');
+            $table->integer('grade')->nullable();
             $table->string('graduate_from');
             $table->string('country_destination');
             $table->unsignedBigInteger('lead_source_id');

@@ -150,4 +150,58 @@ class AdminController extends Controller
     {
         return view('admin.page.info-session.form');
     }
+
+    public function updateStatus(Request $request)
+    {
+        $newStatus = $request->route('status');
+        $uuid = $request->uuid;
+
+        $newDetails = [
+            'status' => $newStatus == "activate" ? 1 : 0
+        ];
+
+        DB::beginTransaction();
+        try {
+            
+            return $this->universityRepository->editUniversity($uuid, $newDetails);
+            DB::commit();
+            
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            Log::error('Update university info session failed: '. $e->getMessage());
+            return response()->json(['message' => 'Failed to update university info session.']);
+
+        }
+
+        return response()->json(['message' => 'University info session successfully updated.']);
+
+    }
+
+    public function update(Request $request)
+    {
+        $newStatus = $request->route('status');
+        $uuid = $request->uuid;
+
+        $newDetails = [
+            'status' => $newStatus
+        ];
+
+        DB::beginTransaction();
+        try {
+            
+            $university = $this->universityRepository->editUniversity($uuid, $newDetails);
+            DB::commit();
+            
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            Log::error('Update university info session failed: '. $e->getMessage());
+            return Redirect::back()->withErrors('Failed to update university info session.');
+
+        }
+
+        return Redirect::to('admin/info-session')->withSuccess($university->name.' has been '.$newStatus);
+    
+    }
 }
