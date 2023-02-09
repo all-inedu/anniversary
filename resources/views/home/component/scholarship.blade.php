@@ -6,7 +6,7 @@
             <div class="col-md-9 col-11">
                 <div class="row align-items-center mb-3">
                     <div class="col-md-7" data-aos="fade-up">
-                        <img src="{{ asset('img/logo-allin.svg') }}" alt="" class="w-25">
+                        <img src="{{ asset('img/home/logo.png') }}" alt="" class="w-25">
                         <img src="{{ asset('img/scholarship/Scholarships.webp') }}" alt="" class="w-100">
                     </div>
                     <div class="col-md-5" data-aos="fade-up">

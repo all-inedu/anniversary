@@ -15,17 +15,17 @@
                         <img src="{{ asset('img/ibdp/Mastering ibdp.webp') }}" alt="" width="100%">
                         <h4 class="ibdp-subtitle text-md-start text-center" style="">Technical Preparation and Strategies for Final Exam
                             Success</h4>
-                        <div class="row mt-3 g-2">
+                        <div class="row mt-3 g-2 align-items-strecth">
                             <div class="col">
-                                <div class="card bg-primary">
-                                    <div class="card-body ibdp-date text-center text-white py-2">
+                                <div class="card bg-primary h-100">
+                                    <div class="card-body ibdp-date d-flex align-items-center text-center text-white py-2">
                                         17-24 March | 6 PM
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card bg-primary">
-                                    <div class="card-body ibdp-date text-center text-white py-2">
+                                <div class="card bg-primary h-100">
+                                    <div class="card-body ibdp-date d-flex align-items-center text-center text-white py-2">
                                         06.00 PM - 07.30 PM
                                     </div>
                                 </div>

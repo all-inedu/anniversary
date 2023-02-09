@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-transparent fixed-top" id="navbar_allin">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{{ asset('img/logo-allin.svg') }}" alt="ALL-in Eduspace" class="w-75">
+        <a class="navbar-brand" href="#" style="width: 15%">
+            <img src="{{ asset('img/home/logo.png') }}" alt="ALL-in Eduspace" style="width: 90px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
