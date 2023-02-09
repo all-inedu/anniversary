@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,24 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
+Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.login');
 
-Route::get('/dashboard', function () {
-    return view('admin.page.dashboard');
-});
+Route::group(['middleware' => 'admin.auth'], function() {
 
-Route::get('/info-session', function () {
-    return view('admin.page.info-session');
-});
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
+    Route::get('/info-session', [AdminController::class, 'infoSession'])->name('admin.info-session');
 
-Route::get('/info-session/create', function () {
-    return view('admin.page.info-session.form');
-});
+    Route::get('/info-session/create', [AdminController::class, 'create'])->name('admin.create.info-session');
+    Route::post('/info-session', [AdminController::class, 'store'])->name('admin.store.info-session');
 
-Route::get('/info-session/view/1', function () {
-    return view('admin.page.info-session.form');
-});
+    Route::get('/info-session/view/{info_session}', [AdminController::class, 'show'])->name('admin.show.info-session');
 
-Route::get('/registrant', function () {
-    return view('admin.page.registrant');
+    
+    Route::get('/registrant', [AdminController::class, 'registrant'])->name('admin.registrant');
+
+    Route::post('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
 });

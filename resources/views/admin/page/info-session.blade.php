@@ -32,26 +32,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr valign="middle">
-                            <td>Uni Name A</td>
-                            <td>6 March 2023</td>
-                            <td>06:00 PM</td>
-                            <td>
-                                <img src="{{asset('img/uni.svg')}}" alt="">
-                            </td>
-                            <td class="fw-bold" style="font-size:22px;">
-                                <i class="bi bi-check text-success" ></i>
-                                <i class="bi bi-x text-danger"></i>
-                            </td>
-                            <td>
-                                <a href="{{url('admin/info-session/view/1')}}" class="btn btn-sm btn-outline-warning">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash2"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach ($universities as $university)
+                            <tr valign="middle">
+                                <td>{{ $university->name }}</td>
+                                <td>{{ date('d F Y', strtotime($university->session_start)) }}</td>
+                                <td>{{ date('H.i A', strtotime($university->time_start)) }}</td>
+                                <td>
+                                    <img src="{{ $university->thumbnail }}" class="w-50" alt="">
+                                </td>
+                                <td class="fw-bold" style="font-size:22px;">
+                                    @if ($university->status == 0)
+                                    <a href="" title="Activate">
+                                        <i class="bi bi-check text-success" ></i>
+                                    </a>
+                                    @else
+                                    <a href="" title="Deactivate">
+                                        <i class="bi bi-x text-danger"></i>
+                                    </a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{url('admin/info-session/view/1')}}" class="btn btn-sm btn-outline-warning">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash2"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

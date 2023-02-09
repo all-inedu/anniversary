@@ -30,9 +30,12 @@
                             </li>
                         </ul>
                         <div class="text-center mt-4">
-                            <button class="btn btn-primary">
+                            <form action="{{ route('auth.logout') }}" method="POST">
+                                @csrf
+                            <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-box-arrow-in-left me-2"></i>
                                 Logout</button>
+                            </form>
                         </div>
                     </div>
                 </div>

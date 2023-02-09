@@ -12,18 +12,21 @@
                             </h5>
                         </div>
                         <hr>
-                        <div class="mb-2">
-                            <label for="">Email</label>
-                            <input type="text" name="" id="" class="form-control rounded">
-                        </div>
-                        <div class="mb-2">
-                            <label for="">Password</label>
-                            <input type="password" name="" id="" class="form-control rounded">
-                        </div>
-                        <hr>
-                        <div class="text-center">
-                            <button class="btn btn-primary px-3">Login</button>
-                        </div>
+                        <form action="{{ route('auth.login') }}" method="POST">
+                            @csrf
+                            <div class="mb-2">
+                                <label for="">Email</label>
+                                <input type="text" name="email" id="" class="form-control rounded">
+                            </div>
+                            <div class="mb-2">
+                                <label for="">Password</label>
+                                <input type="password" name="password" id="" class="form-control rounded">
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary px-3">Login</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -17,9 +17,10 @@
     <div class="card shadow">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example" class="table table-striped" style="width:100%">
+                <table id="example" class="table table-striped" style="width:100%;font-size:12px;">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Full Name</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -33,18 +34,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr valign="middle">
-                            <td>Full Name</td>
-                            <td>Email</td>
-                            <td>Phone</td>
-                            <td>Lead Source</td>
-                            <td>Yes</td>
-                            <td>Address</td>
-                            <td>Uni Info Session</td>
-                            <td>Uni Prep Talk</td>
-                            <td>Status</td>
-                            <td>Join At</td>
-                        </tr>
+                        @foreach($registrants as $registrant)
+                            <tr valign="middle">
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $registrant->fullname }}</td>
+                                <td>{{ $registrant->email_address }}</td>
+                                <td>{{ $registrant->phone_number }}</td>
+                                <td>{{ $registrant->lead_source->name ?? $registrant->lead_other }}</td>
+                                <td>{{ $registrant->first_time == 1 ? "Yes" : "No" }}</td>
+                                <td>{{ $registrant->address }}</td>
+                                <td>
+                                    <ul style="margin:0;padding:0;list-style:numbering">
+                                    @foreach ($registrant->booking->university as $booked_university)
+                                        <li>{{ $booked_university->name }}</li>   
+                                    @endforeach
+                                    </ul>
+                                </td>
+                                <td>{{ $registrant->uni_prep == 1 ? "Yes" : "No" }}</td>
+                                <td>{{ $registrant->status == 1 ? "Active" : "Not Active" }}</td>
+                                <td>{{ date('d F Y H:i:s', strtotime($registrant->created_at)) }}</td>
+                            </tr>
+                        @endforeach
+                        
                     </tbody>
                 </table>
             </div>

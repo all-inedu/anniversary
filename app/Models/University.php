@@ -17,7 +17,13 @@ class University extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
         'name',
+        'session_start',
+        'time_start',
+        'thumbnail',
+        'description',
+        'status',
     ];
 
     public function booking()

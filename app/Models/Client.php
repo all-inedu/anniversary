@@ -29,6 +29,7 @@ class Client extends Model
         'country_destination',
         'first_time',
         'uni_prep',
+        'status',
         'major_other',
         'lead_other',
         'challenge_other',
@@ -47,7 +48,7 @@ class Client extends Model
 
     public function booking()
     {
-        return $this->hasMany(Booking::class, 'client_id', 'id');
+        return $this->hasOne(Booking::class, 'client_id', 'id');
     }
 
     public function lead_source()
