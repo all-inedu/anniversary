@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class UniversityRepository implements UniversityRepositoryInterface
 {
+    public function getActiveUniversities()
+    {
+        return University::where('status', 1)->orderBy('name', 'asc')->get();
+
+    }
+
     public function getUniversities()
     {
-        return University::orderBy('name')->get();
+        return University::orderBy('name', 'asc')->get();
     }
     
     public function getUniversitiesWithParticipants()
@@ -34,5 +40,10 @@ class UniversityRepository implements UniversityRepositoryInterface
     public function editUniversity($univUUid, array $newDetails)
     {
         return University::where('uuid', $univUUid)->update($newDetails);
+    }
+
+    public function deleteUniversity($univUUid)
+    {
+        return University::where('uuid', $univUUid)->delete();
     }
 }

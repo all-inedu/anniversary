@@ -23,7 +23,13 @@
                                 data-uni="{{ $university->name }}" onchange="select_uni()">
                             <span class="checkmark"></span>
                             <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer">
-                                <img src="{{ $university->thumbnail }}" alt="" class="w-100">
+                                <img src="
+                                @if (isset($university->thumbnail))
+                                    {{ asset('storage/'.$university->thumbnail) }}
+                                @else
+                                https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png   
+                                @endif
+                                    " alt="" class="w-100">
                                 <div class="uni-box d-flex justify-content-between">
                                     <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
                                     <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>

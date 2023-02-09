@@ -31,6 +31,8 @@ Route::group(['middleware' => 'admin.auth'], function() {
 
     Route::get('/info-session/view/{info_session}', [AdminController::class, 'show'])->name('admin.show.info-session');
     Route::put('/info-session/{status}', [AdminController::class, 'updateStatus'])->name('admin.update-status.info-session');
+    Route::put('/info-session/view/{info_session}', [AdminController::class, 'update'])->name('admin.update.info-session');
+    Route::delete('/info-session/view/{info_session}', [AdminController::class, 'destroy'])->name('admin.destroy.info-session');
 
     
     Route::get('/registrant', [AdminController::class, 'registrant'])->name('admin.registrant');

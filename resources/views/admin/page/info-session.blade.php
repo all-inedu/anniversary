@@ -42,20 +42,20 @@
                                 </td>
                                 <td class="fw-bold" style="font-size:22px;" data-key="{{ $university->uuid }}">
                                     @if ($university->status == 0)
-                                    <a href="javascript:void(0)" class="activate" title="Activate">
+                                    <a href="javascript:void(0)" class="change-status" data-stats="activate" title="Activate">
                                         <i class="bi bi-check text-success" ></i>
                                     </a>
                                     @else
-                                    <a href="javascript:void(0)" class="deactivate" title="Deactivate">
+                                    <a href="javascript:void(0)" class="change-status" data-stats="deactivate" title="Deactivate">
                                         <i class="bi bi-x text-danger"></i>
                                     </a>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('admin/info-session/view/1')}}" class="btn btn-sm btn-outline-warning">
+                                    <a href="{{ route('admin.show.info-session', ['info_session' => $university->uuid]) }}" class="btn btn-sm btn-outline-warning">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">
+                                    <a href="javascript:void(0)" data-href="{{ route('admin.destroy.info-session', ['info_session' => $university->uuid]) }}" class="btn btn-sm btn-outline-danger delete-item">
                                         <i class="bi bi-trash2"></i>
                                     </a>
                                 </td>

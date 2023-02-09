@@ -9,6 +9,7 @@ class BookingRepository implements BookingRepositoryInterface
 {
     public function createBooking(array $bookingDetails)
     {
+
         $booking = Booking::create($bookingDetails);
         return $booking;
     }

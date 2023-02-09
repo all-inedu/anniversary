@@ -17,9 +17,17 @@
 
     <div class="card shadow">
         <div class="card-body">
-            <form action="{{ route('admin.store.info-session') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ isset($university) ? route('admin.update.info-session', ['info_session' => $university->uuid]) : route('admin.store.info-session') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @if (isset($university))
+                    @method('PUT')
+                @endif
+
+                @if (isset($university))
+                <h4>Update Info</h4>
+                @else
                 <h4>Add New</h4>
+                @endif
                 <hr>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -33,7 +41,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="border w-100 mb-2" style="height:200px">
-                            <img id="imgPreview" src="{{asset('img/default.png')}}" alt="pic" />
+                            <img id="imgPreview" src="
+                            @if (isset($university->thumbnail))
+                                {{ asset('storage/'.$university->thumbnail) }}
+                            @else
+                                {{asset('img/default.png')}}
+                            @endif" alt="pic" />
                         </div>
                         <input type="file" name="thumbnail" class="form-control" id="thumbnail">
                     </div>
@@ -41,28 +54,28 @@
                         <div class="row">
                             <div class="col-12 mb-2">
                                 <label for="">University Name <sup class="text-danger">*</sup></label>
-                                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                                <input type="text" name="name" class="form-control" value="{{ isset($university->name) ? $university->name : old('name') }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6 mb-2">
                                 <label for="">Session Date <sup class="text-danger">*</sup></label>
-                                <input type="date" name="session_start" class="form-control" value="{{ old('session_start') }}">
+                                <input type="date" name="session_start" class="form-control" value="{{ isset($university->session_start) ? $university->session_start : old('session_start') }}">
                             </div>
                             <div class="col-6 mb-2">
                                 <label for="">Session Time <sup class="text-danger">*</sup></label>
-                                <input type="time" name="time_start" class="form-control" value="{{ old('time_start') }}">
+                                <input type="time" name="time_start" class="form-control" value="{{ isset($university->time_start) ? $university->time_start : old('time_start') }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 mb-2">
                                 <label for="">Description</label>
-                                <textarea name="description" class="form-control" rows="10">{{ old('description') }}</textarea>
+                                <textarea name="description" class="form-control" rows="10">{{ isset($university->description) ? $university->description : old('description') }}</textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 mb-2">
-                                <input type="checkbox" name="status" onclick="$(this).val(this.checked ? 1 : 0)"> show to public?
+                                <input type="checkbox" @checked(isset($university->status) && $university->status == 1) name="status" onclick="$(this).val(this.checked ? 1 : 0)" value="1"> show to public?
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ use App\Interfaces\UniversityRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -146,9 +147,16 @@ class AdminController extends Controller
         return Redirect::to('admin/info-session')->withSuccess('New university info session has successfully submitted.');
     }
 
-    public function show()
+    public function show(Request $request)
     {
-        return view('admin.page.info-session.form');
+        $uuid = $request->route('info_session');
+        $university = $this->universityRepository->getUniversityById($uuid);
+
+        return view('admin.page.info-session.form')->with(
+            [
+                'university' => $university,
+            ]
+        );
     }
 
     public function updateStatus(Request $request)
@@ -163,7 +171,7 @@ class AdminController extends Controller
         DB::beginTransaction();
         try {
             
-            return $this->universityRepository->editUniversity($uuid, $newDetails);
+            $this->universityRepository->editUniversity($uuid, $newDetails);
             DB::commit();
             
         } catch (Exception $e) {
@@ -180,17 +188,53 @@ class AdminController extends Controller
 
     public function update(Request $request)
     {
-        $newStatus = $request->route('status');
-        $uuid = $request->uuid;
+        $uuid = $request->route('info_session');
+        $university = $this->universityRepository->getUniversityById($uuid);
 
-        $newDetails = [
-            'status' => $newStatus
+        $rules = [
+            'name' => 'required',
+            'session_start' => 'required',
+            'time_start' => 'required',
+            'description' => 'nullable',
+            'status' => 'nullable',
+            'thumbnail' => 'image|mimes:jpeg,jpg,png',
         ];
+
+        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status']), $rules);
+        if ($validate->fails())
+            return Redirect::back()->withErrors($validate);
+
+        $newDetails = $validate->validated();
+        $newDetails['status'] = $request->input('status') == false ? 0 : 1;
 
         DB::beginTransaction();
         try {
+
+            if ($request->has('thumbnail')) {
+                
+                $image = $request->file('thumbnail');
+                $thumbnail_name = $image->hashName();
+                $extension = $image->getClientOriginalExtension();
+                $path = $image->storeAs(
+                    'thumbnail',
+                    $thumbnail_name,
+                    'public'
+                );
+
+                if (Storage::disk('public')->exists($path))
+                    # remove old thumbnail
+                    if (File::exists(public_path('storage/'.$university->thumbnail)))
+                        File::delete(public_path('storage/'.$university->thumbnail));
+                    else
+                        Log::info(public_path('storage/'.$university->thumbnail));
+                else
+                    throw new Exception('File failed to upload');
+                    
+                $newDetails['thumbnail'] = $path;
+
+            }
             
-            $university = $this->universityRepository->editUniversity($uuid, $newDetails);
+            $this->universityRepository->editUniversity($uuid, $newDetails);
             DB::commit();
             
         } catch (Exception $e) {
@@ -201,7 +245,28 @@ class AdminController extends Controller
 
         }
 
-        return Redirect::to('admin/info-session')->withSuccess($university->name.' has been '.$newStatus);
+        return Redirect::to('admin/info-session/view/'.$uuid)->withSuccess($university->name.' has been updated');
     
+    }
+
+    public function destroy(Request $request)
+    {
+        $uuid = $request->route('info_session');
+
+        DB::beginTransaction();
+        try {
+
+            $this->universityRepository->deleteUniversity($uuid);
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            Log::error('Delete university info session failed: '. $e->getMessage());
+            return response()->json(['message' => 'Failed to delete university info session.']);
+
+        }
+
+        return response()->json(['message' => 'Successfully deleted university info session.']);
     }
 }

@@ -19,7 +19,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        $universities = $this->universityRepository->getUniversities();
+        $universities = $this->universityRepository->getActiveUniversities();
 
         return view('home.main')->with(
             [

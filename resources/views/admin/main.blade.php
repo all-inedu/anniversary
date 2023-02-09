@@ -65,11 +65,13 @@
     </style>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
-        $(".activate, .deactivate").each(function () {
+    $(document).ready(function() {
+
+        $(".change-status").each(function () {
             let _this = $(this);
 
             _this.click(function () {
-                var status = $(this).attr('class')
+                var status = _this.data('stats')
                 var universityId = _this.parents().data('key')
 
                 axios.put('{{ url("admin/info-session/") }}/' + status, {
@@ -79,7 +81,20 @@
                     }).then(function (response) {
                         notification('success', response.data.message)
 
-                        _this.parent().html('a')
+                        if (status == "activate") {
+
+                            _this.data('stats', 'deactivate').attr('title', 'Deactivated')
+                            
+                            var html = '<i class="bi bi-x text-danger"></i>'
+                            _this.html(html)
+
+                        } else {
+
+                            _this.data('stats', 'activate').attr('title', 'Activate')
+                            
+                            var html = '<i class="bi bi-check text-success"></i>'
+                            _this.html(html)
+                        }
 
 
                     }).catch(function (error) {
@@ -87,5 +102,34 @@
                     })
             })
         })
+    })
+    </script>
+    <script type="text/javascript">
+        $(".delete-item").each(function() {
+            var _this = $(this)
+
+            _this.click(function(event) {
+                event.preventDefault();
+
+                var message = "Are you sure you want to delete this item?";
+                if (confirm(message))
+                {
+                    axios.delete(_this.data('href'), {
+                        _token: '{{ csrf_token() }}'
+                        // _method: 'DELETE',
+                    })
+                        .then(function(response) {
+                            notification('success', response.data.message)
+                            location.reload()
+
+                        }).catch(function(error) {
+                            
+                            notification('error', error.data.message)
+                            location.reload()
+                        })
+                }
+            })
+
+        });
     </script>
 @endsection
