@@ -3,7 +3,7 @@
     <div class="container">
        <div class="row justify-content-center align-items-center h-100" >
            <div class="col-md-6 col-11" data-aos="fade-up">
-               <img src="{{ asset('img/uni prep.svg') }}" alt="" class="w-100">
+               <img src="{{ asset('img/uni-prep/uni-prep.webp') }}" alt="" class="w-100">
            </div>
            <div class="col-md-9 col-11" data-aos="fade-up">
                <div class="row justify-content-center g-2">
@@ -23,17 +23,34 @@
                    </div>
                </div>
            </div>
-           <div class="col-md-8 col-11 mt-3 text-center" data-aos="fade-up">
-               <img src="{{ asset('img/uni talk1.svg') }}" alt="" class="w-100 my-2">
-               <img src="{{ asset('img/uni talk2.svg') }}" alt="" class="w-100 my-2">
-               <img src="{{ asset('img/uni talk3.svg') }}" alt="" class="w-100 my-2">
-               <img src="{{ asset('img/uni talk4.svg') }}" alt="" class="w-100 my-2">
-   
-               <a href="{{ url('/register') }}" class="btn btn-lg btn-warning py-1 text-dark px-4 mt-3 text-uppercase">
-                   <strong>
-                       Register Now
-                   </strong>
-               </a>
+           <div class="col-md-8 col-11 mt-3 text-center d-md-block d-none" data-aos="fade-up">
+               <img src="{{ asset('img/uni-prep/Uni talk 1.webp') }}" alt="" class="w-100 my-2">
+               <img src="{{ asset('img/uni-prep/Uni talk 2.webp') }}" alt="" class="w-100 my-2">
+               <img src="{{ asset('img/uni-prep/Uni talk 3.webp') }}" alt="" class="w-100 my-2">
+               <img src="{{ asset('img/uni-prep/Uni talk 4.webp') }}" alt="" class="w-100 my-2">
+           </div>
+           <div class="col-md-8 col-11 mt-3 text-center d-md-none d-block" data-aos="fade-up">
+            <div class="row row-cols-1">
+            <div class="col">
+                <img src="{{ asset('img/uni-prep/Uni talk mobile 1.webp') }}" alt="" class="w-100 my-2">
+            </div>
+            <div class="col">
+                <img src="{{ asset('img/uni-prep/Uni talk mobile 2.webp') }}" alt="" class="w-100 my-2">
+            </div>
+            <div class="col">
+                <img src="{{ asset('img/uni-prep/Uni talk mobile 3.webp') }}" alt="" class="w-100 my-2">
+            </div>
+            <div class="col">
+                <img src="{{ asset('img/uni-prep/Uni talk mobile 4.webp') }}" alt="" class="w-100 my-2">
+            </div>
+        </div>
+        </div>
+           <div class="col-md-8 text-center">
+            <a href="{{ url('/register') }}" class="btn btn-lg btn-warning py-1 text-dark px-4 mt-3 text-uppercase">
+                <strong>
+                    Register Now
+                </strong>
+            </a>
            </div>
        </div>
     </div> 

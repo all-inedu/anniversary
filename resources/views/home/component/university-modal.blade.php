@@ -13,7 +13,9 @@
                     </div>
 
                     <div class="book-overflow overflow-{{ $i }} d-none"></div>
-                    <h3 class="text-overflow overflow-{{ $i }} d-none">BOOKED</h3>
+                    <h3 class="text-overflow overflow-{{ $i }} d-none">
+                    <img src="{{asset('img/uni/BOOKED.webp')}}" alt="" class="w-100">
+                    </h3>
                 </label>
             </div>
         </div>
@@ -80,17 +82,13 @@
 
     .text-overflow {
         position: absolute;
-        z-index: 1057;
+        z-index: 2;
         margin: auto;
-        background: #BE1E2D;
-        color: white;
-        top: 35%;
-        left: 20%;
-        transform: rotate(-20deg);
+        top: 15%;
+        left: 0%;
         padding: 5px 15px;
         display: inline-block;
         font-weight: bold;
-        font-size: 18px;
     }
 
     .uni-box {

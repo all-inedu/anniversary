@@ -4,27 +4,29 @@
     <div class="container-fluid" id="scholarship">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-2 text-end">
-                    <img src="{{ asset('img/logo-allin.svg') }}" alt="" class="w-75">
+                <div class="col-md-2 col-4 text-md-end text-center">
+                    <img src="{{ asset('img/home/logo.png') }}" alt="" class="w-75">
                 </div>
-                <div class="col-md-6">
-                    <img src="{{ asset('img/scholarship.svg') }}" alt="" class="w-100">
+                <div class="col-md-6 col-11">
+                    <img src="{{ asset('img/scholarship/Scholarships.webp') }}" alt="" class="w-100">
                 </div>
-                <div class="col-8">
+                <div class="col-md-8 col-11">
                     <h4 class="fw-bold text-center">
                         We always encourage you to <span class="text-warning">DARE TO DREAM </span> , and we try our best to
                         make everyone’s dreams come true through education.
                     </h4>
                 </div>
-                <div class="col-8 mt-3">
-                    <div class="row">
+                <div class="col-md-8 col-11 mt-3">
+                    <div class="row row-cols-md-2 row-cols-1 g-md-2 g-3">
                         <div class="col">
-                            <img src="{{ asset('img/Scholarship am.svg') }}" alt="" class="w-100">
-                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank" class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
+                            <img src="{{ asset('img/scholarship/scholarship_am.webp') }}" alt="" class="w-100">
+                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
+                                class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
                         </div>
                         <div class="col">
-                            <img src="{{ asset('img/Scholarship pp.svg') }}" alt="" class="w-100">
-                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank" class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
+                            <img src="{{ asset('img/scholarship/scholarship_pm.webp') }}" alt="" class="w-100">
+                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
+                                class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
                         </div>
                     </div>
                 </div>
@@ -80,8 +82,9 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button bg-primary text-white fw-normal" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq_1" aria-expanded="true" aria-controls="faq_1">
+                                <button class="accordion-button bg-primary text-white fw-normal" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq_1" aria-expanded="true"
+                                    aria-controls="faq_1">
                                     Who is eligible for the scholarship?
                                 </button>
                             </h2>
@@ -97,8 +100,9 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq_2" aria-expanded="false" aria-controls="faq_2">
+                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq_2" aria-expanded="false"
+                                    aria-controls="faq_2">
                                     How to apply?
                                 </button>
                             </h2>
@@ -111,9 +115,10 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <h2 class="accordion-header" >
-                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq_3" aria-expanded="false" aria-controls="faq_3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq_3" aria-expanded="false"
+                                    aria-controls="faq_3">
                                     What are the requirements?
                                 </button>
                             </h2>
@@ -165,32 +170,37 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq_4" aria-expanded="false" aria-controls="faq_4">
+                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq_4" aria-expanded="false"
+                                    aria-controls="faq_4">
                                     What happens after the deadline?
                                 </button>
                             </h2>
                             <div id="faq_4" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    You will be called for an interview if you are shortlisted as a potential scholarship winner.
+                                    You will be called for an interview if you are shortlisted as a potential scholarship
+                                    winner.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq_5" aria-expanded="false" aria-controls="faq_5">
+                                <button class="accordion-button bg-primary text-white fw-normal collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq_5" aria-expanded="false"
+                                    aria-controls="faq_5">
                                     When will the scholarship be announced?
                                 </button>
                             </h2>
                             <div id="faq_5" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    The scholarship awardee will be announced through Annifest Main Event on April 15th 2023. The scholarship grant letter will be sent by email.
+                                    The scholarship awardee will be announced through Annifest Main Event on April 15th
+                                    2023. The scholarship grant letter will be sent by email.
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank" class="btn btn-lg btn-block w-100 btn-warning text-dark mt-3">APPLY FOR SCHOLARSHIP HERE</a>
+                    <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
+                        class="btn btn-lg btn-block w-100 btn-warning text-dark mt-3">APPLY FOR SCHOLARSHIP HERE</a>
                 </div>
             </div>
         </div>
@@ -216,6 +226,12 @@
         .accordion-button {
             box-shadow: none !important;
             outline: none !important;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #scholarship {
+            padding-top: 30%;
+        }
         }
     </style>
     @include('home.component.footer')

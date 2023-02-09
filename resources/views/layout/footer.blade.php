@@ -14,8 +14,8 @@
         html: "<img src='{{ asset('img/logo-allin.png') }}' class='w-75' />",
         allowEscapeKey: false,
         allowOutsideClick: false,
-        background:'#fff',
-        color:'#fff',
+        background: '#fff',
+        color: '#fff',
         width: 300,
         didOpen: () => {
             Swal.showLoading()
@@ -48,23 +48,28 @@
 
 {{-- Notification by Session  --}}
 @if (session('success') || session('error'))
-<script>
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
+    <script>
+        function toast() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: '{{ session('success') ? 'success' : 'error' }}',
+                title: '{{ session('success') ? session('success') : session('error') }}'
+            })
         }
-    })
 
-    Toast.fire({
-        icon: '{{ session('success') ? 'success' : 'error' }}',
-        title: '{{ session('success') ? session('success') : session('error') }}'
-    })
-
-</script>
+        setTimeout(() => {
+            toast();
+        }, 2000);
+    </script>
 @endif

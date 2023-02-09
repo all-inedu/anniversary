@@ -8,30 +8,36 @@
                         @csrf
                         <textarea name="uni_select" id="uni_textarea" hidden></textarea>
                         <section class="active" id="section_1">
-                            <div class="row mt-4">
-                                <div class="col-md-12 mb-2">
+                            <div class="row mt-4 g-2">
+                                <div class="col-md-6 mb-2">
                                     <label for="">Full Name</label>
                                     <input type="text" name="fullname" class="form-control field field-1"
                                         placeholder="Full Name" id="name" onchange="is_filled('name')">
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="">Phone Number</label>
+                                    <input type="tel" name="phone_number" class="form-control field field-3"
+                                        placeholder="Phone Number" id="phone" onchange="validatePhoneNumber()">
+                                    <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <label for="">Email Address</label>
                                     <input type="email" name="email_address" class="form-control field field-2"
                                         placeholder="Email" id="email" onchange="validate_email()">
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-6 mb-2">
-                                    <label for="">Phone Number</label>
-                                    <input type="tel" name="phone_number" class="form-control field field-3"
-                                        placeholder="Phone Number" id="phone" onchange="is_filled('phone')">
-                                    <small class="text-danger"></small>
+                                    <label for="">Confirm Email</label>
+                                    <input type="email" name="email_confirm" class="form-control "
+                                        placeholder="Confirm Email" id="confirm_email" onchange="confirmEmail()">
+                                    <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="">Address</label>
                                     <textarea name="address" cols="30" rows="5" class="form-control field field-4" id="address"
                                         onchange="is_filled('address')"></textarea>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="">You are a</label>
@@ -55,8 +61,8 @@
                                             </label>
                                         </div>
                                         <div class="position-relative mx-1">
-                                            <input type="radio" name="role" id="teacher" value="teacher"
-                                                class="radio-register">
+                                            <input type="radio" name="role" id="teacher"
+                                                value="teacher/consellor" class="radio-register">
                                             <label for="teacher" class="">
                                                 <div class="radio-box">
                                                     Teacher/Consellor
@@ -93,8 +99,8 @@
                                     <label for="">Is this your first time attending ALL-in event?</label>
                                     <div class="d-flex">
                                         <div class="position-relative mx-1">
-                                            <input type="radio" name="first_time" id="firsttime_yes" value="firsttime_"
-                                                class="radio-register">
+                                            <input type="radio" name="first_time" id="firsttime_yes"
+                                                value="firsttime_" class="radio-register">
                                             <label for="firsttime_yes" class="">
                                                 <div class="radio-box">
                                                     Yes
@@ -137,7 +143,7 @@
                                         @endfor
                                         <option value="Not High School">Not High School</option>
                                     </select>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="" class="label-role student">What school are you going
@@ -156,7 +162,7 @@
                                             <option value="{{ $school->sch_name }}">{{ $school->sch_name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                     <input type="text" name="school_other" class="form-control mt-1 d-none"
                                         id="school_other">
                                     <label class="text-info">Choose other if there are not your schools</label>
@@ -171,24 +177,20 @@
                                     <label class="label-role teacher d-none">What country are your students
                                         generally
                                         interested in studying abroad?</label>
-                                    <select name="country[]" class="select w-100 field field-3" multiple id="country"
-                                        onchange="is_filled('country')">
+                                    <select name="country[]" class="select w-100 field field-3" multiple
+                                        id="country" onchange="is_filled('country')">
                                         <option></option>
                                         @foreach ($destinations as $destination)
                                             <option value="{{ $destination->id }}">{{ $destination->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                     <label class="text-info">You can choose more than one</label>
                                 </div>
                                 <div class="col-md-12 mb-2" id="major_input">
                                     <label for="" class="label-role student">What's your intended
                                         major in university?</label>
                                     <label for="" class="label-role parent d-none">What is your
-                                        child's
-                                        intended major in university?
-                                        (can choose more than 1)</label>
-                                    <label for="" class="label-role teacher d-none">What is your
                                         child's
                                         intended major in university?
                                         (can choose more than 1)</label>
@@ -200,7 +202,7 @@
                                             <option value="{{ $major->id }}">{{ $major->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                     <input type="text" name="major_other" class="form-control mt-1 d-none"
                                         id="major_other">
                                     <label class="text-info">You can choose more than one and Choose other if
@@ -217,7 +219,7 @@
                                             <option value="{{ $lead->id }}">{{ $lead->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                     <input type="text" name="lead_other" class="form-control mt-1 d-none"
                                         id="lead_other">
                                 </div>
@@ -239,7 +241,7 @@
                                             <option value="{{ $challenge->id }}">{{ $challenge->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="text-danger"></small>
+                                    <small class="text-warning"></small>
                                     <input type="text" name="challenge_other" class="form-control mt-1 d-none"
                                         id="challenge_other">
                                 </div>
@@ -260,8 +262,8 @@
                     <div class="bg-warning p-4 shadow rounded">
                         <h4 class="text-white mb-0 fw-bold">University Booked</h4>
                         <div class="mb-3" id="join_uni">
-                            <p>Click <a href="#" class="text-danger" onclick="joinUniModal()">here</a> to
-                                join the University Info Session.</p>
+                            <p>Click <a href="#" class="text-danger" onclick="joinUniModal()">here</a> to book
+                                your seat or make changes on your booked seats!</p>
                         </div>
                         <ul class="list-group list-group-flush overflow-auto" id="uni_box"
                             style="max-height: 300px">
@@ -329,16 +331,54 @@
         }
     }
 
+    function validatePhoneNumber() {
+        let phoneNumber = $('#phone').val()
+        var phoneNumberRegex = /^\+\d{2}\d{10,15}$/;
+        let id = "+62"
+
+        let first = phoneNumber.charAt(0)
+        if (first == 0) {
+            phoneNumber = id.concat(phoneNumber.substring(1))
+            $('#phone').val(phoneNumber)
+        }
+
+        if (!phoneNumber.match(phoneNumberRegex)) {
+            $('#phone').addClass('is-invalid')
+            $('#phone').siblings('small').html('Please, fill in the correct phone')
+            return false
+        } else {
+            $('#phone').removeClass('is-invalid').addClass('is-valid')
+            $('#phone').siblings('small').html('')
+            return true;
+        }
+    }
+
     function validate_email() {
         let email = $('#email').val()
         var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (!regex.test(email)) {
             $('#email').addClass('is-invalid')
             $('#email').siblings('small').html('Please, fill in the correct email')
+            return false
         } else {
             $('#email').removeClass('is-invalid').addClass('is-valid')
             $('#email').siblings('small').html('')
             return true
+        }
+    }
+
+    function confirmEmail() {
+        let email = $('#email').val()
+        let confirm_email = $('#confirm_email').val()
+
+        if (email == confirm_email) {
+            $('#confirm_email').removeClass('is-invalid').addClass('is-valid')
+            $('#confirm_email').siblings('small').html('')
+            return true
+        } else {
+            $('#confirm_email').addClass('is-invalid')
+            $('#confirm_email').siblings('small').html('Confirmation email is not the same as email field')
+            return false
         }
     }
 
@@ -369,29 +409,37 @@
                 }
             }
 
+            // console.log('phone: '+validatePhoneNumber())
+            // console.log('email: '+validate_email())
+            // console.log('confirm: '+confirmEmail())
             if (array.length == 0) {
-                if (validate_email()) {
+                if (validatePhoneNumber() && validate_email() && confirmEmail()) {
                     $('section').removeClass('active')
                     $('#section_' + tab).addClass('active')
                 }
             }
         } else if (tab == 3) {
             let input = $('#section_2 .field').length
+            let role = $('input[type=radio][name=role]:checked').val()
             let array = []
+
             for (let i = 1; i <= input; i++) {
                 $('.field-' + i).siblings('small').html('')
                 let value = $('#section_2 .field-' + i).val()
-                if (value == '') {
-                    array.push('field-' + i)
-                    $('#section_2 .field-' + i).siblings('span').addClass('is-invalid')
-                    $('#section_2 .field-' + i).siblings('small').html('Please, the field is required')
-                } else {
-                    $('#section_2 .field-' + i).siblings('span').removeClass('is-invalid').addClass('is-valid')
-                    $('#section_2 .field-' + i).siblings('small').html('')
+                if ((i != 1 || role != 'teacher/consellor') && (i != 4 || role != 'teacher/consellor')) {
+                    if (value == '') {
+                        array.push('field-' + i)
+                        $('#section_2 .field-' + i).siblings('span').addClass('is-invalid')
+                        $('#section_2 .field-' + i).siblings('small').html('Please, the field is required')
+                    } else {
+                        $('#section_2 .field-' + i).siblings('span').removeClass('is-invalid').addClass('is-valid')
+                        $('#section_2 .field-' + i).siblings('small').html('')
+                    }
                 }
             }
 
             if (array.length == 0) {
+                localStorage.setItem('uni', '')
                 $('#register_form').submit()
             }
         } else {
@@ -401,7 +449,7 @@
     }
 
     function selected_uni() {
-        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : null
+        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
         $('#uni_box').html('')
         uni_select.forEach(uni => {
             $('#uni_box').append(
@@ -461,7 +509,7 @@
     }
 
     function joinUniModal() {
-        check_uni()
+        // check_uni()
         setTimeout(() => {
             $('#univ_modal').modal('show')
         }, 500);

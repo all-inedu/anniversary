@@ -36,7 +36,9 @@
                                 </div>
 
                                 <div class="book-overflow overflow-{{ $loop->iteration }} d-none"></div>
-                                <h3 class="text-overflow overflow-{{ $loop->iteration }} d-none">BOOKED</h3>
+                                <h3 class="text-overflow overflow-{{ $loop->iteration }} d-none">
+                                    <img src="{{asset('img/uni/BOOKED.webp')}}" alt="" class="w-100">
+                                </h3>
                             </label>
                         </div>
                     </div>
@@ -88,8 +90,7 @@
         // let uni_id =  $('#uni_'+id).val()
         let uni_checked = []
         $('#uni_list').html('');
-        for (let i = 0; i < uni_length; i++) {
-
+        for (let i = 1; i <= uni_length; i++) {
             let checked = $('#uni_' + i).is(":checked")
             if (checked) {
                 let arr = {
@@ -103,13 +104,12 @@
         }
 
         localStorage.setItem('uni', JSON.stringify(uni_checked))
-        // console.log(JSON.parse(localStorage.getItem('uni')));
         check_uni()
     }
 
     function delete_uni(id) {
         let uni_length = $('.uni-select').length
-        for (let i = 0; i < uni_length; i++) {
+        for (let i = 1; i <= uni_length; i++) {
             let value = $('#uni_' + i).val()
             if (value == id) {
                 $('#uni_' + i).prop('checked', false)
@@ -135,11 +135,11 @@
             $('#indicator_checked').removeClass('active')
         }
 
-        for (let i = 0; i < uni_length; i++) {
+        for (let i = 1; i <= uni_length; i++) {
             let value = $('#uni_' + i).val()
-            for (let x = 0; x < uni_select.length; x++) {
+            for (let x = 0; x < uni_select?.length; x++) {
                 if (value == uni_select[x].id) {
-                    $('#uni_' + i).attr('checked', true)
+                    $('#uni_' + i).prop('checked', true)
                     $('.overflow-' + i).removeClass('d-none')
                     $('#uni_list').append(
                         '<li class="d-flex justify-content-between align-items-center" >' +
@@ -180,11 +180,8 @@
         position: absolute;
         z-index: 2;
         margin: auto;
-        background: #BE1E2D;
-        color: white;
-        top: 35%;
-        left: 25%;
-        transform: rotate(-20deg);
+        top: 15%;
+        left: 0%;
         padding: 5px 15px;
         display: inline-block;
         font-weight: bold;
