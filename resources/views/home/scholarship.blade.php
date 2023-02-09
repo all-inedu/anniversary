@@ -4,20 +4,20 @@
     <div class="container-fluid" id="scholarship">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-2 text-end">
+                <div class="col-md-2 col-4 text-md-end text-center">
                     <img src="{{ asset('img/home/logo.png') }}" alt="" class="w-75">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-11">
                     <img src="{{ asset('img/scholarship/Scholarships.webp') }}" alt="" class="w-100">
                 </div>
-                <div class="col-8">
+                <div class="col-md-8 col-11">
                     <h4 class="fw-bold text-center">
                         We always encourage you to <span class="text-warning">DARE TO DREAM </span> , and we try our best to
                         make everyone’s dreams come true through education.
                     </h4>
                 </div>
-                <div class="col-8 mt-3">
-                    <div class="row">
+                <div class="col-md-8 col-11 mt-3">
+                    <div class="row row-cols-md-2 row-cols-1 g-md-2 g-3">
                         <div class="col">
                             <img src="{{ asset('img/scholarship/scholarship_am.webp') }}" alt="" class="w-100">
                             <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
@@ -226,6 +226,12 @@
         .accordion-button {
             box-shadow: none !important;
             outline: none !important;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #scholarship {
+            padding-top: 30%;
+        }
         }
     </style>
     @include('home.component.footer')

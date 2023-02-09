@@ -73,10 +73,14 @@
                 <img src="{{ asset('img/logo-allin-white.webp') }}" alt="" class="w-25">
             </div>
             <div class="col d-flex gap-3 footer mt-md-0 mt-2 justify-content-md-start justify-content-center">
-                <i class="bi bi-envelope"></i>
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-youtube"></i>
+                <a href="mailto:info@all-inedu.com" target="_blank" class="text-decoration-none text-white"><i
+                        class="bi bi-envelope"></i></a>
+                <a href="https://www.facebook.com/allineduspace/" target="_blank" class="text-decoration-none text-white"><i
+                        class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/allineduspace/" target="_blank" class="text-decoration-none text-white"> <i
+                        class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/@allineduspace" target="_blank" class="text-decoration-none text-white"> <i
+                        class="bi bi-youtube"></i></a>
             </div>
             <div class="col text-md-end mt-md-0 mt-2 text-center">
                 <small>
