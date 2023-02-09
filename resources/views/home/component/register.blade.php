@@ -262,8 +262,8 @@
                     <div class="bg-warning p-4 shadow rounded">
                         <h4 class="text-white mb-0 fw-bold">University Booked</h4>
                         <div class="mb-3" id="join_uni">
-                            <p>Click <a href="#" class="text-danger" onclick="joinUniModal()">here</a> to
-                                join the University Info Session.</p>
+                            <p>Click <a href="#" class="text-danger" onclick="joinUniModal()">here</a> to book
+                                your seat or make changes on your booked seats!</p>
                         </div>
                         <ul class="list-group list-group-flush overflow-auto" id="uni_box"
                             style="max-height: 300px">
@@ -334,12 +334,12 @@
     function validatePhoneNumber() {
         let phoneNumber = $('#phone').val()
         var phoneNumberRegex = /^\+\d{2}\d{10,15}$/;
-        let id="+62"
+        let id = "+62"
 
         let first = phoneNumber.charAt(0)
-        if(first==0) {
-           phoneNumber = id.concat(phoneNumber.substring(1))
-           $('#phone').val(phoneNumber)
+        if (first == 0) {
+            phoneNumber = id.concat(phoneNumber.substring(1))
+            $('#phone').val(phoneNumber)
         }
 
         if (!phoneNumber.match(phoneNumberRegex)) {
