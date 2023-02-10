@@ -22,3 +22,5 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::get('/scholarship', function () {
     return view('home.scholarship');
 });
+
+Route::get('/user/{uuid}', [RegisterController::class, 'profile'])->name('user.profile');

@@ -27,7 +27,7 @@ class UniversityFactory extends Factory
             'name' => $this->faker->company(),
             'session_start' => $this->faker->dateTimeBetween('2023-04-01', '2023-04-8'),
             'time_start' => $this->faker->time(),
-            'thumbnail' => 'https://images1.content-hci.com/commimg/video/CH/myhc_279666.jpg',
+            'thumbnail' => 'thumbnail/juFOPztxMl3dIpxCXa0lqyHTJQ9zWnNGUK6FixHv.jpg',
             'description' => null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

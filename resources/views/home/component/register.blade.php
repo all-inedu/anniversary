@@ -3,6 +3,17 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="bg-primary p-4 shadow text-white rounded">
+                    
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <h4 class="text-warning fw-bold">Fill The Information</h4>
                     <form action="{{ route('register.store') }}" id="register_form" method="POST" class="mb-3">
                         @csrf
@@ -419,6 +430,14 @@
                 }
             }
         } else if (tab == 3) {
+
+            Swal.fire({
+                width: 100,
+                backdrop: '#4e4e4e7d',
+                allowOutsideClick: false,
+            })
+            Swal.showLoading();
+
             let input = $('#section_2 .field').length
             let role = $('input[type=radio][name=role]:checked').val()
             let array = []
