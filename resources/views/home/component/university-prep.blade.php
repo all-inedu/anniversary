@@ -1,5 +1,5 @@
 <div class="container-fluid h-100 position-relative overflow-hidden" id="uni-prep">
-    <img src="{{asset('img/asset 2.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;" >
+    <img src="{{asset('img/asset 2.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-8%; bottom:0%; width:15%;" >
     <div class="container">
        <div class="row justify-content-center align-items-center h-100" >
            <div class="col-md-6 col-11" data-aos="fade-up">

@@ -1,22 +1,28 @@
 <div class="container-fluid position-relative overflow-hidden" id="home">
-    <img src="{{asset('img/asset 2.svg')}}" alt="" class="position-absolute d-md-inline-block d-none rotate" style="left:-10%; top:40%;" >
+    <img src="{{asset('img/asset 2.svg')}}" alt="" class="position-absolute d-md-inline-block d-none rotate" style="left:-13%; top:40%;" >
     <img src="{{asset('img/asset 3.svg')}}" alt="" class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-8%; top:-25%;" >
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-md-9 col-12">
-                <img src="{{ asset('img/home/Logo-tagline.webp') }}" alt="" class="slide-fwd-center banner-image">
+                    <img src="{{ asset('img/home/Logo-tagline.webp') }}" alt="" class="slide-fwd-center banner-image">
             </div>
             <div class="col-md-9 col-12 mt-md-5 mt-3">
                 <div class="row justify-content-center align-items-end g-md-5 g-1 row-cols-md-3 row-cols-2">
                     <div class="col">
+                        <a href="#ibdp">
                         <img src="{{ asset('img/home/Stage 1.webp') }}" alt="" class="banner-stage slide-bottom-top">
+                        </a>
                     </div>
                     <div class="col">
+                        <a href="#profile-essay">
                         <img src="{{ asset('img/home/Stage 2.webp') }}" alt="" class="banner-stage slide-bottom-top"
                             style="width: 100%">
+                        </a>
                     </div>
                     <div class="col">
-                        <img src="{{ asset('img/home/Stage 3.webp') }}" alt="" class="banner-stage slide-bottom-top" style="width:82%">
+                        <a href="#university">
+                            <img src="{{ asset('img/home/Stage 3.webp') }}" alt="" class="banner-stage slide-bottom-top" style="width:82%">
+                        </a>
                     </div>
                 </div>
             </div>

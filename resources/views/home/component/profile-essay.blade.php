@@ -1,8 +1,8 @@
 <div class="container-fluid position-relative overflow-hidden" id="profile-essay">
     <img src="{{ asset('img/asset 1.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:30%;">
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-17%; top:55%; width:30%;">
     <img src="{{ asset('img/asset 4.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-15%; bottom:0%; width:25%;">
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-17%; bottom:0%; width:25%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-9 col-11">
@@ -111,6 +111,12 @@
                                 </strong>
                             </div>
                             <div class="card-body text-start px-md-5">
+                                <p>
+                                    Choose one of the writing prompts from the list below and write your essay!
+                                 <strong>
+                                    (Maximum words: 650)
+                                 </strong>  
+                                </p>
                                 <ul>
                                     <li>
                                         Think about an activity or experience that has helped you grow. What lessons did
@@ -136,7 +142,7 @@
                                 <p>
                                     Describe your reasons for applying for graduate studies programs succinctly. You
                                     should
-                                    touch on the following three topics:
+                                    touch on the following three topics : (Maximum words: 1000)
                                 </p>
                                 <ul>
                                     <li>
