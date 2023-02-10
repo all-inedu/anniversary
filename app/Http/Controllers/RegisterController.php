@@ -207,6 +207,6 @@ class RegisterController extends Controller
     public function profile(Request $request)
     {
         $uuid = $request->route('uuid');
-        echo urldecode($uuid);
+        return view('home.user');
     }
 }

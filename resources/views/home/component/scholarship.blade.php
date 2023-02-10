@@ -1,6 +1,6 @@
 <div class="container-fluid position-relative" id="scholarship">
     <img src="{{ asset('img/asset 4.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-8%; bottom:-15%; width:25%;">
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-13%; bottom:-15%; width:25%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-9 col-11">

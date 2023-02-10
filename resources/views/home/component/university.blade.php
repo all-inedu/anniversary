@@ -1,12 +1,12 @@
 <div class="container-fluid position-relative overflow-hidden" id="university">
     <img src="{{ asset('img/asset 4.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-10%; top:55%; width:20%;">
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-12%; top:55%; width:20%;">
     <img src="{{ asset('img/asset 3.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-4%; bottom:0%; width:15%;">
+        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-6%; bottom:0%; width:15%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-7 col-11" data-aos="fade-up">
-                <img src="{{ asset('img/uni-info.svg') }}" alt="" class="w-100">
+                <img src="{{ asset('img/uni/uni.webp') }}" alt="" class="w-100">
             </div>
             <div class="col-md-9 col-11" data-aos="fade-up">
                 <div class="subtitle-uni text-center">

@@ -8,8 +8,8 @@
                 <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
                     <img src="{{ asset('storage/'.$university->thumbnail) }}" alt="" class="w-100">
                     <div class="uni-box d-flex justify-content-between">
-                        <div class="">6 March</div>
-                        <div class="">06.00 AM</div>
+                        <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
+                        <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>
                     </div>
 
                     <div class="book-overflow overflow-{{ $loop->index }} d-none"></div>
