@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class ClientRepository implements ClientRepositoryInterface
 {
+    public function getClientByUuid($uuid)
+    {
+        return Client::where('uuid', $uuid)->first();
+    }
+
     public function getRegistrantJoinUniPrep()
     {
         return Client::where('uni_prep', true)->get();

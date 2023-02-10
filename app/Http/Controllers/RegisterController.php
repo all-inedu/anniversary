@@ -182,12 +182,12 @@ class RegisterController extends Controller
         # send Mail
         try {
 
-            $this->send([
+            $this->sendWelcomingMessage([
                 'client' => $client,
                 'subject' => 'Registration Successful',
                 'recipient' => [
-                    'email' => 'mail@example.com',
-                    'name' => 'Example'
+                    'email' => $client->email_address,
+                    'name' => $client->fullname
                 ],
                 'link' => route('user.profile', ['uuid' => str_replace('-','%20',$client->uuid)])
             ]);
@@ -207,6 +207,56 @@ class RegisterController extends Controller
     public function profile(Request $request)
     {
         $uuid = $request->route('uuid');
-        return view('home.user');
+        $client = $this->clientRepository->getClientByUuid($uuid);
+
+        if (date('Y-m-d', strtotime($client->booking->booking_date)) == date('Y-m-d'))
+            abort(404);
+
+        $booked_universities = $client->booking->university;
+        $universities = $this->universityRepository->getUniversities();
+
+        return view('home.user')->with(
+            [
+                'client' => $client,
+                'booked_universities' => $booked_universities,
+                'universities' => $universities,
+            ]
+        );
+    }
+
+    public function updateProfile (Request $request)
+    {
+        $uuid = $request->route('uuid');
+        $client = $this->clientRepository->getClientByUuid($uuid);
+        $bookingId = $client->booking->id;
+
+        $booked_universities = $request->booked;
+        foreach ($booked_universities as $detail) {
+            $newBookingUnivDetails[] = $this->universityRepository->getUniversityById($detail['id'])->id;
+
+        }
+
+        DB::beginTransaction();
+        try {
+
+            # update booked univ
+            $this->bookingRepository->updateBookedUniversities($bookingId, $newBookingUnivDetails);
+
+            # update booked total univ
+            $this->bookingRepository->updateBooking($bookingId, ['total_booked_univ' => count($newBookingUnivDetails)]);
+            
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            Log::error('Update booking universities failed : '.$e->getMessage());
+            return response()->json(['message' => 'There was an error while updating. Please try again.']);
+
+        }
+
+        return response()->json(['message' => 'Update booking success.']);
+
+
     }
 }

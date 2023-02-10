@@ -4,6 +4,7 @@ namespace App\Interfaces;
 
 interface ClientRepositoryInterface 
 {
+    public function getClientByUuid($uuid);
     public function getRegistrantJoinUniPrep();
     public function getAllRegistrants();
     public function getLatestRegistrants();

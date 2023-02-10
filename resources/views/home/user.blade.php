@@ -7,7 +7,7 @@
                 <div class="card shadow border-0 mb-3">
                     <div class="card-body text-center">
                         <img src="{{ asset('img/user.png') }}" alt="" class="w-25 mb-3">
-                        <h5>Hi, John Doe</h5>
+                        <h5>Hi, {{ $client->fullname }}</h5>
                         <small>
                             You can update your seat and meet the world’s top university representatives
                         </small>
@@ -31,28 +31,28 @@
                 <div class="card shadow border-0">
                     <div class="card-body">
                         <div class="row row-cols-md-4 row-cols-2 g-3 overflow-auto" style="height:70vh">
-                            @for ($i = 0; $i < 20; $i++)
+                            @foreach ($universities as $university)
                                 <div class="col">
                                     <div class="shadow position-relative uni-box-select w-100">
                                         <input type="checkbox" class="position-absolute top-0 left-0 uni-select"
-                                            id="uni_{{ $i }}" value="uni-{{ $i }}"
-                                            data-uni="University {{ $i }}" onchange="select_uni()">
+                                            id="uni_{{ $loop->index }}" value="{{ $university->uuid }}"
+                                            data-uni="{{ $university->name }}" onchange="select_uni()">
                                         <span class="checkmark"></span>
-                                        <label for="uni_{{ $i }}" class="d-block" style="cursor: pointer">
-                                            <img src="{{ asset('img/default.png') }}" alt="" class="w-100">
+                                        <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
+                                            <img src="{{ asset('storage/'.$university->thumbnail) }}" alt="" class="w-100">
                                             <div class="uni-box d-flex justify-content-between">
-                                                <div class="">6 March</div>
-                                                <div class="">06.00 AM</div>
+                                                <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
+                                                <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>
                                             </div>
 
-                                            <div class="book-overflow overflow-{{ $i }} d-none"></div>
-                                            <h3 class="text-overflow overflow-{{ $i }} d-none">
-                                                <img src="{{ asset('img/uni/BOOKED.webp') }}" alt="" class="w-100">
+                                            <div class="book-overflow overflow-{{ $loop->index }} d-none"></div>
+                                            <h3 class="text-overflow overflow-{{ $loop->index }} d-none">
+                                                <img src="{{asset('img/uni/BOOKED.webp')}}" alt="" class="w-100">
                                             </h3>
                                         </label>
                                     </div>
                                 </div>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -60,10 +60,23 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        // AXIOS HERE 
+        // Insert Array From Controller to localStorage.setItem('uni' json_strngfy(array))
+        const selected_uni = new Array()
+        @if (isset($booked_universities))
+            @foreach ($booked_universities as $university)
+                selected_uni.push({
+                    'id': '{{ $university->uuid }}',
+                    'name' : '{{ $university->name }}',
+                })
+            @endforeach
+        @endif
+        localStorage.setItem('uni', JSON.stringify(selected_uni))
+
         function check_uni() {
-            // AXIOS HERE 
-            // Insert Array From Controller to localStorage.setItem('uni' json_strngfy(array))
+            
 
             let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : null
             let uni_length = $('.uni-select').length
@@ -99,14 +112,17 @@
             });
         }
 
+        
         function select_uni() {
+            let uni_checked = []
+            
             let uni_length = $('.uni-select').length
             let checked = $('.uni-select').is(":checked")
             // let uni_id =  $('#uni_'+id).val()
-            let uni_checked = []
             $('#uni_list').html('');
             for (let i = 0; i < uni_length; i++) {
                 let checked = $('#uni_' + i).is(":checked")
+                
                 if (checked) {
                     let arr = {
                         'id': $('#uni_' + i).val(),
@@ -120,8 +136,21 @@
 
             localStorage.setItem('uni', JSON.stringify(uni_checked))
 
+
             // AXIOS HERE ...
             // Update book uni info session from localStorage  
+            axios.put("{{ route('user.update.profile', ['uuid' => Request::route('uuid')]) }}", {
+                booked: JSON.parse(localStorage.getItem('uni')),
+                _token: '{{ csrf_token() }}',
+                _method: 'put',
+            }).then(function (response) {
+                // console.log(response)
+                notification('success', response.data.message)
+            }).catch(function (error) {
+                // console.log(error)
+                notification('error', error.data.message)
+            })
+
             check_uni()
         }
 
@@ -145,7 +174,7 @@
 
                     localStorage.setItem('uni', JSON.stringify(myArray))
                     check_uni()
-                    selected_uni()
+                    select_uni()
 
                     // AXIOS HERE ...
                     // Update book uni info session from localStorage
@@ -171,7 +200,7 @@
         }
 
         check_uni()
-        selected_uni()
+        select_uni()
     </script>
 
     <style>
