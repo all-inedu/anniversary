@@ -34,7 +34,7 @@
         body {
             background: #DAEAF4;
             background: url("{{asset('/img/home/bg.png')}}");
-            background-position: bottom center;
+            background-position: center center;
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-size: cover;

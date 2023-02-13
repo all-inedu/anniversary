@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="bg-primary p-4 shadow text-white rounded">
-                    
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -309,6 +309,35 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="questions_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="uni_title">University Info Session</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="" id="uni_type" hidden>
+                    <input type="text" id="uni_id" hidden>
+                    <input type="text" name="" id="uni_name" hidden>
+                    <label for="" class="d-block">
+                        Question for the University
+                    </label>
+                    <small class="text-primary">Drop your question(s) for the university representatives (not
+                        mandatory)</small>
+                    <textarea name="" cols="30" rows="5" class="form-control" id="uni_questions"></textarea>
+                </div>
+                <div class="modal-footer d-flex justify-content-between align-items-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
+                    <button type="button" class="btn btn-primary" onclick="submit_question(true)"><i
+                            class="bi bi-send"></i> Submit Questions</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     $('input[type=radio][name=role]').change(function() {
@@ -469,20 +498,86 @@
 
     function selected_uni() {
         let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+
         $('#uni_box').html('')
-        uni_select.forEach(uni => {
+        uni_select.forEach((uni, x) => {
+            let data = JSON.stringify(uni)
             $('#uni_box').append(
                 '<li class="list-group-item d-flex justify-content-between align-items-center">' +
                 uni.name +
                 '<div class="">' +
+                '<i id="question_' + x +
+                '" class="bi bi-patch-question text-info me-2" style="cursor: pointer"' +
+                'onclick="edit_uni(' + x + ')"></i>' +
                 '<i class="bi bi-trash2 text-danger" style="cursor:pointer" onclick="delete_uni(\'' + uni
                 .id + '\')"></i>' +
                 ' </div>' +
                 '</li>'
             )
+            $('#question_' + x).attr('data-info', data);
         });
         $('#uni_textarea').html(localStorage.getItem('uni'))
         // console.log(uni_select);
+    }
+
+    function submit_question(status) {
+        let uni_checked = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+
+        // Add Questions 
+        let uni_id = $('#uni_id').val()
+        let uni_name = $('#uni_name').val()
+        let uni_questions = status ? $('#uni_questions').val() : ''
+
+        if (uni_checked.length > 0) {
+            let uni_index = uni_checked.findIndex(uni => uni.id === uni_id)
+            if (uni_index >= 0) {
+                uni_checked[uni_index].id = uni_id
+                uni_checked[uni_index].name = uni_name
+                uni_checked[uni_index].questions = uni_questions
+            } else {
+                let arr = {
+                    'id': uni_id,
+                    'name': uni_name,
+                    'questions': uni_questions
+                }
+                uni_checked.push(arr)
+            }
+        } else {
+            let arr = {
+                'id': uni_id,
+                'name': uni_name,
+                'questions': uni_questions
+            }
+            uni_checked.push(arr)
+        }
+
+        $('#questions_modal').modal('hide')
+        if ($('#uni_type').val()!='edit') {
+            $('#univ_modal').modal('show')
+        }
+
+        $('#uni_id').val('')
+        $('#uni_name').val('')
+        $('#uni_questions').val('')
+        $('#uni_type').val('')
+        let message = status ? 'with questions' : 'without questions'
+        toast('success', 'University info session successfully booked ' + message)
+
+        localStorage.setItem('uni', JSON.stringify(uni_checked))
+
+        check_uni()
+        selected_uni()
+    }
+
+    function edit_uni(id) {
+        let uni = $('#question_' + id).data('info')
+        // Add Questions 
+        $('#questions_modal').modal('show')
+        $('#uni_title').html(uni.name)
+        $('#uni_id').val(uni.id)
+        $('#uni_name').val(uni.name)
+        $('#uni_type').val('edit')
+        $('#uni_questions').val(uni.questions)
     }
 
     function delete_uni(id) {
@@ -503,26 +598,11 @@
                     return obj.id !== id;
                 });
 
+                toast('success', 'Cancellation has been successful')
                 localStorage.setItem('uni', JSON.stringify(myArray))
+
                 check_uni()
                 selected_uni()
-
-                let Toast = Swal.mixin({
-                    toast: true,
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Cancellation has been successful',
-                })
             }
         })
     }
@@ -532,6 +612,26 @@
         setTimeout(() => {
             $('#univ_modal').modal('show')
         }, 500);
+    }
+
+    function toast(status, title) {
+        let Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            width: 450,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: status,
+            title: title,
+        })
     }
 
     selected_uni()
