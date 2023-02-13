@@ -165,10 +165,13 @@ class RegisterController extends Controller
                 foreach ($university_booked as $booked) {
                     $univInfo = $this->universityRepository->getUniversityById($booked->id);
                     $bookingUnivDetails[] = $univInfo->id;
+                        // 'question' => $request->
+                    
                 }
                 
                 $booking = $this->bookingRepository->createBooking($bookingDetails);
-                $this->bookingRepository->storeBookedUniversities($booking->id, $bookingUnivDetails);
+                $bookingId = $booking->id;
+                $this->bookingRepository->storeBookedUniversities($bookingId, $bookingUnivDetails);
             }
 
         } catch (Exception $e) {
