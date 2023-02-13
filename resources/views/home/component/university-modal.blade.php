@@ -3,10 +3,10 @@
         <div class="col">
             <div class="shadow position-relative uni-box-select w-100">
                 <input type="checkbox" class="position-absolute top-0 left-0 uni-select" id="uni_{{ $loop->index }}"
-                    value="{{ $university->uuid }}" data-uni="{{ $university->name }}" onchange="select_uni()">
+                    value="{{ $university->uuid }}" data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->index }}')">
                 <span class="checkmark"></span>
                 <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
-                    <img src="{{ asset('storage/'.$university->thumbnail) }}" alt="" class="w-100">
+                    <img src="{{ asset('storage/' . $university->thumbnail) }}" alt="" class="w-100">
                     <div class="uni-box d-flex justify-content-between">
                         <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
                         <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>
@@ -14,7 +14,7 @@
 
                     <div class="book-overflow overflow-{{ $loop->index }} d-none"></div>
                     <h3 class="text-overflow overflow-{{ $loop->index }} d-none">
-                    <img src="{{asset('img/uni/BOOKED.webp')}}" alt="" class="w-100">
+                        <img src="{{ asset('img/uni/BOOKED.webp') }}" alt="" class="w-100">
                     </h3>
                 </label>
             </div>
@@ -23,35 +23,45 @@
 </div>
 
 <script>
-    function select_uni() {
+    function select_uni(id) {
+        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+
         let uni_length = $('.uni-select').length
         let checked = $('.uni-select').is(":checked")
-        // let uni_id =  $('#uni_'+id).val()
-        let uni_checked = []
-        $('#uni_list').html('');
-        for (let i = 0; i <= uni_length; i++) {
-            let checked = $('#uni_' + i).is(":checked")
-            if (checked) {
-                let arr = {
-                    'id': $('#uni_' + i).val(),
-                    'name': $('#uni_' + i).data('uni')
-                }
-                uni_checked.push(arr)
+
+        // Add Questions 
+        if (id) {
+            let uni_id = $('#uni_' + id).is(":checked")
+            if (uni_id) {
+                $('#questions_modal').modal('show')
+                $('#univ_modal').modal('hide')
+                $('#uni_title').html($('#uni_' + id).data('uni'))
+                $('#uni_id').val($('#uni_' + id).val())
+                $('#uni_name').val($('#uni_' + id).data('uni'))
             } else {
-                $('.overflow-' + i).addClass('d-none')
+                let uni_index = uni_select.findIndex(uni_id => uni_id.id === $('#uni_' + id).val());
+
+                if (uni_index === -1) {
+                    console.log('id not found');
+                } else {
+                    $('.overflow-' + id).addClass('d-none')
+                    uni_select.splice(uni_index, 1);
+
+                    toast('warning', 'University info session successfully canceled')
+                    localStorage.setItem('uni', JSON.stringify(uni_select))
+
+                    selected_uni()
+                    check_uni()
+                }
+
             }
         }
-
-        localStorage.setItem('uni', JSON.stringify(uni_checked))
-        // console.log(JSON.parse(localStorage.getItem('uni')));
-        selected_uni()
-        check_uni()
     }
 
     function check_uni() {
-        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : null
+        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
         let uni_length = $('.uni-select').length
-        
+
         for (let i = 0; i < uni_length; i++) {
             $('#uni_' + i).prop('checked', false)
             $('.overflow-' + i).addClass('d-none')
@@ -68,6 +78,7 @@
             }
         }
     }
+    check_uni()
 </script>
 
 <style>
