@@ -85,5 +85,13 @@
                 font-size: 14px !important;
             }
         }
+        
+
+        .uni-thumbnail {
+            transition: all 0.9s ease;
+        }
+        .uni-thumbnail:hover {
+            width: 160% !important;
+        }
     </style>
 </head>

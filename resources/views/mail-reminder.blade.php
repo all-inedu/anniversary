@@ -393,7 +393,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td align="left">{{ $booking->name }}</td>
                                                     <td>{{ date('d M Y', strtotime($booking->session_start)) }}</td>
-                                                    <td>12345678</td>
+                                                    <td>{{ $booking->password }}</td>
                                                     <td>
                                                         <table role="presentation" border="0" cellpadding="0"
                                                             cellspacing="0" class="btn btn-primary">

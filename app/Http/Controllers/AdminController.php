@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -104,15 +105,19 @@ class AdminController extends Controller
             'description' => 'nullable',
             'status' => 'nullable',
             'thumbnail' => 'image|mimes:jpeg,jpg,png',
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'password' => 'required|min:6'
         ];
 
-        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status', 'link']), $rules);
+        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status', 'link', 'password']), $rules);
         if ($validate->fails())
             return Redirect::back()->withErrors($validate);
 
         $validatedDetails = $validate->validated();
+        $validatedDetails['status'] = $request->input('status') == false ? 0 : 1;
         $validatedDetails['uuid'] = Str::uuid();
+        // unset($validatedDetails['password']);
+        // $validatedDetails['password'] = Hash::make($request->password);
 
         DB::beginTransaction();
         try {
@@ -199,15 +204,18 @@ class AdminController extends Controller
             'description' => 'nullable',
             'status' => 'nullable',
             'thumbnail' => 'image|mimes:jpeg,jpg,png',
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'password' => 'required|min:6',
         ];
 
-        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status', 'link']), $rules);
+        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status', 'link', 'password']), $rules);
         if ($validate->fails())
             return Redirect::back()->withErrors($validate);
 
         $newDetails = $validate->validated();
         $newDetails['status'] = $request->input('status') == false ? 0 : 1;
+        // unset($newDetails['password']);
+        // $newDetails['password'] = Hash::make($request->password);
 
         DB::beginTransaction();
         try {
