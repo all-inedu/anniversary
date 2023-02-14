@@ -30,7 +30,7 @@
             <div class="col-md-9">
                 <div class="card shadow border-0">
                     <div class="card-body">
-                        <div class="row row-cols-md-4 row-cols-2 g-3 overflow-auto" style="height:70vh">
+                        <div class="row row-cols-md-4 row-cols-2 g-md-3 g-1 overflow-auto" style="height:70vh">
                             @foreach ($universities as $university)
                                 <div class="col">
                                     <div class="shadow position-relative uni-box-select w-100">
@@ -45,8 +45,8 @@
                                                 <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>
                                             </div>
 
-                                            <div class="book-overflow overflow-{{ $loop->iteration }} d-none"></div>
-                                            <h3 class="text-overflow overflow-{{ $loop->iteration }} d-none">
+                                            <div class="book-overflow overflow-{{ $loop->iteration }} overflow-{{ $university->uuid }} d-none"></div>
+                                            <h3 class="text-overflow overflow-{{ $loop->iteration }} overflow-{{ $university->uuid }} d-none">
                                                 <img src="{{asset('img/uni/BOOKED.webp')}}" alt="" class="w-100">
                                             </h3>
                                         </label>
@@ -88,7 +88,6 @@
         </div>
     </div>
     </div>
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         // AXIOS HERE 
@@ -99,6 +98,7 @@
                 selected_uni.push({
                     'id': '{{ $university->uuid }}',
                     'name' : '{{ $university->name }}',
+                    'questions': '{{$university->question}}',
                 })
             @endforeach
         @endif
@@ -145,7 +145,7 @@
                 uni_checked.push(arr)
             }
         
-
+            // Reinitiate Uni Session 
             localStorage.setItem('uni', JSON.stringify(uni_checked))
 
             $('#uni_id').val('')
@@ -157,6 +157,7 @@
 
             // AXIOS HERE ...
             // Update book uni info session from localStorage  
+
             axios.put("{{ route('user.update.profile', ['uuid' => Request::route('uuid')]) }}", {
                 booked: JSON.parse(localStorage.getItem('uni')),
                 _token: '{{ csrf_token() }}',
@@ -170,15 +171,12 @@
             })
 
             
-            check_uni()
-
-            
+            check_uni()          
         }
 
         function check_uni() {
-            
-
-            let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : null
+            let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+            console.log(uni_select);
             let uni_length = $('.uni-select').length
 
             for (let i = 0; i < uni_length; i++) {
@@ -220,7 +218,7 @@
         }
         
         function select_uni(id = null) {
-
+            let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
             let uni_checked = []
 
             let uni_length = $('.uni-select').length
@@ -242,34 +240,28 @@
                     if (uni_index === -1) {
                         console.log('id not found');
                     } else {
-                        $('.overflow-' + id).addClass('d-none')
-                        uni_select.splice(uni_index, 1);
-
-                        toast('warning', 'University info session successfully canceled')
-                        localStorage.setItem('uni', JSON.stringify(uni_select))
-                        check_uni()
+                        $('.overflow-' + uni_select[uni_index].id).addClass('d-none')
+                        delete_uni(uni_select[uni_index].id)
                     }
 
                 }
             }
 
-            for (let i = 0; i < uni_length; i++) {
-                let checked = $('#uni_' + i).is(":checked")
+            // for (let i = 0; i < uni_length; i++) {
+            //     let checked = $('#uni_' + i).is(":checked")
                 
-                if (checked) {
-                    let arr = {
-                        'id': $('#uni_' + i).val(),
-                        'name': $('#uni_' + i).data('uni')
-                    }
-                    uni_checked.push(arr)
-                } else {
-                    $('.overflow-' + i).addClass('d-none')
-                }
-            }
-
-            localStorage.setItem('uni', JSON.stringify(uni_checked))
-
-            check_uni()
+            //     if (checked) {
+            //         let arr = {
+            //             'id': $('#uni_' + i).val(),
+            //             'name': $('#uni_' + i).data('uni')
+            //         }
+            //         uni_checked.push(arr)
+            //     } else {
+            //         $('.overflow-' + i).addClass('d-none')
+            //     }
+            // }
+            // localStorage.setItem('uni', JSON.stringify(uni_checked))
+            // check_uni()
         }
 
         function delete_uni(id) {
