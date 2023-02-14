@@ -212,8 +212,8 @@ class RegisterController extends Controller
         $uuid = str_replace(' ', '-', $request->route('uuid'));
         $client = $this->clientRepository->getClientByUuid($uuid);
 
-        if (date('Y-m-d', strtotime($client->booking->booking_date)) == date('Y-m-d'))
-            abort(404);
+        // if (date('Y-m-d', strtotime($client->booking->booking_date)) == date('Y-m-d'))
+        //     abort(404);
 
         $booked_universities = $client->booking->university;
         $universities = $this->universityRepository->getUniversities();
