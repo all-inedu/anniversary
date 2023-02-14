@@ -236,7 +236,9 @@ class RegisterController extends Controller
         $bookingId = $client->booking->id;
 
         $booked_universities = $request->booked;
-        
+        if (count($booked_universities) == 0)
+            $newBookingUnivDetails = [];
+
         foreach ($booked_universities as $detail) {
             $bookingDetail = $this->universityRepository->getUniversityById($detail['id']);
             $newBookingUnivDetails[] = [
