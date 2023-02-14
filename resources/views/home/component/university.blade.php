@@ -55,9 +55,9 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">University Info Session</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button class="btn btn-sm btn-light" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
             </div>
             <div class="modal-body">
                 <input type="text" id="uni_id" hidden>
@@ -279,10 +279,10 @@
                         .name + '</div>' +
                         '<div>' +
                         '<i id="question_' + x +
-                        '" class="bi bi-patch-question text-info me-2" style="cursor: pointer"' +
-                        'onclick="edit_uni(' + x + ')"></i>' +
+                        '" class="bi bi-patch-question text-primary me-2" style="cursor: pointer"' +
+                        'onclick="edit_uni(' + x + ')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add or edit your question(s)"></i>' +
                         '<i class="bi bi-trash2 text-danger" style="cursor: pointer" onclick="delete_uni(\'' +
-                        uni_select[x].id + '\')"></i>' +
+                        uni_select[x].id + '\')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cancel"></i>' +
                         '</div>' +
                         '</li>'
                     );

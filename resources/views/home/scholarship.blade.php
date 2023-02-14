@@ -21,12 +21,12 @@
                         <div class="col">
                             <img src="{{ asset('img/scholarship/scholarship_am.webp') }}" alt="" class="w-100">
                             <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
-                                class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
+                                class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark fw-bold">APPLY NOW</a>
                         </div>
                         <div class="col">
                             <img src="{{ asset('img/scholarship/scholarship_pm.webp') }}" alt="" class="w-100">
                             <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
-                                class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark">APPLY NOW</a>
+                                class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark fw-bold">APPLY NOW</a>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                         </div>
                     </div>
                     <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
-                        class="btn btn-lg btn-block w-100 btn-warning text-dark mt-3">APPLY FOR SCHOLARSHIP HERE</a>
+                        class="btn btn-lg btn-block w-100 btn-warning text-dark fw-bold mt-3">APPLY FOR SCHOLARSHIP HERE</a>
                 </div>
             </div>
         </div>

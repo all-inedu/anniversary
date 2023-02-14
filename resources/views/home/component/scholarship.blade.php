@@ -11,15 +11,14 @@
                     </div>
                     <div class="col-md-5" data-aos="fade-up">
                         <div class="card bg-primary mb-2">
-                            <div class="card-body subtitle-scholarship py-0 text-center text-white py-2 text-uppercase">
+                            <div
+                                class="card-body subtitle-scholarship py-0 text-center text-white py-2 text-uppercase fw-bold">
                                 Submission Deadline 25 March
                             </div>
                         </div>
                         <a href="{{ url('/scholarship') }}"
-                            class="btn btn-lg btn-warning btn-block w-100 py-1 text-dark text-uppercase">
-                            <strong>
-                                Click for more info
-                            </strong>
+                            class="btn btn-lg btn-warning btn-block w-100 py-1 text-dark text-uppercase fw-bold">
+                            Click for more info
                         </a>
                     </div>
                 </div>

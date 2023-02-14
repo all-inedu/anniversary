@@ -75,9 +75,9 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">University Info Session</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button class="btn btn-sm btn-light" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
                 </div>
                 <div class="modal-body">
                     <input type="text" id="uni_id" hidden>
@@ -241,8 +241,9 @@
                     ' </div>' +
                     '</div>' +
                     '<div class="d-flex justify-content-between align-items-center">' +
-                    '<small class="text-muted"><i class="bi bi-link me-1"></i>  <a href="'+uni.link+'" class="text-decoration-none text-muted">Join Now</a></small>' +
-                    '<small class="text-muted"><i class="bi bi-key me-1"></i> '+uni.password+'</small>'+
+                    '<small class="text-muted"><i class="bi bi-link me-1"></i>  <a href="' + uni.link +
+                    '" class="text-decoration-none text-muted">Join Now</a></small>' +
+                    '<small class="text-muted"><i class="bi bi-key me-1"></i> ' + uni.password + '</small>' +
                     '</li>'
                 )
                 $('#question_' + x).attr('data-info', data);

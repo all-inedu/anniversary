@@ -18,11 +18,9 @@
                     <div class="col-md-12 mt-md-3 text-center text-essay" data-aos="fade-up">
                         <p>
                             Submit your profile and write an essay on a given prompt and earn the chance to be reviewed
-                            by our mentors directly! Selected profiles will get the chance to receive a free mentoring
-                            session.
-                        </p>
-                        <p>
-                            In addition, we will also share how we guide our mentees to boost their CVs through personal
+                            by our mentors directly!
+
+                            In addition, we will also share how to boost their CVs through personal
                             projects, competitions, club activities, and many more!
                         </p>
                         <p>

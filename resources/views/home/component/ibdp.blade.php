@@ -18,14 +18,14 @@
                         <div class="row mt-3 g-2 align-items-strecth">
                             <div class="col">
                                 <div class="card bg-primary h-100">
-                                    <div class="card-body ibdp-date d-flex align-items-center text-center text-white py-2">
-                                        17-24 March | 6 PM
+                                    <div class="card-body ibdp-date text-center text-white py-2 fw-bold">
+                                        17-24 March 2023
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="card bg-primary h-100">
-                                    <div class="card-body ibdp-date d-flex align-items-center text-center text-white py-2">
+                                    <div class="card-body ibdp-date text-center text-white py-2 fw-bold">
                                         06.00 PM - 07.30 PM
                                     </div>
                                 </div>
