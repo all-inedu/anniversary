@@ -8,7 +8,7 @@
                 <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
                     <div style="min-height:150px; max-height: 150px;" class="bg-light overflow-hidden d-flex align-items-center">
                         <img src="{{ isset($university->thumbnail) ? asset('storage/'.$university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}" onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
-                            alt=""  class="uni-thumbnail" style="width: 150%">
+                            alt=""  class="uni-thumbnail">
                     </div>
                     <div class="uni-box d-flex justify-content-between">
                         <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>

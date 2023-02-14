@@ -15,11 +15,12 @@
                     @endif
 
                     <h4 class="text-warning fw-bold">Fill The Information</h4>
+                    <hr>
                     <form action="{{ route('register.store') }}" id="register_form" method="POST" class="mb-3">
                         @csrf
                         <textarea name="uni_select" id="uni_textarea" hidden></textarea>
                         <section class="active" id="section_1">
-                            <div class="row mt-4 g-2">
+                            <div class="row g-2">
                                 <div class="col-md-6 mb-2">
                                     <label for="">Full Name</label>
                                     <input type="text" name="fullname" class="form-control field field-1"

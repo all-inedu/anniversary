@@ -251,6 +251,11 @@
         $('#uni_questions').val(uni.questions)
     }
 
+    function tooltip() {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    }
+
     function check_uni() {
         let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
         let uni_length = $('.uni-select').length
@@ -292,6 +297,7 @@
                 }
             }
         }
+        tooltip()
     }
 
     check_uni()

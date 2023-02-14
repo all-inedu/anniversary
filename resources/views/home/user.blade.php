@@ -39,11 +39,14 @@
                                             id="uni_{{ $loop->iteration }}" value="{{ $university->uuid }}"
                                             data-uni="{{ $university }}" onchange="select_uni('{{ $loop->iteration }}')">
                                         <span class="checkmark"></span>
-                                        <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer"
+                                            data-bs-toggle="tooltip" data-bs-placement="top"
                                             data-bs-title="Choose university">
-                                            <div style="min-height:150px; max-height: 150px;" class="bg-light overflow-hidden d-flex align-items-center">
-                                                <img src="{{ isset($university->thumbnail) ? asset('storage/'.$university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}" onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
-                                                    alt=""  class="uni-thumbnail">
+                                            <div style="min-height:150px; max-height: 150px;"
+                                                class="bg-light overflow-hidden d-flex align-items-center">
+                                                <img src="{{ isset($university->thumbnail) ? asset('storage/' . $university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}"
+                                                    onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
+                                                    alt="" class="uni-thumbnail">
                                             </div>
                                             <div class="uni-box d-flex justify-content-between">
                                                 <div class="">{{ date('d F', strtotime($university->session_start)) }}
@@ -199,6 +202,11 @@
             check_uni()
         }
 
+        function tooltip() {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        }
+
         function check_uni() {
             let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
             let uni_length = $('.uni-select').length
@@ -249,6 +257,7 @@
                 )
                 $('#question_' + x).attr('data-info', data);
             });
+            tooltip()
         }
 
         function check(element) {
