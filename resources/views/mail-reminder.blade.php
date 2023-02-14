@@ -390,10 +390,10 @@
                                                 </tr>
                                                 @foreach ($client->booking->university as $booking)
                                                 <tr align="center">
-                                                    <td>No</td>
-                                                    <td align="left">University Name</td>
-                                                    <td>Session Date</td>
-                                                    <td>Zoom Password</td>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td align="left">{{ $booking->name }}</td>
+                                                    <td>{{ date('d M Y', strtotime($booking->session_start)) }}</td>
+                                                    <td>12345678</td>
                                                     <td>
                                                         <table role="presentation" border="0" cellpadding="0"
                                                             cellspacing="0" class="btn btn-primary">
@@ -405,7 +405,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <a href="#"
+                                                                                        <a href="{{ $booking->link }}"
                                                                                             target="_blank">Join</a>
                                                                                     </td>
                                                                                 </tr>
@@ -423,7 +423,8 @@
                                             <p>
                                                 We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
                                             </p>
-                                            <button></button>
+                                            <button class="btn btn-warning">Uni Prep Talk</button>
+                                            <br><br>
                                             <p>
                                                 We are excited to have you join us and we believe that these sessions will be a valuable opportunity for you to learn more about our university and get ready for your academic journey.
                                             </p>
