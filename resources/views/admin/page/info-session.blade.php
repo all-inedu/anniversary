@@ -51,7 +51,7 @@
                                     </a>
                                     @endif
                                 </td>
-                                <td>
+                                <td style="width:100px">
                                     <a href="{{ route('admin.show.info-session', ['info_session' => $university->uuid]) }}" class="btn btn-sm btn-outline-warning">
                                         <i class="bi bi-eye"></i>
                                     </a>

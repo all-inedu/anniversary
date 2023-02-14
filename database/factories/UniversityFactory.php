@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\University;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -28,6 +29,8 @@ class UniversityFactory extends Factory
             'session_start' => $this->faker->dateTimeBetween('2023-04-01', '2023-04-8'),
             'time_start' => $this->faker->time(),
             'thumbnail' => 'thumbnail/juFOPztxMl3dIpxCXa0lqyHTJQ9zWnNGUK6FixHv.jpg',
+            'link' => $this->faker->url(),
+            'password' => '12345678',
             'description' => null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

@@ -24,8 +24,10 @@
                                     data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->iteration }}')">
                                 <span class="checkmark"></span>
                                 <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer">
-                                    <img src="{{ isset($university->thumbnail) ? asset('storage/'.$university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}"
-                                        alt="" class="w-100">
+                                    <div style="min-height:200px; max-height: 200px;" class="bg-light overflow-hidden d-flex text-center">
+                                        <img src="{{ isset($university->thumbnail) ? asset('storage/'.$university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}" onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
+                                            alt=""  class="uni-thumbnail">
+                                    </div>
                                     <div class="uni-box d-flex justify-content-between">
                                         <div class="">{{ date('d F', strtotime($university->session_start)) }}
                                         </div>

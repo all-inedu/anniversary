@@ -68,9 +68,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 mb-2">
+                            <div class="col-6 mb-2">
                                 <label for="">Zoom Link <sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control" name="link" value="{{ isset($university->link) ? $university->link : old('link') }}">    
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label for="">Password <sup class="text-danger">*</sup></label>
+                                <input type="text" class="form-control" name="password" value="{{ isset($university->password) ? $university->password : old('password') }}">    
                             </div>
                         </div>
                         <div class="row">
