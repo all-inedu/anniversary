@@ -33,10 +33,10 @@ class Reminder extends Command
      */
     public function handle()
     {
-        $event_date = '2023-02-10';
+        $bookings = Booking::leftJoin('tbl_booking_univ', 'tbl_booking_univ.booking_id', '=', 'tbl_booking.id')->
+            leftJoin('tbl_university', 'tbl_university.id', '=', 'tbl_booking_univ.univ_id')->
+            whereRaw('DATEDIFF(session_start, now()) = ?', [3])->get();
 
-        $bookings = Booking::leftJoin('tbl_university', 'tbl_univesity')->whereRaw('DATEDIFF(booking_date, now()) = ?', [3])->get();
-        echo json_encode($bookings);exit;
         try {
 
             foreach ($bookings as $booking) {
@@ -49,6 +49,7 @@ class Reminder extends Command
                         'name' => $booking->client->fullname
                     ],
                 ]);
+                Log::info('Email reminder to '.$booking->client->email_address);
             }
 
         } catch (Exception $e) {
