@@ -241,7 +241,7 @@ class RegisterController extends Controller
             $bookingDetail = $this->universityRepository->getUniversityById($detail['id']);
             $newBookingUnivDetails[] = [
                 'univ_id' => $bookingDetail->id,
-                'question' => isset($detail->questions) ? $detail->questions : null
+                'question' => isset($detail['questions']) ? $detail['questions'] : null 
             ];
         }
 
@@ -269,6 +269,7 @@ class RegisterController extends Controller
 
     public function destroyProfile(Request $request)
     {
+        return $request->all();
         $universityId = str_replace(' ', '-', $request->route('universityid'));
         $userUUid = $request->client;
         $user = $this->clientRepository->getClientByUuid($userUUid);

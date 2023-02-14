@@ -288,18 +288,17 @@
 
                     // AXIOS HERE ...
                     // Update book uni info session from localStorage
-                    var link = "{{ url('/') }}/user/" + id.replace(/-/g, "%20")
+                    var link = "{{ url('/') }}/user/" + '{{ $client->uuid }}'
 
-                    axios.delete(link, {
-                        client: '{{ $client->id }}',
+                    axios.put(link, {
                         booked: JSON.parse(localStorage.getItem('uni')),
                         _token: '{{ csrf_token() }}',
                         _method: 'delete',
                     }).then(function (response) {
-                        // console.log(response)
+                        console.log(response)
                         notification('success', response.data.message)
                     }).catch(function (error) {
-                        // console.log(error)
+                        console.log(error)
                         notification('error', error.data.message)
                     })
                 }

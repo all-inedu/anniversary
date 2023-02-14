@@ -25,4 +25,4 @@ Route::get('/scholarship', function () {
 
 Route::get('/user/{uuid}', [RegisterController::class, 'profile'])->name('user.profile');
 Route::put('/user/{uuid}', [RegisterController::class, 'updateProfile'])->name('user.update.profile');
-Route::delete('/user/{universityid}', [RegisterController::class, 'destroyProfile'])->name('user.destroy.profile');
+// Route::delete('/user/{universityid}', [RegisterController::class, 'destroyProfile'])->name('user.destroy.profile');
