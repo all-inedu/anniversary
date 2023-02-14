@@ -69,6 +69,12 @@
                         </div>
                         <div class="row">
                             <div class="col-12 mb-2">
+                                <label for="">Zoom Link <sup class="text-danger">*</sup></label>
+                                <input type="text" class="form-control" name="link" value="{{ isset($university->link) ? $university->link : old('link') }}">    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-2">
                                 <label for="">Description</label>
                                 <textarea name="description" class="form-control" rows="10">{{ isset($university->description) ? $university->description : old('description') }}</textarea>
                             </div>

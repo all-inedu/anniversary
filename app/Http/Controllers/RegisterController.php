@@ -187,7 +187,7 @@ class RegisterController extends Controller
 
             $this->sendWelcomingMessage([
                 'client' => $client,
-                'subject' => 'Registration Successful',
+                'subject' => 'Welcome to ANNIFEST!',
                 'recipient' => [
                     'email' => $client->email_address,
                     'name' => $client->fullname
@@ -210,11 +210,13 @@ class RegisterController extends Controller
     public function profile(Request $request)
     {
         $uuid = str_replace(' ', '-', $request->route('uuid'));
-        $client = $this->clientRepository->getClientByUuid($uuid);
-
-        if (date('Y-m-d', strtotime($client->booking->booking_date)) == date('Y-m-d'))
+        if (!$client = $this->clientRepository->getClientByUuid($uuid))
+            abort(404);
+        
+        if ($client->booking->university()->where('session_start', '<', now())->count() > 0)
             abort(404);
 
+        
         $booked_universities = $client->booking->university;
         $universities = $this->universityRepository->getUniversities();
 
@@ -268,10 +270,14 @@ class RegisterController extends Controller
     public function destroyProfile(Request $request)
     {
         $universityId = str_replace(' ', '-', $request->route('universityid'));
+        $userUUid = $request->client;
+        $user = $this->clientRepository->getClientByUuid($userUUid);
+
         DB::beginTransaction();
         try {
 
-            $this->universityRepository->deleteUniversity($universityId);
+            $user->booking()->detach($universityId);
+            // $this->universityRepository->deleteUniversity($universityId);
             DB::commit();
 
         } catch (Exception $e) {

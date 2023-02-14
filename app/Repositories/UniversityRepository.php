@@ -16,7 +16,7 @@ class UniversityRepository implements UniversityRepositoryInterface
 
     public function getUniversities()
     {
-        return University::orderBy('name', 'asc')->get();
+        return University::orderBy('created_at', 'desc')->get();
     }
     
     public function getUniversitiesWithParticipants()

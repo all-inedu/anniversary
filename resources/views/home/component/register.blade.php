@@ -330,7 +330,7 @@
                     <textarea name="" cols="30" rows="5" class="form-control" id="uni_questions"></textarea>
                 </div>
                 <div class="modal-footer d-flex justify-content-between align-items-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-secondary without-questions" data-bs-dismiss="modal"
                         onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
                     <button type="button" class="btn btn-primary" onclick="submit_question(true)"><i
                             class="bi bi-send"></i> Submit Questions</button>
@@ -519,6 +519,15 @@
         $('#uni_textarea').html(localStorage.getItem('uni'))
         // console.log(uni_select);
     }
+
+    $("#uni_questions").on('keyup', function() {
+        var val = $(this).val();
+        if (val != null && val != ''){
+            $(".without-questions").hide();
+        } else {
+            $(".without-questions").show();
+        }
+    })
 
     function submit_question(status) {
         let uni_checked = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []

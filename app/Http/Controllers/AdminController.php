@@ -104,9 +104,10 @@ class AdminController extends Controller
             'description' => 'nullable',
             'status' => 'nullable',
             'thumbnail' => 'image|mimes:jpeg,jpg,png',
+            'link' => 'required|url'
         ];
 
-        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status']), $rules);
+        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status', 'link']), $rules);
         if ($validate->fails())
             return Redirect::back()->withErrors($validate);
 
@@ -198,9 +199,10 @@ class AdminController extends Controller
             'description' => 'nullable',
             'status' => 'nullable',
             'thumbnail' => 'image|mimes:jpeg,jpg,png',
+            'link' => 'required|url'
         ];
 
-        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status']), $rules);
+        $validate = Validator::make($request->only(['name', 'session_start', 'time_start', 'description', 'status', 'link']), $rules);
         if ($validate->fails())
             return Redirect::back()->withErrors($validate);
 

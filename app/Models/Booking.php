@@ -30,6 +30,6 @@ class Booking extends Model
 
     public function university()
     {
-        return $this->belongsToMany(University::class, 'tbl_booking_univ', 'booking_id', 'univ_id')->withTimestamps();
+        return $this->belongsToMany(University::class, 'tbl_booking_univ', 'booking_id', 'univ_id')->withTimestamps()->withPivot('question');
     }
 }

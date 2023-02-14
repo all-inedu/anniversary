@@ -299,6 +299,7 @@
                     var link = "{{ url('/') }}/user/" + id.replace(/-/g, "%20")
 
                     axios.delete(link, {
+                        client: '{{ $client->id }}',
                         booked: JSON.parse(localStorage.getItem('uni')),
                         _token: '{{ csrf_token() }}',
                         _method: 'delete',

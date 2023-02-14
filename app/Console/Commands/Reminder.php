@@ -35,15 +35,15 @@ class Reminder extends Command
     {
         $event_date = '2023-02-10';
 
-        $bookings = Booking::whereRaw('DATEDIFF(booking_date, now()) = ?', [3])->get();
-
+        $bookings = Booking::leftJoin('tbl_university', 'tbl_univesity')->whereRaw('DATEDIFF(booking_date, now()) = ?', [3])->get();
+        echo json_encode($bookings);exit;
         try {
 
             foreach ($bookings as $booking) {
 
                 $this->sendReminder([
                     'client' => $booking->client,
-                    'subject' => 'Reminder',
+                    'subject' => "Don't Miss Out on Your Info Sessions & Uni Prep Talk!",
                     'recipient' => [
                         'email' => $booking->client->email_address,
                         'name' => $booking->client->fullname

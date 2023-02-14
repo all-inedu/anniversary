@@ -44,11 +44,15 @@
                                 <td>{{ $registrant->first_time == 1 ? "Yes" : "No" }}</td>
                                 <td>{{ $registrant->address }}</td>
                                 <td>
-                                    <ul style="margin:0;padding:0;list-style:numbering">
-                                    @foreach ($registrant->booking->university as $booked_university)
-                                        <li>{{ $booked_university->name }}</li>   
-                                    @endforeach
-                                    </ul>
+                                    @if ($registrant->booking)
+                                        <ul style="margin:0;padding:0;list-style:numbering">
+                                        @foreach ($registrant->booking->university as $booked_university)
+                                            <li>{{ $booked_university->name }}</li>   
+                                        @endforeach
+                                        </ul>
+                                    @else
+                                    -
+                                    @endif
                                 </td>
                                 <td>{{ $registrant->uni_prep == 1 ? "Yes" : "No" }}</td>
                                 <td>{{ $registrant->status == 1 ? "Active" : "Not Active" }}</td>

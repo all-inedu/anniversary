@@ -22,6 +22,7 @@ class University extends Model
         'session_start',
         'time_start',
         'thumbnail',
+        'link',
         'description',
         'status',
     ];

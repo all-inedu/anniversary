@@ -391,8 +391,7 @@
                                                 amazing event.
                                             </p>
                                             <p>
-                                                If you would like to update, pick or remove your choice of university
-                                                info session, you can do so by clicking on the following link: <br>
+                                                If you would like to update, pick or remove your choice of university info session, add or edit your questions to the university of your choices, you can do so through your personal ANNIFEST dashboard: <br>
                                                 <a href="{{ $link }}">here</a>
                                             </p>
                                             <p>

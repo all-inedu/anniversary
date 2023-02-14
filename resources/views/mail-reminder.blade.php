@@ -378,10 +378,7 @@
                                                 Hello {{ $client->fullname }}
                                             </p>
                                             <p>
-                                                We wanted to remind you about the upcoming info sessions and uni prep
-                                                talk that you've signed up for. We are excited to have you join us and
-                                                we believe that these sessions will be a valuable opportunity for you to
-                                                learn more about our university and get ready for your academic journey.
+                                                Don’t forget to attend the upcoming info sessions and uni prep talk that you've signed up for!
                                             </p>
                                             <table role="presentation" border="1" cellpadding="0" cellspacing="0">
                                                 <tr align="center" style="height: 40px">
@@ -424,15 +421,11 @@
                                             </table>
                                             <br>
                                             <p>
-                                                We understand that you may have a busy schedule, but we encourage you to
-                                                attend these sessions as they will be crucial in preparing you for your
-                                                future at our university.
+                                                We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
                                             </p>
+                                            <button></button>
                                             <p>
-                                                Please let us know if you need assistance or if you have any questions
-                                                <a href="https://linktr.ee/allineduspacecontact"
-                                                    style="text-decoration: none">here
-                                                </a>.
+                                                We are excited to have you join us and we believe that these sessions will be a valuable opportunity for you to learn more about our university and get ready for your academic journey.
                                             </p>
                                             <p>
                                                 We look forward to seeing you soon!
