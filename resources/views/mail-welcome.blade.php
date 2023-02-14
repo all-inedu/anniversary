@@ -393,7 +393,7 @@
                                             <p>
                                                 If you would like to update, pick or remove your choice of university
                                                 info session, you can do so by clicking on the following link: <br>
-                                                {{ $link }}
+                                                <a href="{{ $link }}">here</a>
                                             </p>
                                             <p>
                                                 We are here to support you every step of the way. If you have any questions or need assistance, please do not hesitate to reach out to us <a href="https://linktr.ee/allineduspacecontact"

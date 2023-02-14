@@ -70,7 +70,6 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-
         $school_rules = $request->school == 'Other' ? null : 'exists:mysql_crm.u5794939_allin_bd.tbl_sch,sch_name';
         // $major_rules = in_array('Other', $request->major) ? null : 'exists:tbl_major,id';
 
@@ -130,7 +129,6 @@ class RegisterController extends Controller
         $majors = $request->major;
 
         $university_booked = json_decode($request->uni_select);
-        
 
         DB::beginTransaction();
         try {            
@@ -164,8 +162,10 @@ class RegisterController extends Controller
     
                 foreach ($university_booked as $booked) {
                     $univInfo = $this->universityRepository->getUniversityById($booked->id);
-                    $bookingUnivDetails[] = $univInfo->id;
-                        // 'question' => $request->
+                    $bookingUnivDetails[] = [
+                        'univ_id' => $univInfo->id,
+                        'question' => $booked->questions
+                    ];
                     
                 }
                 
@@ -209,7 +209,7 @@ class RegisterController extends Controller
 
     public function profile(Request $request)
     {
-        $uuid = $request->route('uuid');
+        $uuid = str_replace(' ', '-', $request->route('uuid'));
         $client = $this->clientRepository->getClientByUuid($uuid);
 
         if (date('Y-m-d', strtotime($client->booking->booking_date)) == date('Y-m-d'))
@@ -229,14 +229,18 @@ class RegisterController extends Controller
 
     public function updateProfile (Request $request)
     {
-        $uuid = $request->route('uuid');
+        $uuid = str_replace(' ', '-', $request->route('uuid'));
         $client = $this->clientRepository->getClientByUuid($uuid);
         $bookingId = $client->booking->id;
 
         $booked_universities = $request->booked;
+        
         foreach ($booked_universities as $detail) {
-            $newBookingUnivDetails[] = $this->universityRepository->getUniversityById($detail['id'])->id;
-
+            $bookingDetail = $this->universityRepository->getUniversityById($detail['id']);
+            $newBookingUnivDetails[] = [
+                'univ_id' => $bookingDetail->id,
+                'question' => isset($detail->questions) ? $detail->questions : null
+            ];
         }
 
         DB::beginTransaction();
@@ -259,7 +263,26 @@ class RegisterController extends Controller
         }
 
         return response()->json(['message' => 'Update booking success.']);
-
-
     }
+
+    public function destroyProfile(Request $request)
+    {
+        $universityId = str_replace(' ', '-', $request->route('universityid'));
+        DB::beginTransaction();
+        try {
+
+            $this->universityRepository->deleteUniversity($universityId);
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            Log::error('Delete booked universities failed : '.$e->getMessage());
+            return response()->json(['message' => 'There was an error while canceling. Please try again.']);
+
+        }
+
+        return response()->json(['message' => 'Cancel university success.']);
+    }
+
 }

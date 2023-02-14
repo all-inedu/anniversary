@@ -35,18 +35,18 @@
                                 <div class="col">
                                     <div class="shadow position-relative uni-box-select w-100">
                                         <input type="checkbox" class="position-absolute top-0 left-0 uni-select"
-                                            id="uni_{{ $loop->index }}" value="{{ $university->uuid }}"
-                                            data-uni="{{ $university->name }}" onchange="select_uni()">
+                                            id="uni_{{ $loop->iteration }}" value="{{ $university->uuid }}"
+                                            data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->iteration }}')">
                                         <span class="checkmark"></span>
-                                        <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
+                                        <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer">
                                             <img src="{{ asset('storage/'.$university->thumbnail) }}" alt="" class="w-100">
                                             <div class="uni-box d-flex justify-content-between">
                                                 <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
                                                 <div class="">{{ date('h.i A', strtotime($university->time_start)) }}</div>
                                             </div>
 
-                                            <div class="book-overflow overflow-{{ $loop->index }} d-none"></div>
-                                            <h3 class="text-overflow overflow-{{ $loop->index }} d-none">
+                                            <div class="book-overflow overflow-{{ $loop->iteration }} d-none"></div>
+                                            <h3 class="text-overflow overflow-{{ $loop->iteration }} d-none">
                                                 <img src="{{asset('img/uni/BOOKED.webp')}}" alt="" class="w-100">
                                             </h3>
                                         </label>
@@ -58,6 +58,35 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Questions Modal -->
+    <div class="modal fade" id="questions_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">University Info Session</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="uni_id" hidden>
+                <input type="text" name="" id="uni_name" hidden>
+                <label for="" class="d-block">
+                    Question for the University
+                </label>
+                <small class="text-primary">Drop your question(s) for the university representatives (not
+                    mandatory)</small>
+                <textarea name="" cols="30" rows="5" class="form-control" id="uni_questions"></textarea>
+            </div>
+            <div class="modal-footer d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-secondary without-questions" data-bs-dismiss="modal"
+                    onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
+                <button type="button" class="btn btn-primary" onclick="submit_question(true)"><i
+                        class="bi bi-send"></i> Submit Questions</button>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -74,6 +103,77 @@
             @endforeach
         @endif
         localStorage.setItem('uni', JSON.stringify(selected_uni))
+
+        $("#uni_questions").on('keyup', function(e) {
+            var val = $(this).val();
+            if (val != null && val != ''){
+                $(".without-questions").hide();
+            } else {
+                $(".without-questions").show();
+            }
+        })
+
+        function submit_question(status) {
+            // select_uni()
+            let uni_checked = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+
+            // Add Questions 
+            let uni_id = $('#uni_id').val()
+            let uni_name = $('#uni_name').val()
+            let uni_questions = status ? $('#uni_questions').val() : ''
+
+            if (uni_checked.length > 0) {
+                let uni_index = uni_checked.findIndex(uni => uni.id === uni_id)
+                if (uni_index >= 0) {
+                    uni_checked[uni_index].id = uni_id
+                    uni_checked[uni_index].name = uni_name
+                    uni_checked[uni_index].questions = uni_questions
+                } else {
+                    let arr = {
+                        'id': uni_id,
+                        'name': uni_name,
+                        'questions': uni_questions
+                    }
+                    uni_checked.push(arr)
+                }
+            } else {
+                let arr = {
+                    'id': uni_id,
+                    'name': uni_name,
+                    'questions': uni_questions
+                }
+                uni_checked.push(arr)
+            }
+        
+
+            localStorage.setItem('uni', JSON.stringify(uni_checked))
+
+            $('#uni_id').val('')
+            $('#uni_name').val('')
+            $('#uni_questions').val('')
+            $('#questions_modal').modal('hide')
+            let message = status ? 'with questions' : 'without questions'
+            // toast('success', 'University info session successfully booked ' + message)
+
+            // AXIOS HERE ...
+            // Update book uni info session from localStorage  
+            axios.put("{{ route('user.update.profile', ['uuid' => Request::route('uuid')]) }}", {
+                booked: JSON.parse(localStorage.getItem('uni')),
+                _token: '{{ csrf_token() }}',
+                _method: 'put',
+            }).then(function (response) {
+                console.log(response)
+                notification('success', response.data.message)
+            }).catch(function (error) {
+                console.log(error)
+                notification('error', error.data.message)
+            })
+
+            
+            check_uni()
+
+            
+        }
 
         function check_uni() {
             
@@ -112,14 +212,47 @@
             });
         }
 
+        function check(element)
+        {
+            var isChecked = $(element).prop('checked')
+            if (isChecked == true)
+                $('#questions_modal').modal('show')
+        }
         
-        function select_uni() {
+        function select_uni(id = null) {
+
             let uni_checked = []
-            
+
             let uni_length = $('.uni-select').length
             let checked = $('.uni-select').is(":checked")
             // let uni_id =  $('#uni_'+id).val()
+
             $('#uni_list').html('');
+            // Add Questions 
+            if (id) {
+                let uni_id = $('#uni_' + id).is(":checked")
+                if (uni_id) {
+                    $('#questions_modal').modal('show')
+                    $('#staticBackdropLabel').html($('#uni_' + id).data('uni'))
+                    $('#uni_id').val($('#uni_' + id).val())
+                    $('#uni_name').val($('#uni_' + id).data('uni'))
+                } else {
+                    let uni_index = uni_select.findIndex(uni_id => uni_id.id === $('#uni_' + id).val());
+
+                    if (uni_index === -1) {
+                        console.log('id not found');
+                    } else {
+                        $('.overflow-' + id).addClass('d-none')
+                        uni_select.splice(uni_index, 1);
+
+                        toast('warning', 'University info session successfully canceled')
+                        localStorage.setItem('uni', JSON.stringify(uni_select))
+                        check_uni()
+                    }
+
+                }
+            }
+
             for (let i = 0; i < uni_length; i++) {
                 let checked = $('#uni_' + i).is(":checked")
                 
@@ -135,21 +268,6 @@
             }
 
             localStorage.setItem('uni', JSON.stringify(uni_checked))
-
-
-            // AXIOS HERE ...
-            // Update book uni info session from localStorage  
-            axios.put("{{ route('user.update.profile', ['uuid' => Request::route('uuid')]) }}", {
-                booked: JSON.parse(localStorage.getItem('uni')),
-                _token: '{{ csrf_token() }}',
-                _method: 'put',
-            }).then(function (response) {
-                // console.log(response)
-                notification('success', response.data.message)
-            }).catch(function (error) {
-                // console.log(error)
-                notification('error', error.data.message)
-            })
 
             check_uni()
         }
@@ -178,22 +296,18 @@
 
                     // AXIOS HERE ...
                     // Update book uni info session from localStorage
+                    var link = "{{ url('/') }}/user/" + id.replace(/-/g, "%20")
 
-                    let Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Cancellation has been successful',
+                    axios.delete(link, {
+                        booked: JSON.parse(localStorage.getItem('uni')),
+                        _token: '{{ csrf_token() }}',
+                        _method: 'delete',
+                    }).then(function (response) {
+                        // console.log(response)
+                        notification('success', response.data.message)
+                    }).catch(function (error) {
+                        // console.log(error)
+                        notification('error', error.data.message)
                     })
                 }
             })
@@ -214,7 +328,7 @@
             height: 100%;
             width: 100%;
             top: 0;
-            z-index: 1056;
+            z-index: 1055; # default 1056
         }
 
         .text-overflow {
