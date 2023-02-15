@@ -317,7 +317,8 @@
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="uni_title">University Info Session</h1>
-                    <button class="btn btn-sm btn-light" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
+                    <button class="btn btn-sm btn-light" data-bs-dismiss="modal" id="close_button"><i
+                        class="bi bi-x"></i></button>
                 </div>
                 <div class="modal-body">
                     <input type="text" name="" id="uni_type" hidden>
@@ -330,10 +331,10 @@
                         mandatory)</small>
                     <textarea name="" cols="30" rows="5" class="form-control" id="uni_questions"></textarea>
                 </div>
-                <div class="modal-footer d-flex justify-content-between align-items-center">
+                <div class="modal-footer d-flex justify-content-end align-items-center">
                     <button type="button" class="btn btn-secondary without-questions" data-bs-dismiss="modal"
                         onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
-                    <button type="button" class="btn btn-primary" onclick="submit_question(true)"><i
+                    <button type="button" class="btn btn-primary with-questions" onclick="submit_question(true)"><i
                             class="bi bi-send"></i> Submit Questions</button>
                 </div>
             </div>
@@ -522,12 +523,14 @@
         // console.log(uni_select);
     }
 
-    $("#uni_questions").on('keyup', function() {
+    $("#uni_questions").on('keyup', function(e) {
         var val = $(this).val();
         if (val != null && val != '') {
             $(".without-questions").hide();
+            $(".with-questions").show();
         } else {
             $(".without-questions").show();
+            $(".with-questions").hide();
         }
     })
 
@@ -584,11 +587,16 @@
         let uni = $('#question_' + id).data('info')
         // Add Questions 
         $('#questions_modal').modal('show')
+        $('#close_button').removeAttr('onclick')
         $('#uni_title').html(uni.name)
         $('#uni_id').val(uni.id)
         $('#uni_name').val(uni.name)
         $('#uni_type').val('edit')
         $('#uni_questions').val(uni.questions)
+        if (uni.questions) {
+            $(".without-questions").hide();
+            $(".with-questions").show();
+        }
     }
 
     function delete_uni(id) {

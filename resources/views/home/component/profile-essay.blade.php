@@ -57,7 +57,7 @@
                     <div class="col-md-6 col-12">
                         <div class="card mb-2 profile-timeline bg-primary">
                             <div class="card-body text-start py-1">
-                                <div class="row align-items-center">
+                                <div class="row align-items-center fw-bold">
                                     <div class="col-4">
                                         3 March
                                     </div>
@@ -70,7 +70,7 @@
 
                         <div class="card mb-2 profile-timeline bg-danger">
                             <div class="card-body text-start py-1">
-                                <div class="row align-items-center">
+                                <div class="row align-items-center fw-bold">
                                     <div class="col-4">
                                         25 March
                                     </div>
@@ -83,7 +83,7 @@
 
                         <div class="card mb-2 profile-timeline bg-primary">
                             <div class="card-body text-start py-1">
-                                <div class="row align-items-center">
+                                <div class="row align-items-center fw-bold">
                                     <div class="col-4">
                                         15 April
                                     </div>
@@ -195,14 +195,19 @@
     }
 
     .img-prize {
+        position: relative;
+        z-index: 1;
         transition: all 0.5s ease-in-out;
-        width: 82%;
-        /* border: 3px solid #fff; */
-        border-radius: 5px;
+        width: 98%;
+        border: 3px solid transparent;
+        border-radius: 17px;
+        background: #dedede;
     }
 
     .img-prize.active {
-        transform: scale(1.4)
+        z-index: 2;
+        transform: scale(1.2);
+        border: 3px solid #fff;
     }
 
     .profile-timeline .card-body {

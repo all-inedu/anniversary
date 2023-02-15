@@ -24,9 +24,11 @@
                                     data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->iteration }}')">
                                 <span class="checkmark"></span>
                                 <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer">
-                                    <div style="min-height:200px; max-height: 200px;" class="bg-light overflow-hidden d-flex text-center">
-                                        <img src="{{ isset($university->thumbnail) ? asset('storage/'.$university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}" onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
-                                            alt=""  class="uni-thumbnail">
+                                    <div style="min-height:200px; max-height: 200px;"
+                                        class="bg-light overflow-hidden d-flex text-center">
+                                        <img src="{{ isset($university->thumbnail) ? asset('storage/' . $university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}"
+                                            onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
+                                            alt="" class="uni-thumbnail">
                                     </div>
                                     <div class="uni-box d-flex justify-content-between">
                                         <div class="">{{ date('d F', strtotime($university->session_start)) }}
@@ -59,7 +61,8 @@
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">University Info Session</h1>
-                <button class="btn btn-sm btn-light" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
+                <button class="btn btn-sm btn-light" data-bs-dismiss="modal" id="close_button"><i
+                        class="bi bi-x"></i></button>
             </div>
             <div class="modal-body">
                 <input type="text" id="uni_id" hidden>
@@ -71,10 +74,10 @@
                     mandatory)</small>
                 <textarea name="" cols="30" rows="5" class="form-control" id="uni_questions"></textarea>
             </div>
-            <div class="modal-footer d-flex justify-content-between align-items-center">
+            <div class="modal-footer d-flex justify-content-end align-items-center">
                 <button type="button" class="btn btn-secondary without-questions" data-bs-dismiss="modal"
                     onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
-                <button type="button" class="btn btn-primary" onclick="submit_question(true)"><i
+                <button type="button" class="btn btn-primary with-questions" onclick="submit_question(true)"><i
                         class="bi bi-send"></i> Submit Questions</button>
             </div>
         </div>
@@ -120,10 +123,12 @@
 <script>
     $("#uni_questions").on('keyup', function(e) {
         var val = $(this).val();
-        if (val != null && val != ''){
+        if (val != null && val != '') {
             $(".without-questions").hide();
+            $(".with-questions").show();
         } else {
             $(".without-questions").show();
+            $(".with-questions").hide();
         }
     })
 
@@ -153,7 +158,7 @@
         // Add Questions 
         let uni_id = $('#uni_id').val()
         let uni_name = $('#uni_name').val()
-        let uni_questions = status ? $('#uni_questions').val() : ''
+        let uni_questions = status ? $('#uni_questions').val() : null
 
         if (uni_checked.length > 0) {
             let uni_index = uni_checked.findIndex(uni => uni.id === uni_id)
@@ -180,13 +185,20 @@
 
         $('#uni_id').val('')
         $('#uni_name').val('')
-        $('#uni_questions').val('')
+        $('#uni_questions').val(null)
         $('#questions_modal').modal('hide')
         let message = status ? 'with questions' : 'without questions'
         toast('success', 'University info session successfully booked ' + message)
 
         localStorage.setItem('uni', JSON.stringify(uni_checked))
         check_uni()
+    }
+
+    function cancel(id) {
+        $('.input-' + id).prop('checked', false)
+        $('#uni_id').val('')
+        $('#uni_name').val('')
+        $('#uni_questions').val(null)
     }
 
     function select_uni(id = null) {
@@ -203,6 +215,9 @@
                 $('#staticBackdropLabel').html($('#uni_' + id).data('uni'))
                 $('#uni_id').val($('#uni_' + id).val())
                 $('#uni_name').val($('#uni_' + id).data('uni'))
+                $('#close_button').attr('onclick', 'cancel(\'' + $('#uni_' + id).val() + '\')')
+                $(".without-questions").show();
+                $(".with-questions").hide();
             } else {
                 let uni_index = uni_select.findIndex(uni_id => uni_id.id === $('#uni_' + id).val());
 
@@ -245,10 +260,15 @@
         // console.log(uni);
         // Add Questions 
         $('#questions_modal').modal('show')
+        $('#close_button').removeAttr('onclick')
         $('#staticBackdropLabel').html(uni.name)
         $('#uni_id').val(uni.id)
         $('#uni_name').val(uni.name)
         $('#uni_questions').val(uni.questions)
+        if (uni.questions) {
+            $(".without-questions").hide();
+            $(".with-questions").show();
+        }
     }
 
     function tooltip() {
@@ -287,9 +307,11 @@
                         '<div>' +
                         '<i id="question_' + x +
                         '" class="bi bi-patch-question text-primary me-2" style="cursor: pointer"' +
-                        'onclick="edit_uni(' + x + ')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add or edit your question(s)"></i>' +
+                        'onclick="edit_uni(' + x +
+                        ')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add or edit your question(s)"></i>' +
                         '<i class="bi bi-trash2 text-danger" style="cursor: pointer" onclick="delete_uni(\'' +
-                        uni_select[x].id + '\')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cancel"></i>' +
+                        uni_select[x].id +
+                        '\')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cancel"></i>' +
                         '</div>' +
                         '</li>'
                     );

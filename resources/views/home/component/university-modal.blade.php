@@ -2,7 +2,7 @@
     @foreach ($universities as $university)
         <div class="col">
             <div class="shadow position-relative uni-box-select w-100">
-                <input type="checkbox" class="position-absolute top-0 left-0 uni-select" id="uni_{{ $loop->index }}"
+                <input type="checkbox" class="position-absolute top-0 left-0 uni-select input-{{$university->uuid}}" id="uni_{{ $loop->index }}"
                     value="{{ $university->uuid }}" data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->index }}')">
                 <span class="checkmark"></span>
                 <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
@@ -41,6 +41,9 @@
                 $('#uni_title').html($('#uni_' + id).data('uni'))
                 $('#uni_id').val($('#uni_' + id).val())
                 $('#uni_name').val($('#uni_' + id).data('uni'))
+                $('#close_button').attr('onclick', 'cancel(\'' + $('#uni_' + id).val() + '\')')
+                $(".without-questions").show();
+                $(".with-questions").hide();
             } else {
                 let uni_index = uni_select.findIndex(uni_id => uni_id.id === $('#uni_' + id).val());
 
@@ -59,6 +62,14 @@
 
             }
         }
+    }
+
+    function cancel(id) {
+        $('.input-' + id).prop('checked', false)
+        $('#uni_id').val('')
+        $('#uni_name').val('')
+        $('#uni_questions').val(null)
+        $('#univ_modal').modal('show')
     }
 
     function check_uni() {

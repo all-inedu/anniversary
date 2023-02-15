@@ -98,7 +98,7 @@
                 <div class="modal-footer d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-secondary without-questions" data-bs-dismiss="modal"
                         onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
-                    <button type="button" class="btn btn-primary" onclick="submit_question(true)"><i
+                    <button type="button" class="btn btn-primary with-questions" onclick="submit_question(true)"><i
                             class="bi bi-send"></i> Submit Questions</button>
                 </div>
             </div>
@@ -126,8 +126,10 @@
             var val = $(this).val();
             if (val != null && val != '') {
                 $(".without-questions").hide();
+                $(".with-questions").show();
             } else {
                 $(".without-questions").show();
+                $(".with-questions").hide();
             }
         })
 
@@ -280,13 +282,15 @@
                 let uni_id = $('#uni_' + id).is(":checked")
                 if (uni_id) {
                     let univ = $('#uni_' + id).data('uni')
-                    console.log(univ);
                     $('#questions_modal').modal('show')
                     $('#staticBackdropLabel').html(univ.name)
                     $('#uni_id').val($('#uni_' + id).val())
                     $('#uni_name').val(univ.name)
                     $('#uni_link').val(univ.link)
                     $('#uni_password').val(univ.password)
+                    $('#close_button').attr('onclick', 'cancel(\'' + $('#uni_' + id).val() + '\')')
+                    $(".without-questions").show();
+                    $(".with-questions").hide();
                 } else {
                     let uni_index = uni_select.findIndex(uni_id => uni_id.id === $('#uni_' + id).val());
 
@@ -317,6 +321,16 @@
             // check_uni()
         }
 
+        function cancel(id) {
+            $('.input-' + id).prop('checked', false)
+            $('#uni_id').val('')
+            $('#uni_name').val('')
+            $('#uni_questions').val(null)
+            $('#uni_link').val('')
+            $('#uni_password').val('')
+            $('#univ_modal').modal('show')
+        }
+
         function edit_uni(id) {
             let uni = $('#question_' + id).data('info')
             console.log(uni);
@@ -327,6 +341,10 @@
             $('#uni_name').val(uni.name)
             $('#uni_type').val('edit')
             $('#uni_questions').val(uni.questions)
+            if (uni.questions) {
+                $(".without-questions").hide();
+                $(".with-questions").show();
+            }
         }
 
         function delete_uni(id) {

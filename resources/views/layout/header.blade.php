@@ -80,6 +80,10 @@
             filter: blur(4px);
         }
 
+        .btn-lg {
+            font-size:18px;
+        }
+
         @media only screen and (max-width: 600px) {
             .btn-lg {
                 font-size: 14px !important;
@@ -88,13 +92,13 @@
         
 
         .uni-thumbnail {
-            width: 110%;
-            margin-left: -5%;
+            width: 100%;
             object-fit: cover;
             transition: all 0.9s ease;
         }
-        .uni-thumbnail:hover {
+        
+        /* .uni-thumbnail:hover {
             width: 115% !important;
-        }
+        } */
     </style>
 </head>

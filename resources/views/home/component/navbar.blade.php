@@ -16,8 +16,8 @@
                     <a class="nav-link" href="{{ url('/#ibdp') }}" id="ibdp-menu">IBDP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Request::is('scholarship') ? 'active' : '' }}"
-                        href="{{ url('/scholarship') }}">Scholarship                    </a>
+                    <a class="nav-link {{ Request::is('scholarship') ? 'active' : '' }}"
+                        href="{{ url('/scholarship') }}">Scholarship </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#profile-essay') }}" id="profile-essay-menu">Profile & Essay
@@ -69,6 +69,7 @@
 <style>
     #navbar_allin {
         transition: all 0.3s ease-in-out;
+
     }
 
     #navbar_allin.active .navbar-nav .nav-link {
@@ -81,6 +82,7 @@
 
     .nav-link {
         transition: all 0.2s ease-in-out;
+        font-weight: 600;
     }
 
     .nav-link.active {
@@ -92,15 +94,16 @@
         .navbar {
             background: white !important;
         }
+
         .navbar-nav {
             margin-top: 20px;
-        gap: 5px;
-        height: 80vh;
-    }
+            gap: 5px;
+            height: 80vh;
+        }
 
-    .nav-link {
-        padding: 5px 10px;
-    }
+        .nav-link {
+            padding: 5px 10px;
+        }
 
     }
 </style>

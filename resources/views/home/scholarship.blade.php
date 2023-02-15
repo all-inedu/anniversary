@@ -153,10 +153,7 @@
                                     requirements that include:
                                     <ul>
                                         <li>
-                                            Essay based on prompts given
-                                        </li>
-                                        <li>
-                                            Personal Statement
+                                            Essay or personal statement based on prompts given 
                                         </li>
                                         <li>
                                             Bank statement (in the last 3 months)
