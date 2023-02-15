@@ -24,31 +24,31 @@
                                 <div class="col-md-6 mb-2">
                                     <label for="">Full Name</label>
                                     <input type="text" name="fullname" class="form-control field field-1"
-                                        placeholder="Full Name" id="name" onchange="is_filled('name')">
+                                        placeholder="Full Name" id="name" onchange="is_filled('name')" value="{{ old('fullname') }}">
                                     <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <label for="">Phone Number</label>
                                     <input type="tel" name="phone_number" class="form-control field field-3"
-                                        placeholder="Phone Number" id="phone" onchange="validatePhoneNumber()">
+                                        placeholder="Phone Number" id="phone" onchange="validatePhoneNumber()" value="{{ old('phone_number') }}">
                                     <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <label for="">Email Address</label>
                                     <input type="email" name="email_address" class="form-control field field-2"
-                                        placeholder="Email" id="email" onchange="validate_email()">
+                                        placeholder="Email" id="email" onchange="validate_email()" value="{{ old('email_address') }}">
                                     <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <label for="">Confirm Email</label>
                                     <input type="email" name="email_confirm" class="form-control "
-                                        placeholder="Confirm Email" id="confirm_email" onchange="confirmEmail()">
+                                        placeholder="Confirm Email" id="confirm_email" onchange="confirmEmail()" value="{{ old('email_confirm') }}">
                                     <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="">Address</label>
                                     <textarea name="address" cols="30" rows="5" class="form-control field field-4" id="address"
-                                        onchange="is_filled('address')"></textarea>
+                                        onchange="is_filled('address')">{{ old('address') }}</textarea>
                                     <small class="text-warning"></small>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -56,7 +56,7 @@
                                     <div class="d-flex">
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="role" id="student" value="student"
-                                                class="radio-register" checked>
+                                                class="radio-register" @if (old('role') == "student") checked @elseif (!old('role')) checked @endif>
                                             <label for="student" class="">
                                                 <div class="radio-box">
                                                     Student
@@ -67,14 +67,14 @@
                                             <input type="radio" name="role" id="parent" value="parent"
                                                 class="radio-register">
                                             <label for="parent" class="">
-                                                <div class="radio-box">
+                                                <div class="radio-box" @if (old('role') == "parent") checked @endif>
                                                     Parent
                                                 </div>
                                             </label>
                                         </div>
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="role" id="teacher"
-                                                value="teacher/consellor" class="radio-register">
+                                                value="teacher/consellor" class="radio-register" @if (old('role') == "teacher/consellor") checked @endif>
                                             <label for="teacher" class="">
                                                 <div class="radio-box">
                                                     Teacher/Consellor
@@ -89,7 +89,7 @@
                                     <div class="d-flex">
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="uni_prep" id="yes" value="yes"
-                                                class="radio-register" checked>
+                                                class="radio-register" @if(old('uni_prep') == "yes") checked @elseif (!old('uni_prep')) checked @endif>
                                             <label for="yes" class="">
                                                 <div class="radio-box">
                                                     Yes
@@ -98,7 +98,7 @@
                                         </div>
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="uni_prep" id="no" value="no"
-                                                class="radio-register">
+                                                class="radio-register" @if (old('uni_prep') == "no") checked @endif>
                                             <label for="no" class="">
                                                 <div class="radio-box">
                                                     No
@@ -112,7 +112,7 @@
                                     <div class="d-flex">
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="first_time" id="firsttime_yes"
-                                                value="firsttime_" class="radio-register">
+                                                value="firsttime_" class="radio-register" @if (old('first_time') == "firsttime_") checked @endif>
                                             <label for="firsttime_yes" class="">
                                                 <div class="radio-box">
                                                     Yes
@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="first_time" id="firsttime_no" value="no"
-                                                class="radio-register" checked>
+                                                class="radio-register" @if (old('first_time') == "no") checked @elseif (!old('first_time')) checked @endif>
                                             <label for="firsttime_no" class="">
                                                 <div class="radio-box">
                                                     No
@@ -151,7 +151,7 @@
                                         id="grade" onchange="is_filled('grade')">
                                         <option></option>
                                         @for ($i = 7; $i <= 12; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
+                                            <option value="{{ $i }}" @if (old('grade') == $i) checked @endif>{{ $i }}</option>
                                         @endfor
                                         <option value="Not High School">Not High School</option>
                                     </select>
@@ -169,14 +169,14 @@
                                     <select name="school" class="select w-100 field field-2" id="school"
                                         onchange="checkOther('school')">
                                         <option></option>
-                                        <option value="Other">Other</option>
+                                        <option value="Other" @if(old('school') == 'Other') selected @endif>Other</option>
                                         @foreach ($schools as $school)
-                                            <option value="{{ $school->sch_name }}">{{ $school->sch_name }}</option>
+                                            <option value="{{ $school->sch_name }}" @if (old('school') == $school->sch_name) selected @endif>{{ $school->sch_name }}</option>
                                         @endforeach
                                     </select>
                                     <small class="text-warning"></small>
                                     <input type="text" name="school_other" class="form-control mt-1 d-none"
-                                        id="school_other">
+                                        id="school_other" value="{{ old('school_other') }}">
                                     <label class="text-info">Choose other if there are not your schools</label>
                                 </div>
                                 <div class="col-md-12 mb-2">
@@ -193,7 +193,7 @@
                                         id="country" onchange="is_filled('country')">
                                         <option></option>
                                         @foreach ($destinations as $destination)
-                                            <option value="{{ $destination->id }}">{{ $destination->name }}</option>
+                                            <option value="{{ $destination->id }}" @if (old('country') && in_array($destination->id, old('country'))) selected @endif>{{ $destination->name }}</option>
                                         @endforeach
                                     </select>
                                     <small class="text-warning"></small>
@@ -211,12 +211,12 @@
                                         <option></option>
                                         <option value="Other">Other</option>
                                         @foreach ($majors as $major)
-                                            <option value="{{ $major->id }}">{{ $major->name }}</option>
+                                            <option value="{{ $major->id }}" @if (old('major') && in_array($major->id, old('major'))) selected @endif>{{ $major->name }}</option>
                                         @endforeach
                                     </select>
                                     <small class="text-warning"></small>
                                     <input type="text" name="major_other" class="form-control mt-1 d-none"
-                                        id="major_other">
+                                        id="major_other" value="{{old('major_other')}}">
                                     <label class="text-info">You can choose more than one and Choose other if
                                         there
                                         are not your intended major</label>
@@ -226,14 +226,14 @@
                                     <select name="lead" class="select w-100 field field-5" id="lead"
                                         onchange="checkOther('lead')">
                                         <option></option>
-                                        <option value="Other">Other</option>
+                                        <option value="Other" @if (old('lead') == 'Other') selected @endif>Other</option>
                                         @foreach ($leads as $lead)
-                                            <option value="{{ $lead->id }}">{{ $lead->name }}</option>
+                                            <option value="{{ $lead->id }}" @if (old('lead') == $lead->id) selected @endif >{{ $lead->name }}</option>
                                         @endforeach
                                     </select>
                                     <small class="text-warning"></small>
                                     <input type="text" name="lead_other" class="form-control mt-1 d-none"
-                                        id="lead_other">
+                                        id="lead_other" value="{{ old('lead_other') }}">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="" class="label-role student">Whats your biggest
@@ -248,14 +248,14 @@
                                     <select name="challenge" class="select w-100 field field-6" id="challenge"
                                         onchange="checkOther('challenge')">
                                         <option></option>
-                                        <option value="Other">Other</option>
+                                        <option value="Other" @if(old('challenge') == 'Other') selected @endif>Other</option>
                                         @foreach ($challenges as $challenge)
-                                            <option value="{{ $challenge->id }}">{{ $challenge->name }}</option>
+                                            <option value="{{ $challenge->id }}" @if (old('challenge') == $challenge->id) selected @endif >{{ $challenge->name }}</option>
                                         @endforeach
                                     </select>
                                     <small class="text-warning"></small>
                                     <input type="text" name="challenge_other" class="form-control mt-1 d-none"
-                                        id="challenge_other">
+                                        id="challenge_other" value="{{ old('challenge_other') }}">
                                 </div>
                             </div>
                             <hr>
@@ -341,9 +341,9 @@
     </div>
 </div>
 <script>
-    $('input[type=radio][name=role]').change(function() {
+    function check_role(val)
+    {
         $('.label-role').addClass('d-none')
-        let val = this.value
         if (val == 'student') {
             $('.label-role.student').removeClass('d-none')
             $('#grade_input').removeClass('d-none')
@@ -357,6 +357,34 @@
             $('#grade_input').addClass('d-none')
             $('#major_input').addClass('d-none')
         }
+    }
+
+    @if (old('role'))
+        check_role('{{ old('role') }}')
+    @endif
+
+    @if (old('school') == 'Other')
+        checkOther('school')
+    @endif
+
+    @if (old('lead') == 'Other')
+        checkOther('lead')
+    @endif
+
+    @if (old('major') && in_array('Other', old('major')))
+        checkOther('major')
+    @endif
+
+    @if (old('challenge') == 'Other')
+        checkOther('challenge')
+    @endif
+
+    
+
+    $('input[type=radio][name=role]').change(function() {
+        $('.label-role').addClass('d-none')
+        let val = this.value
+        check_role(val)
     });
 
     function is_filled(id) {
@@ -488,6 +516,7 @@
             }
 
             if (array.length == 0) {
+                localStorage.setItem('old_uni', localStorage.getItem('uni'))
                 localStorage.setItem('uni', '')
                 $('#register_form').submit()
             }
@@ -498,8 +527,11 @@
     }
 
     function selected_uni() {
-        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
-
+        @if (old('uni_select'))
+            let uni_select = localStorage.getItem('old_uni') ? JSON.parse(localStorage.getItem('old_uni')) : []
+        @else
+            let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+        @endif
         $('#uni_box').html('')
         uni_select.forEach((uni, x) => {
             let data = JSON.stringify(uni)
@@ -518,7 +550,11 @@
             )
             $('#question_' + x).attr('data-info', data);
         });
-        $('#uni_textarea').html(localStorage.getItem('uni'))
+        @if (old('uni_select'))
+            $('#uni_textarea').html(localStorage.getItem('old_uni'))
+        @else
+            $('#uni_textarea').html(localStorage.getItem('uni'))
+        @endif
         // console.log(uni_select);
     }
 

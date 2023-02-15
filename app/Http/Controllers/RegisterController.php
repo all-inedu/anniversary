@@ -93,13 +93,13 @@ class RegisterController extends Controller
                 // $major_rules
             ],
             'major_other' => 'required_if:major,Other',
-            'lead' => 'required|exists:tbl_lead_source,id',
-            'challenge' => 'required|exists:tbl_biggest_challenge,id',
+            // 'lead' => 'required|exists:tbl_lead_source,id',
+            // 'challenge' => 'required|exists:tbl_biggest_challenge,id',
         ];
 
         $validate = Validator::make($request->all(), $rules);
         if ($validate->fails()) {
-            return Redirect::back()->withErrors($validate->errors());
+            return Redirect::back()->withInput($request->input())->withErrors($validate->errors());
         }
 
         $clientDetails = $request->only([
@@ -178,7 +178,8 @@ class RegisterController extends Controller
 
             DB::rollBack();
             Log::error('Registration client failed : '.$e->getMessage());
-            return Redirect::back()->withError('There was an error while registering. Please try again.');
+
+            return Redirect::back()->withInput($request->input())->withError('There was an error while registering. Please try again.');
 
         }
 
