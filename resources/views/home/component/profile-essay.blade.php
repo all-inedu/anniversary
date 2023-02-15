@@ -37,15 +37,15 @@
                 <div class="row align-items-center row-cols-md-3 row-cols-1 g-1">
                     <div class="col text-center" id="prize3">
                         <img src="{{ asset('img/live-profile/LPER_Master applicant guidance.webp') }}" alt=""
-                            class="img-prize" onmouseover="prizeActive(3)">
+                            class="img-prize">
                     </div>
                     <div class="col text-center" id="prize1">
                         <img src="{{ asset('img/live-profile/LPER_scholarship passion mentoring.webp') }}"
-                            alt="" class="img-prize active" onmouseover="prizeActive(1)">
+                            alt="" class="img-prize active">
                     </div>
-                    <div class="col text-center" id="prize2">
+                    <div class="col text-center" id="1">
                         <img src="{{ asset('img/live-profile/LPER_Career _ personality test by jurusanku.webp') }}"
-                            alt="" class="img-prize" onmouseover="prizeActive(2)">
+                            alt="" class="img-prize">
                     </div>
                 </div>
             </div>
@@ -111,9 +111,9 @@
                             <div class="card-body text-start px-md-5">
                                 <p>
                                     Choose one of the writing prompts from the list below and write your essay!
-                                 <strong>
-                                    (Maximum words: 650)
-                                 </strong>  
+                                    <strong>
+                                        (Maximum words: 650)
+                                    </strong>
                                 </p>
                                 <ul>
                                     <li>
@@ -173,10 +173,22 @@
     </div>
 </div>
 <script>
-    function prizeActive(id) {
-        $('.img-prize').removeClass('active')
-        $('#prize' + id + ' .img-prize').addClass('active')
-    }
+    // function prizeActive(id) {
+    //     $('.img-prize').removeClass('active')
+    //     $('#prize' + id + ' .img-prize').addClass('active')
+    // }
+
+    $('.img-prize').hover(
+        function() {
+            $('.img-prize').removeClass('active')
+            $(this).addClass('active')
+        },
+        function() {
+            $('.img-prize').removeClass('active')
+            $('#prize1 .img-prize').addClass('active')
+        }
+
+    )
 </script>
 <style>
     #profile-essay {
@@ -198,7 +210,7 @@
         position: relative;
         z-index: 1;
         transition: all 0.5s ease-in-out;
-        width: 98%;
+        width: 88%;
         border: 3px solid transparent;
         border-radius: 17px;
         background: #dedede;
@@ -206,7 +218,7 @@
 
     .img-prize.active {
         z-index: 2;
-        transform: scale(1.2);
+        transform: scale(1.3);
         border: 3px solid #fff;
     }
 
