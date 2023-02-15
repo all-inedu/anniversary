@@ -121,6 +121,7 @@
 </div>
 
 <script>
+    localStorage.setItem('old_uni', '')
     $("#uni_questions").on('keyup', function(e) {
         var val = $(this).val();
         if (val != null && val != '') {
