@@ -129,6 +129,7 @@ class RegisterController extends Controller
         $majors = $request->major;
 
         $university_booked = json_decode($request->uni_select);
+        return $request->input();
 
         DB::beginTransaction();
         try {            

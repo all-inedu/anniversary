@@ -74,6 +74,16 @@
 
     function check_uni() {
         let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+
+        @if (old('uni_select'))
+            if (uni_select.length == 0) {
+                localStorage.setItem('uni', localStorage.getItem('old_uni'))
+                localStorage.removeItem('old_uni')
+                uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+            }
+        @endif
+
+
         let uni_length = $('.uni-select').length
 
         for (let i = 0; i < uni_length; i++) {

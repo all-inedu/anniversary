@@ -17,7 +17,7 @@
                     @endif
                     <form action="{{ route('register.store') }}" id="register_form" method="POST" class="mb-3">
                         @csrf
-                        <textarea name="uni_select" id="uni_textarea" hidden></textarea>
+                        <textarea name="uni_select" id="uni_textarea" hidden>{{ old('uni_select') }}</textarea>
                         <section class="active" id="section_1">
                             <div class="row g-2">
                                 <div class="col-md-6 mb-2">
@@ -547,11 +547,17 @@
     }
 
     function selected_uni() {
+
+        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+
         @if (old('uni_select'))
-            let uni_select = localStorage.getItem('old_uni') ? JSON.parse(localStorage.getItem('old_uni')) : []
-        @else
-            let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+            if (uni_select.length == 0) {
+                localStorage.setItem('uni', localStorage.getItem('old_uni'))
+                localStorage.removeItem('old_uni')
+                uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+            }
         @endif
+
         $('#uni_box').html('')
         uni_select.forEach((uni, x) => {
             let data = JSON.stringify(uni)
@@ -570,12 +576,8 @@
             )
             $('#question_' + x).attr('data-info', data);
         });
-        @if (old('uni_select'))
-            $('#uni_textarea').html(localStorage.getItem('old_uni'))
-        @else
-            $('#uni_textarea').html(localStorage.getItem('uni'))
-        @endif
-        // console.log(uni_select);
+
+        $('#uni_textarea').html(localStorage.getItem('uni'))
     }
 
     $("#uni_questions").on('keyup', function(e) {

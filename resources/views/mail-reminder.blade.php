@@ -423,7 +423,7 @@
                                             <p>
                                                 We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
                                             </p>
-                                            <button class="btn btn-warning">Uni Prep Talk</button>
+                                            <button class="btn btn-primary">Uni Prep Talk</button>
                                             <br><br>
                                             <p>
                                                 We are excited to have you join us and we believe that these sessions will be a valuable opportunity for you to learn more about our university and get ready for your academic journey.

@@ -33,11 +33,12 @@ class Reminder extends Command
      */
     public function handle()
     {
-        $bookings = Booking::leftJoin('tbl_booking_univ', 'tbl_booking_univ.booking_id', '=', 'tbl_booking.id')->
-            leftJoin('tbl_university', 'tbl_university.id', '=', 'tbl_booking_univ.univ_id')->
-            whereRaw('DATEDIFF(session_start, now()) = ?', [3])->get();
-
         try {
+            Log::info('Cron is work fine');
+
+            $bookings = Booking::where('total_booked_univ', '>', 0)->where('reminder', '=', 0)->whereHas('university', function ($query) {
+                $query->whereRaw('DATEDIFF(session_start, now()) =?', [3]);
+            })->get();
 
             foreach ($bookings as $booking) {
 
@@ -49,12 +50,16 @@ class Reminder extends Command
                         'name' => $booking->client->fullname
                     ],
                 ]);
+
+                $booking->reminder = 1;
+                $booking->save();
+            
                 Log::info('Email reminder to '.$booking->client->email_address);
             }
 
         } catch (Exception $e) {
             
-            Log::error($e->getMessage());
+            Log::error('Cron is not working : '.$e->getMessage());
 
         }
 

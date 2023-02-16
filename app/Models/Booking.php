@@ -20,7 +20,8 @@ class Booking extends Model
         'client_id',
         'join_anniv',
         'booking_date',
-        'total_booked_univ'
+        'total_booked_univ',
+        'reminder',
     ];
 
     public function client()
