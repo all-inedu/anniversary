@@ -366,6 +366,7 @@
 </head>
 
 <body>
+    <img src="{{ asset('img/email.webp') }}" alt="Annifest 2023">
     <span class="preheader">You’re now signed up and ready to go!</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
         <tr>

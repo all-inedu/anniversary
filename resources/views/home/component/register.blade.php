@@ -120,7 +120,7 @@
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="first_time" id="firsttime_yes"
                                                 value="firsttime_" class="radio-register"
-                                                @if (old('first_time') == 'firsttime_') checked @endif>
+                                                @if (old('first_time') == 'firsttime_') checked @elseif (!old('first_time')) checked @endif>
                                             <label for="firsttime_yes" class="">
                                                 <div class="radio-box">
                                                     Yes
@@ -130,7 +130,7 @@
                                         <div class="position-relative mx-1">
                                             <input type="radio" name="first_time" id="firsttime_no" value="no"
                                                 class="radio-register"
-                                                @if (old('first_time') == 'no') checked @elseif (!old('first_time')) checked @endif>
+                                                @if (old('first_time') == 'no') checked @endif>
                                             <label for="firsttime_no" class="">
                                                 <div class="radio-box">
                                                     No

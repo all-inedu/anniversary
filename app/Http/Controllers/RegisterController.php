@@ -70,7 +70,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        $school_rules = $request->school == 'Other' ? null : 'exists:mysql_crm.u5794939_allin_bd.tbl_sch,sch_name';
+        // $school_rules = $request->school == 'Other' ? null : 'exists:mysql_crm.u5794939_allin_bd.tbl_sch,sch_name';
         // $major_rules = in_array('Other', $request->major) ? null : 'exists:tbl_major,id';
 
 
@@ -84,7 +84,7 @@ class RegisterController extends Controller
             'grade' => 'required_if:role,student,parent',
             'school' => [
                 'required_if:role,student,parent',
-                $school_rules
+                // $school_rules
             ],
             'school_other' => 'required_if:school,Other',
             'country.*' => 'exists:tbl_destination,id',
@@ -129,7 +129,6 @@ class RegisterController extends Controller
         $majors = $request->major;
 
         $university_booked = json_decode($request->uni_select);
-        return $request->input();
 
         DB::beginTransaction();
         try {            
