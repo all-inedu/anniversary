@@ -19,7 +19,7 @@
 
 {{-- Loading when load document --}}
 <script>
-    $(document).ready(function() {
+    window.addEventListener("load", function() {
         let percentage = $('#percentage')
         let progressBar = $("#progress");
         let percentVal = 0;
