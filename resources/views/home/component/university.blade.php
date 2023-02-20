@@ -19,11 +19,12 @@
                         <div class="col">
                             <div class="shadow position-relative uni-box-select w-100">
                                 <input type="checkbox"
-                                    class="position-absolute top-0 left-0 uni-select input-{{ $university->uuid }}"
+                                    class="position-absolute top-0 left-0 uni-select  input-{{ $university->uuid }}"
                                     id="uni_{{ $loop->iteration }}" value="{{ $university->uuid }}"
                                     data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->iteration }}')">
                                 <span class="checkmark"></span>
-                                <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer">
+                                <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose this university">
                                     <div style="min-height:200px; max-height: 200px;"
                                         class="bg-light overflow-hidden d-flex text-center">
                                         <img src="{{ isset($university->thumbnail) ? asset('storage/' . $university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}"
@@ -91,8 +92,8 @@
         <div class="d-flex align-items-center" style="font-weight: 300;">
             <div class="position-relative">
                 <i class="bi bi-calendar-check text-white" style="font-size:1.7em"></i>
-                <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger" style="top:3px;"
-                    id="uni_count">
+                <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
+                    style="top:3px;" id="uni_count">
                     0
                 </span>
             </div>
@@ -225,12 +226,26 @@
                 if (uni_index === -1) {
                     console.log('id not found');
                 } else {
-                    $('.overflow-' + id).addClass('d-none')
-                    uni_select.splice(uni_index, 1);
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to cancel this university info session",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#233872',
+                        cancelButtonColor: '#BE1E2D',
+                        confirmButtonText: 'Yes, Cancel!',
+                        cancelButtonText: 'No',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#uni_' + id).siblings('label').attr('data-bs-title', 'Choose this university')
+                            $('.overflow-' + id).addClass('d-none')
+                            uni_select.splice(uni_index, 1);
 
-                    toast('warning', 'University info session successfully canceled')
-                    localStorage.setItem('uni', JSON.stringify(uni_select))
-                    check_uni()
+                            toast('warning', 'University info session successfully canceled')
+                            localStorage.setItem('uni', JSON.stringify(uni_select))
+                            check_uni()
+                        }
+                    })
                 }
 
             }
@@ -239,21 +254,36 @@
     }
 
     function delete_uni(id) {
-        let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
-        let uni_index = uni_select.findIndex(uni_id => uni_id.id === id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to cancel this university info session",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#233872',
+            cancelButtonColor: '#BE1E2D',
+            confirmButtonText: 'Yes, Cancel!',
+            cancelButtonText: 'No',
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        if (uni_index === -1) {
-            console.log('id not found');
-        } else {
-            $('.input-' + id).prop('checked', false)
-            $('.overflow-' + id).addClass('d-none')
-            uni_select.splice(uni_index, 1);
+                let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
+                let uni_index = uni_select.findIndex(uni_id => uni_id.id === id);
 
-            toast('warning', 'University info session successfully canceled')
-            localStorage.setItem('uni', JSON.stringify(uni_select))
-        }
+                if (uni_index === -1) {
+                    console.log('id not found');
+                } else {
+                    $('.input-' + id).prop('checked', false)
+                    $('.input-' + id).siblings('label').attr('data-bs-title', 'Choose this university')
+                    $('.overflow-' + id).addClass('d-none')
+                    uni_select.splice(uni_index, 1);
 
-        check_uni()
+                    toast('warning', 'University info session successfully canceled')
+                    localStorage.setItem('uni', JSON.stringify(uni_select))
+                }
+
+                check_uni()
+            }
+        })
     }
 
     function edit_uni(id) {
@@ -299,11 +329,13 @@
             for (let x = 0; x < uni_select?.length; x++) {
                 if (value == uni_select[x].id) {
                     $('#uni_' + i).prop('checked', true)
+                    $('#uni_' + i).siblings('label').attr('data-bs-title', 'Cancel this university')
                     $('.overflow-' + i).removeClass('d-none')
                     let data = JSON.stringify(uni_select[x])
                     $('#uni_list').append(
                         '<li class="d-flex justify-content-between align-items-center" >' +
-                        '<div class=""><i class="bi bi-check-circle-fill text-success me-2"></i>' + uni_select[x]
+                        '<div class=""><i class="bi bi-check-circle-fill text-success me-2"></i>' + uni_select[
+                            x]
                         .name + '</div>' +
                         '<div>' +
                         '<i id="question_' + x +

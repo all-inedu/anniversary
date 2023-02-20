@@ -48,7 +48,7 @@ class ClientRepository implements ClientRepositoryInterface
 
     public function findByEmail($email)
     {
-        return Client::where('email', $email)->first();
+        return Client::where('email_address', $email)->first();
     }
 
     public function registerClient(array $clientDetails)

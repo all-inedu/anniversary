@@ -41,7 +41,7 @@
                                         <span class="checkmark"></span>
                                         <label for="uni_{{ $loop->iteration }}" class="d-block" style="cursor: pointer"
                                             data-bs-toggle="tooltip" data-bs-placement="top"
-                                            data-bs-title="Choose university">
+                                            data-bs-title="Choose this university">
                                             <div style="min-height:150px; max-height: 150px;"
                                                 class="bg-light overflow-hidden d-flex align-items-center">
                                                 <img src="{{ isset($university->thumbnail) ? asset('storage/' . $university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}"
@@ -81,7 +81,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">University Info Session</h1>
-                    <button class="btn btn-sm btn-light" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
+                    <button class="btn btn-sm btn-light" data-bs-dismiss="modal" id="close_button"><i class="bi bi-x"></i></button>
                 </div>
                 <div class="modal-body">
                     <input type="text" id="uni_id" hidden>
@@ -95,7 +95,7 @@
                         mandatory)</small>
                     <textarea name="" cols="30" rows="5" class="form-control" id="uni_questions"></textarea>
                 </div>
-                <div class="modal-footer d-flex justify-content-between align-items-center">
+                <div class="modal-footer d-flex justify-content-end align-items-center">
                     <button type="button" class="btn btn-secondary without-questions" data-bs-dismiss="modal"
                         onclick="submit_question(false)"><i class="bi bi-x"></i> Without Questions</button>
                     <button type="button" class="btn btn-primary with-questions" onclick="submit_question(true)"><i
@@ -224,6 +224,8 @@
                 for (let x = 0; x < uni_select.length; x++) {
                     if (value == uni_select[x].id) {
                         $('#uni_' + i).prop('checked', true)
+                        $('#uni_' + i).siblings('label').attr('data-bs-title', 'Cancel this university')
+                        tooltip()
                         $('.overflow-' + i).removeClass('d-none')
                     }
                 }
@@ -253,7 +255,7 @@
                     '</div>' +
                     '<div class="d-flex justify-content-between align-items-center">' +
                     '<small class="text-muted"><i class="bi bi-link me-1"></i>  <a href="' + uni.link +
-                    '" class="text-decoration-none text-muted">Join Now</a></small>' +
+                    '" class="text-decoration-none text-muted" target="_blank">Join Now</a></small>' +
                     '<small class="text-muted"><i class="bi bi-key me-1"></i> ' + uni.password + '</small>' +
                     '</li>'
                 )
@@ -303,22 +305,6 @@
 
                 }
             }
-
-            // for (let i = 0; i < uni_length; i++) {
-            //     let checked = $('#uni_' + i).is(":checked")
-
-            //     if (checked) {
-            //         let arr = {
-            //             'id': $('#uni_' + i).val(),
-            //             'name': $('#uni_' + i).data('uni')
-            //         }
-            //         uni_checked.push(arr)
-            //     } else {
-            //         $('.overflow-' + i).addClass('d-none')
-            //     }
-            // }
-            // localStorage.setItem('uni', JSON.stringify(uni_checked))
-            // check_uni()
         }
 
         function cancel(id) {
@@ -361,11 +347,12 @@
             }).then((result) => {
                 if (result.isConfirmed) {
 
+                    $('.input-' + id).siblings('label').attr('data-bs-title', 'Choose this university')
                     let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : null
                     let myArray = uni_select.filter(function(obj) {
                         return obj.id !== id;
                     });
-
+                    
                     localStorage.setItem('uni', JSON.stringify(myArray))
                     check_uni()
                     select_uni()
@@ -373,22 +360,22 @@
                     // AXIOS HERE ...
                     // Update book uni info session from localStorage
                     var link = "{{ url('/') }}/user/" + '{{ $client->uuid }}'
-
+                    
                     axios.put(link, {
                         booked: JSON.parse(localStorage.getItem('uni')),
                         _token: '{{ csrf_token() }}',
                         _method: 'put',
                     }).then(function(response) {
-                        console.log(response)
                         notification('success', response.data.message)
                     }).catch(function(error) {
-                        console.log(error)
                         notification('error', error.data.message)
                     })
                 } else {
                     $('.input-' + id).prop('checked', true)
+                    $('.input-' + id).siblings('label').attr('data-bs-title', 'Cancel this university')
                     $('.overflow-' + id).removeClass('d-none')
                 }
+                tooltip()
             })
         }
 

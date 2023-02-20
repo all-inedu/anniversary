@@ -2,13 +2,17 @@
     @foreach ($universities as $university)
         <div class="col">
             <div class="shadow position-relative uni-box-select w-100">
-                <input type="checkbox" class="position-absolute top-0 left-0 uni-select input-{{$university->uuid}}" id="uni_{{ $loop->index }}"
-                    value="{{ $university->uuid }}" data-uni="{{ $university->name }}" onchange="select_uni('{{ $loop->index }}')">
+                <input type="checkbox" class="position-absolute top-0 left-0 uni-select input-{{ $university->uuid }}"
+                    id="uni_{{ $loop->index }}" value="{{ $university->uuid }}" data-uni="{{ $university->name }}"
+                    onchange="select_uni('{{ $loop->index }}')">
                 <span class="checkmark"></span>
-                <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer">
-                    <div style="min-height:150px; max-height: 150px;" class="bg-light overflow-hidden d-flex align-items-center">
-                        <img src="{{ isset($university->thumbnail) ? asset('storage/'.$university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}" onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
-                            alt=""  class="uni-thumbnail">
+                <label for="uni_{{ $loop->index }}" class="d-block" style="cursor: pointer" data-bs-toggle="tooltip"
+                    data-bs-placement="top" data-bs-title="Choose this university">
+                    <div style="min-height:150px; max-height: 150px;"
+                        class="bg-light overflow-hidden d-flex align-items-center">
+                        <img src="{{ isset($university->thumbnail) ? asset('storage/' . $university->thumbnail) : 'https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png' }}"
+                            onerror="this.onerror=null; this.src='https://lightwidget.com/wp-content/uploads/local-file-not-found-480x488.png'"
+                            alt="" class="uni-thumbnail">
                     </div>
                     <div class="uni-box d-flex justify-content-between">
                         <div class="">{{ date('d F', strtotime($university->session_start)) }}</div>
@@ -26,6 +30,11 @@
 </div>
 
 <script>
+    function tooltip() {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    }
+
     function select_uni(id) {
         let uni_select = localStorage.getItem('uni') ? JSON.parse(localStorage.getItem('uni')) : []
 
@@ -50,14 +59,29 @@
                 if (uni_index === -1) {
                     console.log('id not found');
                 } else {
-                    $('.overflow-' + id).addClass('d-none')
-                    uni_select.splice(uni_index, 1);
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to cancel this university info session",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#233872',
+                        cancelButtonColor: '#BE1E2D',
+                        confirmButtonText: 'Yes, Cancel!',
+                        cancelButtonText: 'No',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#uni_' + id).siblings('label').attr('data-bs-title', 'Choose this university')
+                            tooltip()
+                            $('.overflow-' + id).addClass('d-none')
+                            uni_select.splice(uni_index, 1);
 
-                    toast('warning', 'University info session successfully canceled')
-                    localStorage.setItem('uni', JSON.stringify(uni_select))
+                            toast('warning', 'University info session successfully canceled')
+                            localStorage.setItem('uni', JSON.stringify(uni_select))
 
-                    selected_uni()
-                    check_uni()
+                            selected_uni()
+                            check_uni()
+                        }
+                    })
                 }
 
             }
@@ -96,6 +120,8 @@
             let value = $('#uni_' + i).val()
             for (let x = 0; x < uni_select.length; x++) {
                 if (value == uni_select[x].id) {
+                    $('#uni_' + i).siblings('label').attr('data-bs-title', 'Cancel this university')
+                    tooltip()
                     $('#uni_' + i).prop('checked', true)
                     $('.overflow-' + i).removeClass('d-none')
                 }

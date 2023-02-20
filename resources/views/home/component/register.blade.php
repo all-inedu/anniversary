@@ -5,6 +5,7 @@
                 <div class="bg-primary p-4 shadow text-white rounded">
 
                     <h4 class="text-warning fw-bold">Fill The Information</h4>
+                    <p class="text-white" id="email_exist"></p>
                     <hr>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -454,9 +455,32 @@
             $('#email').siblings('small').html('Please, fill in the correct email')
             return false
         } else {
-            $('#email').removeClass('is-invalid').addClass('is-valid')
-            $('#email').siblings('small').html('')
-            return true
+            let url = '{{ url('check/mail') }}'
+
+
+            axios.post(url, {
+                    email_address: email
+                })
+                .then(function(response) {
+                    // handle success
+                    if (response.data.data) {
+                        $('#email').removeClass('is-valid').addClass('is-invalid')
+                        $('#email').siblings('small').html('Email already taken')
+                        $('#email_exist').html(
+                            'Your email is already taken, Click <a href="{{ url("user") }}/'+response.data.data+'" class="text-warning" target="_blank"> here </a> to make changes on your booked seats!'
+                        )
+                    } else {
+                        $('#email').removeClass('is-invalid').addClass('is-valid')
+                        $('#email').siblings('small').html('')
+                        $('#email_exist').html('')
+                        return true
+                    }
+                    // return true
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error.response);
+                })
         }
     }
 
@@ -636,8 +660,8 @@
 
         localStorage.setItem('uni', JSON.stringify(uni_checked))
 
-        check_uni()
         selected_uni()
+        check_uni()
     }
 
     function edit_uni(id) {
@@ -673,6 +697,9 @@
                 let myArray = uni_select.filter(function(obj) {
                     return obj.id !== id;
                 });
+
+                $('.input-' + id).siblings('label').attr('data-bs-title', 'Choose this university')
+                tooltip()
 
                 toast('success', 'Cancellation has been successful')
                 localStorage.setItem('uni', JSON.stringify(myArray))

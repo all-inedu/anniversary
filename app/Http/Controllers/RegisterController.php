@@ -298,7 +298,7 @@ class RegisterController extends Controller
     {
         $email = $request->email_address;
         if (!$user = $this->clientRepository->findByEmail($email)) {
-            return response()->json(['message' => 'Email not found.']);
+            return response()->json(['data' => null]);
         }
 
         return response()->json(['data' => $user->uuid]);
