@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ANNIFEST 2023</title>
 
-    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -34,7 +34,7 @@
     <style>
         body {
             background: #DAEAF4;
-            background: url("{{asset('/img/home/bg.png')}}");
+            background: url("{{ asset('/img/home/bg.png') }}");
             background-position: center center;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -82,22 +82,65 @@
         }
 
         .btn-lg {
-            font-size:18px;
+            font-size: 18px;
         }
+
+        .loading {
+            width: 300px;
+            height: 75px;
+            background: white;
+            position: fixed;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999999;
+            padding: 10px 20px;
+            border-radius: 15px;
+        }
+
+        #loading-bar {
+            position: relative;
+            width: 100%;
+            height: 10px;
+            border-radius:5px !important; 
+            background-color: #eee;
+            z-index: 80;
+        }
+
+        #progress {
+            position: relative;
+            width: 0%;
+            height: 100%;
+            border-radius:5px !important; 
+            background-color: #FAAF40;
+        }
+
+        .loading-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #434242db;
+            z-index: 9999998;
+        }
+
 
         @media only screen and (max-width: 600px) {
             .btn-lg {
                 font-size: 14px !important;
             }
         }
-        
+
 
         .uni-thumbnail {
             width: 100%;
             object-fit: cover;
             transition: all 0.9s ease;
         }
-        
+
         /* .uni-thumbnail:hover {
             width: 115% !important;
         } */

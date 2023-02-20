@@ -25,7 +25,7 @@
                         </div>
                         <div class="col">
                             <img src="{{ asset('img/scholarship/scholarship_pm.webp') }}" alt="" class="w-100">
-                            <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
+                            <a href="https://bit.ly/Profile-Essay_Submission2023" target="_blank"
                                 class="btn btn-lg btn-block w-100 btn-warning mt-3 text-dark fw-bold">APPLY NOW</a>
                         </div>
                     </div>
@@ -196,8 +196,6 @@
                             </div>
                         </div>
                     </div>
-                    <a href="https://forms.gle/kbBAfemjG1gm9HoR8" target="_blank"
-                        class="btn btn-lg btn-block w-100 btn-warning text-dark fw-bold mt-3">APPLY FOR SCHOLARSHIP HERE</a>
                 </div>
             </div>
         </div>

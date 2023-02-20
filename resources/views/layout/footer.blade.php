@@ -19,21 +19,23 @@
 
 {{-- Loading when load document --}}
 <script>
-    Swal.fire({
-        html: "<img src='{{ asset('img/logo-allin.png') }}' class='w-75' />",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        background: '#fff',
-        color: '#fff',
-        width: 300,
-        didOpen: () => {
-            Swal.showLoading()
-        }
+    $(document).ready(function() {
+        let percentage = $('#percentage')
+        let progressBar = $("#progress");
+        let percentVal = 0;
+        let interval = setInterval(function() {
+            percentVal += 1;
+            progressBar.css("width", percentVal + "%");
+            percentage.html(percentVal + "%")
+            if (percentVal == 100) {
+                clearInterval(interval);
+                $('.loading').addClass('d-none')
+                $('.loading-bg').addClass('d-none')
+            }
+        }, 10);
     });
-    window.onload = (event) => {
-        Swal.close()
-    };
-
+</script>
+<script>
     const Toast = Swal.mixin({
         toast: true,
         position: 'bottom-end',
