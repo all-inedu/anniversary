@@ -17,11 +17,11 @@
 
 
         <div class="row justify-content-center">
-            <div class="col-md-9 col-12">
+            <div class="col-lg-9 col-12">
                 <img src="{{ asset('img/home/Logo-tagline.webp') }}" alt=""
                     class="slide-fwd-center banner-image">
             </div>
-            <div class="col-md-9 col-12 mt-md-5 mt-3">
+            <div class="col-lg-9 col-12 mt-md-5 mt-3">
                 <div class="row justify-content-center align-items-end g-md-5 g-1 row-cols-md-3 row-cols-2">
                     <div class="col">
                         <a href="#ibdp">
@@ -59,7 +59,7 @@
 </script>
 <style>
     #home {
-        height: 100vh;
+        min-height: 100vh;
         padding-top: 7%;
         padding-bottom: 50px;
     }
@@ -99,8 +99,8 @@
 
     @media only screen and (max-width: 600px) {
         #home {
-            height: auto;
-            padding-top: 35%;
+            height: auto !important;
+            padding-top: 130px;
             padding-bottom: 30px;
         }
 
@@ -110,26 +110,62 @@
 
         .asset-1 {
             left: -5%;
-            top: -20%;
+            top: -70px;
             width: 90px;
         }
 
         .asset-2 {
             left: -5%;
-            top: -12%;
+            top: -40px;
             width: 90px;
         }
 
         .asset-3 {
             right: -5%;
-            top: -20%;
+            top: -70px;
             width: 90px;
         }
 
         .asset-4 {
             right: -5%;
-            top: -12%;
+            top: -40px;
             width: 80px;
+        }
+    }
+
+    @media only screen and (min-width: 600px) and (max-width: 1100px) {
+        #home {
+            height: auto;
+            padding-top: 140px;
+            padding-bottom: 0px;
+        }
+
+        .banner-image {
+            width: 100%;
+        }
+
+        .asset-1 {
+            left: -5%;
+            top: -80px;
+            width: 130px;
+        }
+
+        .asset-2 {
+            left: -5%;
+            top: -40px;
+            width: 130px;
+        }
+
+        .asset-3 {
+            right: -5%;
+            top: -80px;
+            width: 130px;
+        }
+
+        .asset-4 {
+            right: -5%;
+            top: -40px;
+            width: 120px;
         }
     }
 </style>

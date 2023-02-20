@@ -9,9 +9,9 @@
         class="rotate-reverse position-absolute d-md-block d-none hand-4" data-aos="fade-left">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100 ibdp-content">
-            <div class="col-md-9 col-11" >
+            <div class="col-lg-9 col-11" >
                 <div class="row g-md-5 align-items-center justify-content-center">
-                    <div class="col-md-8 order-md-0 order-1" data-aos="fade-up" data-aos-offset="100" >
+                    <div class="col-lg-8 order-lg-0 order-1" data-aos="fade-up" data-aos-offset="100" >
                         <img src="{{ asset('img/ibdp/Mastering ibdp.webp') }}" alt="" width="100%">
                         <h4 class="ibdp-subtitle text-md-start text-center" style="">Technical Preparation and Strategies for Final Exam
                             Success</h4>
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-9 order-md-1 order-0 mb-4" data-aos="fade-up" data-aos-offset="200">
+                    <div class="col-lg-4 col-9 order-lg-1 order-0 mb-4" data-aos="fade-up" data-aos-offset="200">
                         <div class="row row-cols-2 g-2 align-items-center justify-content-center">
                             <div class="col-6 text-center">
                                 <img src="{{ asset('img/ibdp/Chemistry.webp') }}" alt="" width="80%"

@@ -1,20 +1,20 @@
 <div class="container-fluid position-relative overflow-hidden" id="about">
     <div class="container text-center">
         <div class="row justify-content-center">
-            <div class="col-md-3 col-6">
+            <div class="col-lg-3 col-6">
                 <img src="{{ asset('img/about-us.svg') }}" alt="" class="w-100">
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-7 col-11 mb-md-5 mb-3 about-subtitle">
+            <div class="col-lg-7 col-11 mb-lg-5 mb-3 about-subtitle">
                 <strong>
                     We guide students who plan to study at top universities abroad and place them at their best fit
                     schools. We provide personal and tailored consulting services, no matter where you are.
                 </strong>
             </div>
-            <div class="col-md-9 col-11">
-                <div class="row row-cols-md-3 row-cols-1 justify-content-center g-md-4 g-2">
-                    <div class="col mb-md-3 d-flex align-items-center card-about">
+            <div class="col-lg-9 col-11">
+                <div class="row row-cols-lg-3 row-cols-1 justify-content-center g-lg-4 g-2">
+                    <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
                             <img src="{{ asset('img/about-1.svg') }}" alt="" class="w-100">
                         </div>
@@ -22,7 +22,7 @@
                             100% Students placed at target universities
                         </p>
                     </div>
-                    <div class="col mb-md-3 d-flex align-items-center card-about">
+                    <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
                             <img src="{{ asset('img/about-2.svg') }}" alt="" class="w-100">
                         </div>
@@ -30,7 +30,7 @@
                             100% Students placed at target universities
                         </p>
                     </div>
-                    <div class="col mb-md-3 d-flex align-items-center card-about">
+                    <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
                             <img src="{{ asset('img/about-3.svg') }}" alt="" class="w-100">
                         </div>
@@ -38,7 +38,7 @@
                             100% Students placed at target universities
                         </p>
                     </div>
-                    <div class="col mb-md-3 d-flex align-items-center card-about">
+                    <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
                             <img src="{{ asset('img/about-4.svg') }}" alt="" class="w-100">
                         </div>
@@ -46,7 +46,7 @@
                             100% Students placed at target universities
                         </p>
                     </div>
-                    <div class="col mb-md-3 d-flex align-items-center card-about">
+                    <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
                             <img src="{{ asset('img/about-5.svg') }}" alt="" class="w-100">
                         </div>
@@ -54,7 +54,7 @@
                             100% Students placed at target universities
                         </p>
                     </div>
-                    <div class="col mb-md-3 d-flex align-items-center card-about">
+                    <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
                             <img src="{{ asset('img/about-6.svg') }}" alt="" class="w-100">
                         </div>

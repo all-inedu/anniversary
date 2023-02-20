@@ -1,20 +1,20 @@
 <div class="container-fluid position-relative overflow-hidden" id="university">
     <img src="{{ asset('img/asset 4.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-12%; top:55%; width:20%;">
+        class="position-absolute d-lg-inline-block d-none slide-fwd-center" style="left:-12%; top:55%; width:20%;">
     <img src="{{ asset('img/asset 3.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-6%; bottom:0%; width:15%;">
+        class="position-absolute d-lg-inline-block d-none slide-fwd-center" style="right:-6%; bottom:0%; width:15%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
-            <div class="col-md-7 col-11" data-aos="fade-up">
+            <div class="col-lg-7 col-11" data-aos="fade-up">
                 <img src="{{ asset('img/uni/uni.webp') }}" alt="" class="w-100">
             </div>
-            <div class="col-md-9 col-11" data-aos="fade-up">
+            <div class="col-lg-9 col-11" data-aos="fade-up">
                 <div class="subtitle-uni text-center">
                     Book your seat and meet the world’s top university representatives, curated by ALL-in
                 </div>
             </div>
-            <div class="col-md-11 col-10 mt-5" data-aos="fade-up">
-                <div class="row row-cols-md-4 row-cols-1 g-3 justify-content-center univ-box">
+            <div class="col-lg-11 col-10 mt-5" data-aos="fade-up">
+                <div class="row row-cols-lg-4 row-cols-1 g-3 justify-content-center univ-box">
                     @foreach ($universities as $university)
                         <div class="col">
                             <div class="shadow position-relative uni-box-select w-100">
@@ -109,11 +109,11 @@
     </div>
     <div class="">
         <a href="{{ url('/register') }}" class="btn btn-warning text-uppercase text-dark">
-            <div class="d-md-block d-none fw-bold">
+            <div class="d-lg-block d-none fw-bold">
                 Register Now
                 <i class="bi bi-arrow-right-circle"></i>
             </div>
-            <div class="d-md-none d-block">
+            <div class="d-lg-none d-block">
                 <i class="bi bi-arrow-right-circle"></i>
             </div>
         </a>

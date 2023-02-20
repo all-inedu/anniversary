@@ -8,7 +8,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5 ms-0 fw-bolder">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 ms-0 fw-bolder">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#home') }}" id="home-menu">Home</a>
                 </li>
@@ -28,7 +28,7 @@
                         Talk</a>
                 </li>
             </ul>
-            <div class="d-md-flex d-block text-center">
+            <div class="d-lg-flex d-block text-center">
                 <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger fw-bold">
                     <i class="bi bi-telephone me-2"></i>
                     Contact Us
@@ -90,11 +90,7 @@
         color: white !important;
     }
 
-    @media only screen and (max-width: 600px) {
-        .navbar {
-            background: white !important;
-        }
-
+    @media only screen and (max-width: 800px) {
         .navbar-nav {
             margin-top: 20px;
             gap: 5px;
@@ -105,5 +101,11 @@
             padding: 5px 10px;
         }
 
+    }
+
+    @media only screen and (max-width: 1100px) {
+        .navbar, .bg-transparent {
+            background: white !important;
+        }
     }
 </style>

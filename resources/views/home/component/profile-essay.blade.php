@@ -1,21 +1,21 @@
 <div class="container-fluid position-relative overflow-hidden" id="profile-essay">
     <img src="{{ asset('img/asset 1.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-17%; top:55%; width:30%;">
+        class="position-absolute d-lg-inline-block d-none slide-fwd-center" style="left:-17%; top:55%; width:30%;">
     <img src="{{ asset('img/asset 4.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="right:-17%; bottom:0%; width:25%;">
+        class="position-absolute d-lg-inline-block d-none slide-fwd-center" style="right:-17%; bottom:0%; width:25%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-11">
-                <div class="row align-items-end">
-                    <div class="col-md-5" data-aos="fade-up">
+            <div class="col-lg-9 col-11">
+                <div class="row align-items-end justify-content-center">
+                    <div class="col-lg-5 col-md-8 text-md-center" data-aos="fade-up">
                         <img src="{{ asset('img/live-profile/Live profile review speakers.webp') }}" alt=""
                             class="w-100">
                     </div>
-                    <div class="col-md-7" data-aos="fade-up">
+                    <div class="col-lg-7 col-md-9" data-aos="fade-up">
                         <img src="{{ asset('img/live-profile/Live profile essay review.webp') }}" alt=""
                             class="w-100">
                     </div>
-                    <div class="col-md-12 mt-md-3 text-center text-essay" data-aos="fade-up">
+                    <div class="col-lg-12 mt-lg-3 text-center text-essay" data-aos="fade-up">
                         <p>
                             Submit your profile and write an essay on a given prompt and earn the chance to be reviewed
                             by our mentors directly!
@@ -27,34 +27,30 @@
                             *Submitted profiles will be reviewed anonymously
                         </p>
                     </div>
-                    <div class="col-md-12 text-center title-profile my-md-5 mb-2">
+                    <div class="col-lg-12 text-center title-profile my-lg-5 mb-2">
                         GET A CHANCE TO WIN
                     </div>
 
                 </div>
             </div>
-            <div class="col-md-12 col-11 mb-5" data-aos="fade-up">
-                <div class="row align-items-center row-cols-md-3 row-cols-1 g-1">
-                    <div class="col text-center" id="prize3">
+            <div class="col-lg-10 col-11 mb-5" data-aos="fade-up">
+                <div class="row align-items-center row-cols-lg-2 row-cols-1 g-1">
+                    <div class="col text-center">
                         <img src="{{ asset('img/live-profile/LPER_Master applicant guidance.webp') }}" alt=""
                             class="img-prize">
                     </div>
-                    <div class="col text-center" id="prize1">
-                        <img src="{{ asset('img/live-profile/LPER_scholarship passion mentoring.webp') }}"
-                            alt="" class="img-prize active">
-                    </div>
-                    <div class="col text-center" id="1">
+                    <div class="col text-center">
                         <img src="{{ asset('img/live-profile/LPER_Career _ personality test by jurusanku.webp') }}"
                             alt="" class="img-prize">
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-11 text-center mt-md-5" data-aos="fade-up">
+            <div class="col-lg-12 col-11 text-center mt-lg-5" data-aos="fade-up">
                 <div class="title-profile mb-3">
                     TIMELINE
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-6 col-12">
+                    <div class="col-lg-6 col-12">
                         <div class="card mb-2 profile-timeline bg-primary">
                             <div class="card-body text-start py-1">
                                 <div class="row align-items-center fw-bold">
@@ -96,19 +92,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-11 text-center mt-5" data-aos="fade-up">
+            <div class="col-lg-12 col-11 text-center mt-5" data-aos="fade-up">
                 <div class="title-profile">
                     WRITE AND SUBMIT YOUR ESSAY<br> FROM THESE PROMPTS!
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <div class="col-md-8 col-12">
+                    <div class="col-lg-8 col-12">
                         <div class="card profile-card mb-3">
                             <div class="card-header bg-primary text-white">
                                 <strong>
                                     Undergraduate
                                 </strong>
                             </div>
-                            <div class="card-body text-start px-md-5">
+                            <div class="card-body text-start px-lg-5">
                                 <p>
                                     Choose one of the writing prompts from the list below and write your essay!
                                     <strong>
@@ -136,7 +132,7 @@
                                     Graduate
                                 </strong>
                             </div>
-                            <div class="card-body text-start px-md-5">
+                            <div class="card-body text-start px-lg-5">
                                 <p>
                                     Describe your reasons for applying for graduate studies programs succinctly. You
                                     should
@@ -173,11 +169,6 @@
     </div>
 </div>
 <script>
-    // function prizeActive(id) {
-    //     $('.img-prize').removeClass('active')
-    //     $('#prize' + id + ' .img-prize').addClass('active')
-    // }
-
     $('.img-prize').hover(
         function() {
             $('.img-prize').removeClass('active')
@@ -185,9 +176,7 @@
         },
         function() {
             $('.img-prize').removeClass('active')
-            $('#prize1 .img-prize').addClass('active')
         }
-
     )
 </script>
 <style>
@@ -210,7 +199,7 @@
         position: relative;
         z-index: 1;
         transition: all 0.5s ease-in-out;
-        width: 88%;
+        width: 98%;
         border: 3px solid transparent;
         border-radius: 17px;
         background: #dedede;
@@ -218,7 +207,7 @@
 
     .img-prize.active {
         z-index: 2;
-        transform: scale(1.3);
+        transform: scale(1.05);
         border: 3px solid #fff;
     }
 

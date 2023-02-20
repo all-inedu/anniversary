@@ -1,15 +1,15 @@
 <div class="container-fluid position-relative" id="scholarship">
     <img src="{{ asset('img/asset 4.svg') }}" alt=""
-        class="position-absolute d-md-inline-block d-none slide-fwd-center" style="left:-13%; bottom:-15%; width:25%;">
+        class="position-absolute d-lg-inline-block d-none slide-fwd-center" style="left:-13%; bottom:-15%; width:25%;">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-11">
+            <div class="col-lg-9 col-11">
                 <div class="row align-items-center mb-3">
-                    <div class="col-md-7" data-aos="fade-up">
+                    <div class="col-lg-7" data-aos="fade-up">
                         <img src="{{ asset('img/home/logo.png') }}" alt="" class="w-25">
                         <img src="{{ asset('img/scholarship/Scholarships.webp') }}" alt="" class="w-100">
                     </div>
-                    <div class="col-md-5" data-aos="fade-up">
+                    <div class="col-lg-5" data-aos="fade-up">
                         <div class="card bg-primary mb-2">
                             <div
                                 class="card-body subtitle-scholarship py-0 text-center text-white py-2 text-uppercase fw-bold">
@@ -23,11 +23,11 @@
                     </div>
                 </div>
                 <div class="row align-items-center g-1 justify-content-between" data-aos="fade-up">
-                    <div class="col-md-6">
+                    <div class="col-lg-6">
                         <img src="{{ asset('img/scholarship/Scholarship passion project.webp') }}" alt=""
                             class="img-scholarship">
                     </div>
-                    <div class="col-md-6 text-end">
+                    <div class="col-lg-6 text-end">
                         <img src="{{ asset('img/scholarship/Scholarship admission mentoring.webp') }}" alt=""
                             class="img-scholarship">
                     </div>
