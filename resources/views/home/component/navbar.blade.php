@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-transparent fixed-top" id="navbar_allin" style="z-index:9999 !important">
     <div class="container">
-        <a class="navbar-brand" href="#" style="width: 15%">
+        <a class="navbar-brand" href="{{url('/')}}" style="width: 15%">
             <img src="{{ asset('img/home/logo.png') }}" alt="ALL-in Eduspace" style="width: 90px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
