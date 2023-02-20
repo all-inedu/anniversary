@@ -19,6 +19,9 @@ Route::get('/', [IndexController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
+Route::post('/check/mail', [RegisterController::class, 'checkMail'])->name('register.check_mail');
+
+
 Route::get('/scholarship', function () {
     return view('home.scholarship');
 });

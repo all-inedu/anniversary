@@ -272,7 +272,6 @@ class RegisterController extends Controller
 
     public function destroyProfile(Request $request)
     {
-        return $request->all();
         $universityId = str_replace(' ', '-', $request->route('universityid'));
         $userUUid = $request->client;
         $user = $this->clientRepository->getClientByUuid($userUUid);
@@ -293,6 +292,17 @@ class RegisterController extends Controller
         }
 
         return response()->json(['message' => 'Cancel university success.']);
+    }
+
+    public function check_mail(Request $request)
+    {
+        $email = $request->email_address;
+        if (!$user = $this->clientRepository->findByEmail($email)) {
+            return response()->json(['message' => 'Email not found.']);
+        }
+
+        return response()->json(['data' => $user->uuid]);
+
     }
 
 }

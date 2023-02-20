@@ -10,6 +10,7 @@ interface ClientRepositoryInterface
     public function getLatestRegistrants();
     public function getRegistrantByType($type);
     public function getLeadSources();
+    public function findByEmail($email);
     public function registerClient(array $clientDetails);
     public function storeDestination($clientId, array $destinationDetails);
     public function storeMajor($clientId, array $majorDetails);

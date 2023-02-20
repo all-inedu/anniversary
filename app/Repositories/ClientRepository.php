@@ -46,6 +46,11 @@ class ClientRepository implements ClientRepositoryInterface
         ])->groupBy('lead_source_name')->orderBy('sum', 'desc')->get();
     }
 
+    public function findByEmail($email)
+    {
+        return Client::where('email', $email)->first();
+    }
+
     public function registerClient(array $clientDetails)
     {
         return Client::create($clientDetails);
