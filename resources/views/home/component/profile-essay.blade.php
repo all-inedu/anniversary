@@ -111,18 +111,18 @@
                                         (Maximum words: 650)
                                     </strong>
                                 </p>
-                                <ul>
-                                    <li>
+                                <ol>
+                                    <li class="mb-1">
                                         Think about an activity or experience that has helped you grow. What lessons did
                                         you
                                         learn from it, and how will these lessons help you pursue your future goals?
                                     </li>
-                                    <li>
+                                    <li class="mb-1">
                                         Subject and major that you are interested in and why? How you’ve demonstrated
                                         this and
                                         what are your plans to do next?
                                     </li>
-                                </ul>
+                                </ol>
                             </div>
                         </div>
 
@@ -138,21 +138,21 @@
                                     should
                                     touch on the following three topics : (Maximum words: 1000)
                                 </p>
-                                <ul>
-                                    <li>
+                                <ol>
+                                    <li class="mb-1">
                                         Why you? What are your goals, research interests, future career plans,
                                         backgrounds,
                                         and/or experiences that drove you to pursue graduate studies?
                                     </li>
-                                    <li>
+                                    <li class="mb-1">
                                         Why this program?  What universities are you thinking of applying to? What
                                         aspects of
                                         the program(s) have led you to apply?
                                     </li>
-                                    <li>
+                                    <li class="mb-1">
                                         Why now?
                                     </li>
-                                </ul>
+                                </ol>
                             </div>
                         </div>
 

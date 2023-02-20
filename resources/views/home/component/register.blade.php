@@ -447,7 +447,7 @@
         }
     }
 
-    function validate_email() {
+    async function validate_email() {
         let email = $('#email').val()
         var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (!regex.test(email)) {
@@ -456,31 +456,27 @@
             return false
         } else {
             let url = '{{ url('check/mail') }}'
+            const response = await axios.post(url, {
+                email_address: email
+            })
 
+            if (response.data.data) {
+                $('#email').removeClass('is-valid').addClass('is-invalid')
+                $('#email').siblings('small').html('Email already taken')
+                $('#email_exist').html(
+                    'Your email is already taken, Click <a href="{{ url('user') }}/' + response.data
+                    .data +
+                    '" class="text-warning" target="_blank"> here </a> to make changes on your booked seats!'
+                )
 
-            axios.post(url, {
-                    email_address: email
-                })
-                .then(function(response) {
-                    // handle success
-                    if (response.data.data) {
-                        $('#email').removeClass('is-valid').addClass('is-invalid')
-                        $('#email').siblings('small').html('Email already taken')
-                        $('#email_exist').html(
-                            'Your email is already taken, Click <a href="{{ url("user") }}/'+response.data.data+'" class="text-warning" target="_blank"> here </a> to make changes on your booked seats!'
-                        )
-                    } else {
-                        $('#email').removeClass('is-invalid').addClass('is-valid')
-                        $('#email').siblings('small').html('')
-                        $('#email_exist').html('')
-                        return true
-                    }
-                    // return true
-                })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error.response);
-                })
+                return false
+            } else {
+                $('#email').removeClass('is-invalid').addClass('is-valid')
+                $('#email').siblings('small').html('')
+                $('#email_exist').html('')
+
+                return true
+            }
         }
     }
 
@@ -525,6 +521,7 @@
                     $('#section_1 .field-' + i).siblings('small').html('')
                 }
             }
+
 
             if (array.length == 0) {
                 if (validatePhoneNumber() && validate_email() && confirmEmail()) {
