@@ -294,7 +294,7 @@ class RegisterController extends Controller
         return response()->json(['message' => 'Cancel university success.']);
     }
 
-    public function check_mail(Request $request)
+    public function checkMail(Request $request)
     {
         $email = $request->email_address;
         if (!$user = $this->clientRepository->findByEmail($email)) {
