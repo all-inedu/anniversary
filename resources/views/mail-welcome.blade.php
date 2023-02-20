@@ -384,7 +384,7 @@
                                     <tr>
                                         <td>
                                             <p>
-                                                Dear {{ $client->fullname }}
+                                                Dear {{ $client->fullname }},
                                             </p>
                                             <p>
                                                 Thank you for signing up for ANNIFEST’s University Info Session and Uni
@@ -393,11 +393,11 @@
                                             </p>
                                             <p>
                                                 If you would like to update, pick or remove your choice of university info session, add or edit your questions to the university of your choices, you can do so through your personal ANNIFEST dashboard: <br>
-                                                <a href="{{ $link }}">here</a>
+                                                <a href="{{ $link }}">Check Your Personal ANNIFEST Dashboard Here</a>
                                             </p>
                                             <p>
                                                 We are here to support you every step of the way. If you have any questions or need assistance, please do not hesitate to reach out to us <a href="https://linktr.ee/allineduspacecontact"
-                                                style="text-decoration: none">here
+                                                style="text-decoration: none">reach out to us.
                                             </a>. 
                                             </p>
                                             <p>
