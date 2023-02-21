@@ -1,6 +1,7 @@
 @extends('app')
 @section('body')
     @include('home.component.navbar')
+
     <div class="container" id="user">
         <div class="row g-3">
             <div class="col-md-4">

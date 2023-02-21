@@ -215,7 +215,7 @@ class RegisterController extends Controller
             abort(404);
         
         if ($client->booking->university()->where('session_start', '<', now())->count() > 0)
-            abort(404);
+            abort(403);
 
         
         $booked_universities = $client->booking->university;
