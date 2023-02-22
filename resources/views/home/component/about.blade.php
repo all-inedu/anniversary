@@ -40,7 +40,7 @@
                     </div>
                     <div class="col mb-lg-3 d-flex align-items-center card-about">
                         <div class="w-25 text-end about-icon">
-                            <img src="{{ asset('img/about-4.svg') }}" alt="" class="w-100">
+                            <img src="{{ asset('img/about-2.webp') }}" alt="" class="w-100">
                         </div>
                         <p class="text-start m-0 py-0 px-3">
                             100% Students placed at target universities

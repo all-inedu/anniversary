@@ -23,12 +23,12 @@
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>University Name</th>
-                            <th>Session Date</th>
-                            <th>Session Time</th>
-                            <th>Thumbnail</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th width="30%">University Name</th>
+                            <th width="15%">Session Date</th>
+                            <th width="15%">Session Time</th>
+                            <th width="15%">Thumbnail</th>
+                            <th width="15%">Status</th>
+                            <th width="15%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +38,7 @@
                                 <td>{{ date('d F Y', strtotime($university->session_start)) }}</td>
                                 <td>{{ date('H.i A', strtotime($university->time_start)) }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/'.$university->thumbnail) }}" class="w-50" alt="">
+                                    <img src="{{ asset('storage/'.$university->thumbnail) }}" class="w-100" alt="">
                                 </td>
                                 <td class="fw-bold" style="font-size:22px;" data-key="{{ $university->uuid }}">
                                     @if ($university->status == 0)
