@@ -1,5 +1,4 @@
-
-    {{-- Welcome to All-in Eduspace
+{{-- Welcome to All-in Eduspace
 
     Here's your bookings, {{ $client->fullname }}
 
@@ -104,6 +103,7 @@
             margin-top: 10px;
             text-align: center;
             width: 100%;
+            background: #233872;
         }
 
         .footer td,
@@ -392,13 +392,17 @@
                                                 amazing event.
                                             </p>
                                             <p>
-                                                If you would like to update, pick or remove your choice of university info session, add or edit your questions to the university of your choices, you can do so through your personal ANNIFEST dashboard: <br>
+                                                If you would like to update, pick or remove your choice of university
+                                                info session, add or edit your questions to the university of your
+                                                choices, you can do so through your personal ANNIFEST dashboard: <br>
                                                 <a href="{{ $link }}">Check Your Personal ANNIFEST Dashboard Here</a>
                                             </p>
                                             <p>
-                                                We are here to support you every step of the way. If you have any questions or need assistance, please do not hesitate to reach out to us <a href="https://linktr.ee/allineduspacecontact"
-                                                style="text-decoration: none">reach out to us.
-                                            </a>. 
+                                                We are here to support you every step of the way. If you have any
+                                                questions or need assistance, please do not hesitate to reach out to us
+                                                <a href="https://linktr.ee/allineduspacecontact"
+                                                    style="text-decoration: none">reach out to us.
+                                                </a>.
                                             </p>
                                             <p>
                                                 See you there!
@@ -413,23 +417,39 @@
                     </table>
                     <!-- END CENTERED WHITE CONTAINER -->
 
-                    <!-- START FOOTER -->
-                    <div class="footer">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td class="content-block">
-                                    <span class="apple-link">ALL-in Eduspace</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <!-- END FOOTER -->
-
                 </div>
             </td>
             <td>&nbsp;</td>
         </tr>
     </table>
+    <!-- START FOOTER -->
+    <div class="footer">
+        <table>
+            <tr>
+                <td class="content-block" style="text-align: left">
+                    <img src="{{ asset('img/logo-allin-white.webp') }}" alt="" style="width: 80px">
+                </td>
+                <td class="content-block" style="text-align: right">
+                    <a href="mailto:info@all-inedu.com" target="_blank" class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-mail-48.png')}}" alt="" style="width:20px">
+                        </a>
+                    <a href="https://www.facebook.com/allineduspace/" target="_blank"
+                        class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-facebook-60.png')}}" alt="" style="width:20px">
+                    </a>
+                    <a href="https://www.instagram.com/allineduspace/" target="_blank"
+                        class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-instagram-60.png')}}" alt="" style="width:20px">
+                    </a>
+                    <a href="https://www.youtube.com/@allineduspace" target="_blank"
+                        class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-youtube-60.png')}}" alt="" style="width:20px">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- END FOOTER -->
 </body>
 
 </html>

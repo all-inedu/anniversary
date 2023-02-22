@@ -441,24 +441,39 @@
                         <!-- END MAIN CONTENT AREA -->
                     </table>
                     <!-- END CENTERED WHITE CONTAINER -->
-
-                    <!-- START FOOTER -->
-                    <div class="footer">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td class="content-block">
-                                    <span class="apple-link">ALL-in Eduspace</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <!-- END FOOTER -->
-
                 </div>
             </td>
             <td>&nbsp;</td>
         </tr>
     </table>
+    <!-- START FOOTER -->
+    <div class="footer">
+        <table>
+            <tr>
+                <td class="content-block" style="text-align: left">
+                    <img src="{{ asset('img/logo-allin-white.webp') }}" alt="" style="width: 80px">
+                </td>
+                <td class="content-block" style="text-align: right">
+                    <a href="mailto:info@all-inedu.com" target="_blank" class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-mail-48.png')}}" alt="" style="width:20px">
+                        </a>
+                    <a href="https://www.facebook.com/allineduspace/" target="_blank"
+                        class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-facebook-60.png')}}" alt="" style="width:20px">
+                    </a>
+                    <a href="https://www.instagram.com/allineduspace/" target="_blank"
+                        class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-instagram-60.png')}}" alt="" style="width:20px">
+                    </a>
+                    <a href="https://www.youtube.com/@allineduspace" target="_blank"
+                        class="text-decoration-none text-white">
+                        <img src="{{asset('img/icon/icons8-youtube-60.png')}}" alt="" style="width:20px">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- END FOOTER -->
 </body>
 
 </html>

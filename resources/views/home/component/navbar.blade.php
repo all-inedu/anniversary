@@ -7,8 +7,8 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 ms-0 fw-bolder">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 fw-bolder">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#home') }}" id="home-menu">Home</a>
                 </li>
@@ -28,12 +28,18 @@
                         Talk</a>
                 </li>
             </ul>
-            <div class="d-lg-flex d-block text-center">
+            <div class="d-lg-none d-block text-center" style="w-100">
                 <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger fw-bold">
                     <i class="bi bi-telephone me-2"></i>
                     Contact Us
                 </a>
             </div>
+        </div>
+        <div class="d-lg-flex d-none justify-content-end" style="width: 15%">
+            <a href="https://linktr.ee/allineduspacecontact" target="_blank" class="btn btn-danger fw-bold">
+                <i class="bi bi-telephone me-2"></i>
+                Contact Us
+            </a>
         </div>
     </div>
 </nav>

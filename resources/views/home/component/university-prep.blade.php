@@ -8,12 +8,12 @@
            <div class="col-lg-9 col-11" data-aos="fade-up">
                <div class="row justify-content-center g-2">
                    <div class="col-lg-4">
-                       <div class="bg-primary py-2 text-center text-white fw-bold">    
+                       <div class="bg-primary py-2 text-center text-white fw-bold rounded">    
                                15 APRIL 2023
                        </div>
                    </div>
                    <div class="col-lg-4">
-                       <div class="bg-primary py-2 text-center text-white fw-bold">
+                       <div class="bg-primary py-2 text-center text-white fw-bold rounded">
                                09.00 AM - 03.00 PM WIB
                        </div>
                    </div>

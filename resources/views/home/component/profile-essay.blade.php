@@ -107,9 +107,9 @@
                             <div class="card-body text-start px-lg-5">
                                 <p>
                                     Choose one of the writing prompts from the list below and write your essay!
-                                    <strong>
+                                    <b class="fw-bold">
                                         (Maximum words: 650)
-                                    </strong>
+                                    </b>
                                 </p>
                                 <ol>
                                     <li class="mb-1">
@@ -136,7 +136,7 @@
                                 <p>
                                     Describe your reasons for applying for graduate studies programs succinctly. You
                                     should
-                                    touch on the following three topics : (Maximum words: 1000)
+                                    touch on the following three topics : <b class="fw-bold">(Maximum words: 1000)</b>
                                 </p>
                                 <ol>
                                     <li class="mb-1">
