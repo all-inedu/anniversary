@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -35,7 +36,36 @@ class Client extends Model
         'challenge_other',
         'lead_source_id',
         'challenge_id',
+        'reminder_uniprep',
     ];
+
+    protected function phoneNumber(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ?? '-',
+        );
+    }
+
+    protected function leadSourceId(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ?? '-',
+        );
+    }
+
+    protected function leadOther(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ?? '-',
+        );
+    }
+
+    protected function address(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ?? '-',
+        );
+    }
 
     // public static function boot()
     // {

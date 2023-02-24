@@ -4,12 +4,13 @@ namespace App\Console\Commands;
 
 use App\Http\Traits\SendEmail;
 use App\Models\Booking;
+use DateTime;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class Reminder extends Command
+class ReminderH7 extends Command
 {
     use SendEmail;
     /**
@@ -17,14 +18,14 @@ class Reminder extends Command
      *
      * @var string
      */
-    protected $signature = 'email:reminder';
+    protected $signature = 'email:reminderH7-infosession';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send email reminder to registrant H-3';
+    protected $description = 'Send email reminder to registrant H-7 from uni info session';
 
     /**
      * Execute the console command.
@@ -33,16 +34,29 @@ class Reminder extends Command
      */
     public function handle()
     {
+
+        # uni info session 10 - 14 April
+        # h-7 remind jadwal tanpa link -> 3 April
+        # h-1 remind jadwal with link -> 9 April
+                
+        $uni_info_session = new DateTime('2023-04-10'); # insert date here
+        $today = new DateTime(date('Y-m-d'));
+        $interval = $today->diff($uni_info_session);
+
+        if ($interval->days != 7) {
+            return Command::SUCCESS;
+        }
+
         try {
-            Log::info('Cron is work fine');
 
-            $bookings = Booking::where('total_booked_univ', '>', 0)->where('reminder', '=', 0)->whereHas('university', function ($query) {
-                $query->whereRaw('DATEDIFF(session_start, now()) =?', [3]);
-            })->get();
+            $bookings = Booking::where('reminder_H7', '=', 0)->get();
 
+            if ($bookings->count() == 0) {
+                Log::info('Cron H7 is work fine : '.$bookings->count().' data');
+            }
             foreach ($bookings as $booking) {
 
-                $this->sendReminder([
+                $this->sendReminderH7([
                     'client' => $booking->client,
                     'subject' => "Don't Miss Out on Your Info Sessions & Uni Prep Talk!",
                     'recipient' => [
@@ -51,15 +65,15 @@ class Reminder extends Command
                     ],
                 ]);
 
-                $booking->reminder = 1;
+                $booking->reminder_H7 = 1;
                 $booking->save();
             
-                Log::info('Email reminder to '.$booking->client->email_address);
+                Log::info('Email info session H7 reminder to '.$booking->client->email_address);
             }
 
         } catch (Exception $e) {
             
-            Log::error('Cron is not working : '.$e->getMessage());
+            Log::error('Cron H7 is not working : '.$e->getMessage());
 
         }
 

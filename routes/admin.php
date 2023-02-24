@@ -36,6 +36,7 @@ Route::group(['middleware' => 'admin.auth'], function() {
 
     
     Route::get('/registrant', [AdminController::class, 'registrant'])->name('admin.registrant');
+    Route::post('/registrant', [AdminController::class, 'registerClient'])->name('admin.registerClient');
 
     Route::post('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
 });

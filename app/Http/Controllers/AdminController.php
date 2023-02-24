@@ -279,4 +279,55 @@ class AdminController extends Controller
 
         return response()->json(['message' => 'Successfully deleted university info session.']);
     }
+
+    # register client manually
+    public function registerClient(Request $request)
+    {
+        $rules = [
+            'fullname' => 'required|max:255',
+            'email_address' => 'required|email|max:255|unique:tbl_client,email_address',
+        ];
+
+        $validate = Validator::make($request->all(), $rules);
+        if ($validate->fails()) {
+            return Redirect::back()->withInput($request->input())->withErrors($validate->errors());
+        }
+
+        $clientDetails = [
+            'uuid' => Str::uuid(),
+            'fullname' => $validate->valid()['fullname'],
+            'email_address' => $validate->valid()['email_address'],
+            'phone_number' => null,
+            'address' => null,
+            'client_type' => 'student',
+            'grade' => null,
+            'graduate_from' => null,
+            'lead_source_id' => null,
+            'challenge_id' => null,
+            'challenge_other' => null,
+            'lead_other' => null,
+            'major_other' => null,
+            'first_time' => 1,
+            'uni_prep' => 1,
+            'status' => 1
+        ];
+
+
+        DB::beginTransaction();
+        try {
+
+            $this->clientRepository->registerClient($clientDetails);
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            Log::error('Failed register client from admin failed: '. $e->getMessage());
+            return Redirect::back()->withErrors('Failed to register client.');
+
+        }
+
+        return Redirect::to('admin/registrant')->withSuccess('Registered client successfully');
+
+    } 
 }

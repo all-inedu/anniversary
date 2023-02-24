@@ -13,6 +13,10 @@
             </div>
         </div>
     </div>
+    <div class="my-4 d-flex justify-content-end">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerClientModal"><i class="bi bi-journal-plus me-2"></i> Add Client</button>
+    </div>
+
 
     <div class="card shadow">
         <div class="card-body">
@@ -65,4 +69,47 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registerClientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Client</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.registerClient') }}" method="POST" id="registerClientForm">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="client-name" class="col-form-label">Full Name:</label>
+                            <input type="text" class="form-control" name="fullname" value="{{ old('fullname') }}">
+                            @error('fullname')
+                                <small class="text-warning">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="client-email" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" name="email_address" value="{{ old('email_address') }}">
+                            @error('email_address')
+                                <small class="text-warning">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form='registerClientForm'  class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if ($errors->any())
+    <script>
+        $(document).ready(function () {
+            $("#registerClientModal").modal('show')
+        });
+    </script>
+    @endif
 @endsection

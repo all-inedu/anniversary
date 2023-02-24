@@ -14,9 +14,25 @@ trait SendEmail {
         });
     }
 
-    public function sendReminder($detail)
+    public function sendReminderH7($detail)
     {
-        Mail::send('mail-reminder', $detail, function ($message) use ($detail) {
+        Mail::send('mail-reminder-h7', $detail, function ($message) use ($detail) {
+            $message->to($detail['recipient']['email'], $detail['recipient']['name'])
+                ->subject($detail['subject']);
+        });
+    }
+
+    public function sendReminderH1($detail)
+    {
+        Mail::send('mail-reminder-h1', $detail, function ($message) use ($detail) {
+            $message->to($detail['recipient']['email'], $detail['recipient']['name'])
+                ->subject($detail['subject']);
+        });
+    }
+
+    public function sendReminderUniPrepH1($detail)
+    {
+        Mail::send('mail-reminder-prep', $detail, function ($message) use ($detail) {
             $message->to($detail['recipient']['email'], $detail['recipient']['name'])
                 ->subject($detail['subject']);
         });

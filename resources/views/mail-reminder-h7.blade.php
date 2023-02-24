@@ -376,7 +376,7 @@
                                     <tr>
                                         <td>
                                             <p>
-                                                Hello {{ $client->fullname }}
+                                                Hello {{ $client->fullname }},
                                             </p>
                                             <p>
                                                 Don’t forget to attend the upcoming info sessions and uni prep talk that you've signed up for!
@@ -386,37 +386,12 @@
                                                     <th>No</th>
                                                     <th>University Name</th>
                                                     <th>Session Date</th>
-                                                    <th>Zoom Password</th>
-                                                    <th>Zoom</th>
                                                 </tr>
                                                 @foreach ($client->booking->university as $booking)
                                                 <tr align="center">
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td align="left">{{ $booking->name }}</td>
                                                     <td>{{ date('d M Y', strtotime($booking->session_start)) }}</td>
-                                                    <td>{{ $booking->password }}</td>
-                                                    <td>
-                                                        <table role="presentation" border="0" cellpadding="0"
-                                                            cellspacing="0" class="btn btn-primary">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td align="center">
-                                                                        <table role="presentation" border="0"
-                                                                            cellpadding="0" cellspacing="0">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <a href="{{ $booking->link }}"
-                                                                                            target="_blank">Join</a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </table>
@@ -424,7 +399,7 @@
                                             <p>
                                                 We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
                                             </p>
-                                            <button class="btn btn-primary">Uni Prep Talk</button>
+                                            <button class="btn btn-primary" style="cursor:pointer; padding-top: 10px; padding-bottom: 10px; border: none; background-color: #3498db; color: #ffffff;">Uni Prep Talk</button>
                                             <br><br>
                                             <p>
                                                 We are excited to have you join us and we believe that these sessions will be a valuable opportunity for you to learn more about our university and get ready for your academic journey.
@@ -444,13 +419,54 @@
 
                     <!-- START FOOTER -->
                     <div class="footer">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <table>
+
                             <tr>
-                                <td class="content-block">
-                                    <span class="apple-link">ALL-in Eduspace</span>
+                
+                                <td class="content-block" style="text-align: left">
+                
+                                    <img src="{{ asset('img/logo-allin-white.webp') }}" alt="" style="width: 80px">
+                
                                 </td>
+                
+                                <td class="content-block" style="text-align: right">
+                
+                                    <a href="mailto:info@all-inedu.com" target="_blank" class="text-decoration-none text-white">
+                
+                                        <img src="{{asset('img/icon/icons8-mail-48.png')}}" alt="" style="width:20px">
+                
+                                        </a>
+                
+                                    <a href="https://www.facebook.com/allineduspace/" target="_blank"
+                
+                                        class="text-decoration-none text-white">
+                
+                                        <img src="{{asset('img/icon/icons8-facebook-60.png')}}" alt="" style="width:20px">
+                
+                                    </a>
+                
+                                    <a href="https://www.instagram.com/allineduspace/" target="_blank"
+                
+                                        class="text-decoration-none text-white">
+                
+                                        <img src="{{asset('img/icon/icons8-instagram-60.png')}}" alt="" style="width:20px">
+                
+                                    </a>
+                
+                                    <a href="https://www.youtube.com/@allineduspace" target="_blank"
+                
+                                        class="text-decoration-none text-white">
+                
+                                        <img src="{{asset('img/icon/icons8-youtube-60.png')}}" alt="" style="width:20px">
+                
+                                    </a>
+                
+                                </td>
+                
                             </tr>
+                
                         </table>
+                
                     </div>
                     <!-- END FOOTER -->
 
