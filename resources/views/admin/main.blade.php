@@ -12,19 +12,19 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item px-0">
                                 <a href="{{ url('admin/dashboard') }}"
-                                    class="text-decoration-none text-dark d-flex justify-content-between">
+                                    class="{{ Request::is('admin/dashboard') ? null : 'text-decoration-none' }} text-dark d-flex justify-content-between">
                                     Dashboard <i class="bi bi-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="list-group-item px-0">
                                 <a href="{{ url('admin/info-session') }}"
-                                    class="text-decoration-none text-dark d-flex justify-content-between">
+                                    class="{{ Request::is('admin/info-session') ? null : 'text-decoration-none' }} text-dark d-flex justify-content-between">
                                     Info Session <i class="bi bi-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="list-group-item px-0">
                                 <a href="{{ url('admin/registrant') }}"
-                                    class="text-decoration-none text-dark d-flex justify-content-between">
+                                    class="{{ Request::is('admin/registrant') ? null : 'text-decoration-none' }} text-dark d-flex justify-content-between">
                                     Registrant <i class="bi bi-arrow-right"></i>
                                 </a>
                             </li>

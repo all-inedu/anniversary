@@ -179,7 +179,7 @@ class RegisterController extends Controller
             DB::rollBack();
             Log::error('Registration client failed : '.$e->getMessage());
 
-            return Redirect::back()->withInput($request->input())->withError('There was an error while registering. Please try again.');
+            return Redirect::back()->withInput($request->input())->withError('There was an error while registering. Please try again or contact our team.');
 
         }
 
@@ -199,12 +199,12 @@ class RegisterController extends Controller
             
             DB::rollBack();
             Log::error('Registration client failed : '.$e->getMessage());
-            return Redirect::back()->withError('There was an error while registering. Please try again.');
+            return Redirect::back()->withError('There was an error while registering. Please try again or contact our team.');
         }
         
         DB::commit();
 
-        return Redirect::to('/')->withSuccess('Your registration has saved. Please do check your email');
+        return Redirect::to('/')->withSuccess('Thank you for registering. Please kindly check your email!');
 
     }
 
@@ -217,9 +217,14 @@ class RegisterController extends Controller
         if ($client->booking->university()->where('session_start', '<', now())->count() > 0)
             abort(403);
 
-        
-        $booked_universities = $client->booking->university;
-        $universities = $this->universityRepository->getUniversities();
+        $booked_universities = [];
+        if (isset($client->booking) && $client->booking->count() > 0) {            
+            if (!$booked_universities = $client->booking->university) {
+                if ($client->booking->university()->where('session_start', '<', now())->count() > 0)
+                    abort(403);
+            }
+        }
+        $universities = $this->universityRepository->getActiveUniversities();
 
         return view('home.user')->with(
             [

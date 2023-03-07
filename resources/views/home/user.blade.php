@@ -194,7 +194,7 @@
                 _token: '{{ csrf_token() }}',
                 _method: 'put',
             }).then(function(response) {
-                console.log(response)
+                console.log(response.data)
                 notification('success', response.data.message)
             }).catch(function(error) {
                 console.log(error)

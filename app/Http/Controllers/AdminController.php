@@ -68,6 +68,44 @@ class AdminController extends Controller
         );
     }
 
+    public function getShortlisted(Request $request)
+    {
+        $univId = $request->route('uni');
+        try {
+
+            $university = $this->universityRepository->getUniversityById($univId);
+            $html = '<table class="w-100" style="font-size:12px">
+                        <thead>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>From</th>
+                        </thead>
+                    <tbody>';
+            $no = 1;
+            foreach ($university->booking as $booking) {
+    
+                $html .= "
+                            <tr>
+                                <td>".$no++."</td>
+                                <td>".$booking->client->fullname."</td>
+                                <td>".$booking->client->graduate_from."</td>
+                            </tr>
+                        ";
+    
+            }
+
+            $html .= '</tbody>
+            </table>';
+
+        } catch (Exception $e) {
+
+            Log::error('Failed to get shortlist : '.$e->getMessage());
+
+        }
+
+        return response()->json(['html_ctx' => $html]);
+    }
+
     public function infoSession()
     {
         $universities = $this->universityRepository->getUniversities();

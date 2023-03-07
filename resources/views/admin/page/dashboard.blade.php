@@ -78,14 +78,14 @@
                     <div class="card">
                         <div class="card-body py-2 d-flex justify-content-between">
                             <h6 class="m-0 fw-bold">Info Session Participants</h6>
-                            <div class="fw-bold">30</div>
+                            <div class="fw-bold">{{ $universitiesWithParticipants->sum('participants') }}</div>
                         </div>
                         <ul class="list-group list-group-flush overflow-auto px-3 py-2" style="height:300px">
 
                             @foreach ($universitiesWithParticipants as $universityAndParticipant)
                                 <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-0">
                                     <div class="">{{ $universityAndParticipant->name }}</div>
-                                    <div class="badge bg-primary">{{ $universityAndParticipant->participants }}</div>
+                                    <div class="badge bg-primary shortlist" style="cursor:pointer" data-uniname="{{ $universityAndParticipant->name }}" data-uni="{{ $universityAndParticipant->uuid }}">{{ $universityAndParticipant->participants }}</div>
                                 </li>
                             @endforeach
                         </ul>
@@ -115,4 +115,53 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="shortlistClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="shortlistLabel"><!-- University name --></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="shortlistTable">
+                    <!-- content here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form='registerClientForm'  class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".shortlist").each(function() {
+
+            $(this).click(function() {
+
+                var uni = $(this).data('uni')
+                var uniname = $(this).data('uniname')
+                
+                var link = '{{ url("/") }}/admin/uni-shortlisted/' + uni
+                axios.get(link)
+                    .then(function(response) {
+                    
+                        var obj = response.data
+
+                        $("#shortlistLabel").html(uniname)
+                        $("#shortlistTable").html(obj.html_ctx)
+                        $("#shortlistClient").modal('show')
+
+                    }).catch (function(error) {
+
+                        notification('error', error.message)
+
+                    })
+                
+                
+            })
+
+        })
+    </script>
 @endsection

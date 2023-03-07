@@ -354,6 +354,17 @@
                 border-color: #34495e !important;
             }
         }
+        .list-item {
+            list-style-position: outside
+        }
+
+        ul {
+            margin-bottom: 3em;
+        }
+        ul li+li {
+            margin-top: 1em;
+        }
+
     </style>
 </head>
 
@@ -376,19 +387,32 @@
                                     <tr>
                                         <td>
                                             <p>
-                                                Hello {{ $client->fullname }},
+                                                {{-- <label style="font-size: 16px;">Hi {{ $client->fullname }}!</label> --}}
                                             </p>
                                             <br>
                                             <p>
-                                                We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
-                                            </p>
-                                            <button class="btn btn-primary" style="cursor:pointer; padding-top: 10px; padding-bottom: 10px; border: none; background-color: #3498db; color: #ffffff;">Uni Prep Talk</button>
-                                            <br><br>
-                                            <p>
-                                                We are excited to have you join us and we believe that these sessions will be a valuable opportunity for you to learn more about our university and get ready for your academic journey.
+                                                ANNIFEST Uni Prep Talk will be held <b>TOMORROW!</b>
                                             </p>
                                             <p>
-                                                We look forward to seeing you soon!
+                                                Are you ready to get the gist of what will happen and what you should do and strategize in your university application game plan?
+                                            </p>
+                                            <p>
+                                                Remember, after attending ANNIFEST Uni Prep Talk, we’ll make sure you’ll get to know:
+                                                <ul>
+                                                    <li class="list-item">What happens in top universities’ admission assessment from UC Berkeley’s admission officer</li>
+                                                    <li class="list-item">The list of trending majors based on future career prospects from the UK, Australian, and Asia universities' perspectives</li>
+                                                    <li class="list-item">Be ready at the age of uncertainty and how to build your unique profile and be successful post-university life</li>
+                                                    <li class="list-item">How to improve your university profile and essay, and have yours reviewed directly by ALL-in mentors</li>
+                                                </ul>
+                                            </p>
+                                            <p style="text-align: center">
+                                                Are you excited? Come and join us tomorrow!
+                                            </p>
+                                            <a href="https://us02web.zoom.us/j/87219434605?pwd=QUU3bE1kS0l1dENmL3J3NEMyT0Fmdz09">
+                                                <button class="btn btn-primary" style="cursor:pointer; padding-top: 10px; padding-bottom: 10px; border: none; background-color: #3498db; color: #ffffff;">Uni Prep Talk</button>
+                                            </a>
+                                            <p style="text-align: center">
+                                                The link will be active on 15 April 2023
                                             </p>
                                         </td>
                                     </tr>

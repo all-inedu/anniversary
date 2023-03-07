@@ -38,11 +38,12 @@ class ReminderH7 extends Command
         # uni info session 10 - 14 April
         # h-7 remind jadwal tanpa link -> 3 April
         # h-1 remind jadwal with link -> 9 April
-                
+        
+        # send reminder on 3 April 2023
         $uni_info_session = new DateTime('2023-04-10'); # insert date here
+        // $uni_info_session = new DateTime('2023-03-06'); # insert date here
         $today = new DateTime(date('Y-m-d'));
         $interval = $today->diff($uni_info_session);
-
         if ($interval->days != 7) {
             return Command::SUCCESS;
         }
@@ -58,7 +59,7 @@ class ReminderH7 extends Command
 
                 $this->sendReminderH7([
                     'client' => $booking->client,
-                    'subject' => "Don't Miss Out on Your Info Sessions & Uni Prep Talk!",
+                    'subject' => "In 1 week, meet your dream university reps and admission officers!",
                     'recipient' => [
                         'email' => $booking->client->email_address,
                         'name' => $booking->client->fullname

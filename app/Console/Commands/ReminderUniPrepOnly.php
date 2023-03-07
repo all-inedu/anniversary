@@ -33,7 +33,9 @@ class ReminderUniPrepOnly extends Command
      */
     public function handle()
     {
+        # will be held on 14 April 2023
         $uni_prep_talk = new DateTime('2023-04-15'); # insert date here
+        // $uni_prep_talk = new DateTime('2023-02-28'); # insert date here
         $today = new DateTime(date('Y-m-d'));
         $interval = $today->diff($uni_prep_talk);
         
@@ -54,7 +56,7 @@ class ReminderUniPrepOnly extends Command
 
                 $this->sendReminderUniPrepH1([
                     'client' => $client,
-                    'subject' => "Don't Miss Out on Uni Prep Talk!",
+                    'subject' => $client->fullname.", see you tomorrow at ANNIFEST Uni Prep Talk!",
                     'recipient' => [
                         'email' => $client->email_address,
                         'name' => $client->fullname

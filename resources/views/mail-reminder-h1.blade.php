@@ -376,11 +376,10 @@
                                     <tr>
                                         <td>
                                             <p>
-                                                Hello {{ $client->fullname }},
+                                                <label style="font-size: 16px;">Hi {{ $client->fullname }}!</label>
                                             </p>
-                                            @if (count($client->booking->university) > 0)
                                             <p>
-                                                Don’t forget to attend the upcoming info sessions and uni prep talk that you've signed up for!
+                                                Are you ready to listen directly about all of the things you need to know about your dream campus? From admission requirements and process to student life and opportunities, you get to know it all! Don't forget to attend ANNIFEST Uni Info Session because it's coming in 1 days!
                                             </p>
                                             <table role="presentation" border="1" cellpadding="0" cellspacing="0">
                                                 <tr align="center" style="height: 40px">
@@ -422,9 +421,32 @@
                                                 @endforeach
                                             </table>
                                             <br>
-                                            @endif
+                                            <table role="presentation" border="0" cellpadding="0"
+                                                cellspacing="0" class="btn btn-primary">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center">
+                                                            <table role="presentation" border="0"
+                                                                cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a href="{{ url('/') }}">
+                                                                                <button>Join the Info Session in 1 days!</button>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            
+                                            <br><br>
+                                            {{-- <p>See you tomorrow!</p> --}}
                                             <p>
-                                                We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
+                                                We're here to remind you also to attend the insightful Uni Prep Talk! From UC Berkeley's admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
                                             </p>
                                             <button class="btn btn-primary" style="cursor:pointer; padding-top: 10px; padding-bottom: 10px; border: none; background-color: #3498db; color: #ffffff;">Uni Prep Talk</button>
                                             <br><br>

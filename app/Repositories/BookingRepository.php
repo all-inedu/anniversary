@@ -30,7 +30,7 @@ class BookingRepository implements BookingRepositoryInterface
     {
         $booking = Booking::find($bookingId);
         $booking->university()->sync($newBookedUniversityDetails);
-        return $booking;
+        return $booking->university;
     }
 
 }

@@ -23,7 +23,8 @@ Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.lo
 Route::group(['middleware' => 'admin.auth'], function() {
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    
+    Route::get('/uni-shortlisted/{uni}', [AdminController::class, 'getShortlisted']);
+
     Route::get('/info-session', [AdminController::class, 'infoSession'])->name('admin.info-session');
 
     Route::get('/info-session/create', [AdminController::class, 'create'])->name('admin.create.info-session');

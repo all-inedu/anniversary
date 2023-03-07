@@ -376,10 +376,13 @@
                                     <tr>
                                         <td>
                                             <p>
-                                                Hello {{ $client->fullname }},
+                                                <label style="font-size: 16px;">Hi {{ $client->fullname }}!</label>
                                             </p>
                                             <p>
-                                                Don’t forget to attend the upcoming info sessions and uni prep talk that you've signed up for!
+                                                <b>In a week,</b> you will get to know all the insights for a top university application from the representatives or admission officers of top universities around the world!
+                                            </p>
+                                            <p>
+                                                Get to know all insider insights, ask anything you would love to ask, and prepare better for your university application later!
                                             </p>
                                             <table role="presentation" border="1" cellpadding="0" cellspacing="0">
                                                 <tr align="center" style="height: 40px">
@@ -396,7 +399,7 @@
                                                 @endforeach
                                             </table>
                                             <br>
-                                            <p>
+                                            {{-- <p>
                                                 We’re here to remind you to attend the insightful Uni Prep Talk! From UC Berkeley’s admission officer, top Australia, UK, and Asia universities reps, and career expert, to ALL-in senior mentors, get all-around information from different points of view!
                                             </p>
                                             <button class="btn btn-primary" style="cursor:pointer; padding-top: 10px; padding-bottom: 10px; border: none; background-color: #3498db; color: #ffffff;">Uni Prep Talk</button>
@@ -406,7 +409,12 @@
                                             </p>
                                             <p>
                                                 We look forward to seeing you soon!
-                                            </p>
+                                            </p> --}}
+                                            <a href="{{ url('/') }}">
+                                                <button class="btn btn-primary" style="cursor:pointer; padding-top: 10px; padding-bottom: 10px; border: none; background-color: #3498db; color: #ffffff;">Join here in a week!</button>
+                                            </a>
+                                            <br><br>
+                                            <p>See you in 7 days!</p>
                                         </td>
                                     </tr>
                                 </table>

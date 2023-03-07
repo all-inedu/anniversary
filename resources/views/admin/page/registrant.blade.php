@@ -19,9 +19,9 @@
 
 
     <div class="card shadow">
-        <div class="card-body">
+        <div class="card-body overflow-auto">
             <div class="table-responsive">
-                <table id="example" class="table table-striped" style="width:100%;font-size:12px;">
+                <table id="example" class="table table-striped" style="width: 2000px; font-size:12px;">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -33,8 +33,13 @@
                             <th>Address</th>
                             <th>Uni Info Session</th>
                             <th>Uni Prep Talk</th>
+                            <th>Type</th>
+                            <th>School</th>
+                            <th>Grade</th>
+                            <th>Challenge</th>
                             <th>Status</th>
                             <th>Join At</th>
+                            {{-- <th>Reminder For Uni Prep</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -49,18 +54,37 @@
                                 <td>{{ $registrant->address }}</td>
                                 <td>
                                     @if ($registrant->booking)
-                                        <ul style="margin:0;padding:0;list-style:numbering">
+                                    <div class="d-flex flex-column">
+                                        @php
+                                            $no = 1;
+                                        @endphp
                                         @foreach ($registrant->booking->university as $booked_university)
-                                            <li>{{ $booked_university->name }}</li>   
+                                            <div class="d-flex flex-column">
+                                                <label for="">{{ $no++.'. '.$booked_university->name }}</label>
+                                                @if ($booked_university->pivot->question)
+                                                    <small class="ps-3" style="background:#999">Q: {{ $booked_university->pivot->question }}</small>
+                                                @endif
+                                            </div>
                                         @endforeach
-                                        </ul>
+                                    </div>
                                     @else
                                     -
                                     @endif
                                 </td>
                                 <td>{{ $registrant->uni_prep == 1 ? "Yes" : "No" }}</td>
+                                <td>{{ $registrant->client_type }}</td>
+                                <td>{{ $registrant->graduate_from }}</td>
+                                <td>{{ $registrant->grade ?? "-" }}</td>
+                                <td>{{ $registrant->biggest_challenge ? $registrant->biggest_challenge->name : $registrant->challenge_other }}</td>
                                 <td>{{ $registrant->status == 1 ? "Active" : "Not Active" }}</td>
                                 <td>{{ date('d F Y H:i:s', strtotime($registrant->created_at)) }}</td>
+                                {{-- <td align="center">
+                                    @if ($registrant->reminder_uniprep)
+                                        <i class="bi bi-check text-success"></i>
+                                    @else
+                                        <i class="bi bi-x text-danger"></i>
+                                    @endif
+                                </td> --}}
                             </tr>
                         @endforeach
                         
