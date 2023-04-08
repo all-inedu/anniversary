@@ -123,7 +123,7 @@ class RegisterController extends Controller
         $clientDetails['graduate_from'] = $request->school == "Other" ? $request->school_other : $request->school;
         $clientDetails['lead_source_id'] = $request->lead == "Other" ? null : $request->lead;
         $clientDetails['challenge_id'] = $request->challenge == "Other" ? null : $request->challenge;
-        $clientDetails['first_time'] = 1;
+        $clientDetails['first_time'] = $request->first_time == true ? 1 : 0;
 
         $destinations = $request->country;
         $majors = $request->major;
